@@ -8,7 +8,7 @@ export function FromProduct({
   ProductPrice,
   ProductName,
   ProductDescription,
-formProductPrice,
+  formProductPrice,
   formProductImageUrl,
   formProductName,
   formProductDescription,
