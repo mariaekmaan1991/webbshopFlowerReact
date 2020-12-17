@@ -1,15 +1,25 @@
 import axios from "axios";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../store/actions";
+export function DisplayProducts({
+  setUpdateFormValues,
+  deleteProduct,
+  products,
+}) {
+  const dispatch = useDispatch();
 
-export function DisplayProducts({ setUpdateFormValues, deleteProduct }) {
-  const [products, setProduct] = useState();
+  // const productSeletor = useSelector(
+  // (state) => state.
+  // );
 
   function saveInfo2(e) {
     //console.log(e, "hej");
     e.preventDefault();
   }
-  useEffect(() => {
+  /* useEffect(() => {
     axios.get("http://localhost:8888/").then((response) => {
+      dispatch(getProducts());
       let products = response.data.map((p) => {
         return {
           name: p.name,
@@ -23,11 +33,12 @@ export function DisplayProducts({ setUpdateFormValues, deleteProduct }) {
       });
       setProduct(products);
     });
-  }, []);
+  }, []);*/
 
   console.log(products);
 
-  let productList = products?.map((data, i = parseInt(data._id)) => {
+  let productList = products.map((data, i = parseInt(data._id)) => {
+    console.log(data);
     return (
       <>
         <form onSubmit={saveInfo2} key={i} className="Main-Update-Box">

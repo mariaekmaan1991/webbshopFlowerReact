@@ -7,8 +7,10 @@ import React, {
 } from "react";
 import _ from "lodash";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 import { DisplayProducts } from "../DisplayProducts/DisplayProducts";
 import { FromProduct } from "../FormProduct/FormProduct";
+import { getProducts } from "../../store/actions";
 export class Product {
   name = "";
   price = "";
@@ -19,24 +21,19 @@ export class Product {
 
 export function Admin() {
   /// Form post
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
 
+  const products = useSelector(
+    (state) => state.productsReducerStats.productState
+  );
+  console.log(products);
   function saveInfo(e) {
     //console.log(e, "hej");
     e.preventDefault();
   }
-
-  /// Form post
-  //popUp
-  const [showPopup, setShowPopup] = useState(false);
-
-  function openPopup() {
-    setShowPopup(true);
-  }
-
-  function closePopup() {
-    setShowPopup(false);
-  }
-  //popUp
 
   /// Form  put
   const [updateFormValues, setUpdateFormValues] = useState({});
@@ -147,6 +144,7 @@ export function Admin() {
       axios
         .post("http://localhost:8888/", resultPost)
         .then((response) => {
+          dispatch(getProducts());
           console.log(response.data);
         })
         .catch((err) => {
@@ -154,11 +152,7 @@ export function Admin() {
         });
     } else {
       axios
-        .put(
-          "http://localhost:8888/admin/updateproduct/",
-          updateFormValues._id,
-          resultPut
-        )
+        .put("http://localhost:8888/admin/updateproduct/", id, resultPut)
         .then((response) => {
           console.log(response.data);
         })
@@ -175,7 +169,7 @@ export function Admin() {
     axios
       .delete(`http://localhost:8888/admin/delete/` + id)
       .then((response) => {
-        //dispatch(getDataToReminderCalenderAction());
+        dispatch(getProducts());
         console.log(response);
       })
       .catch((err) => {
@@ -188,21 +182,14 @@ export function Admin() {
   return (
     <div>
       <DisplayProducts
-        deleteProduct={() => deleteProduct()}
-        ProductImageUrl={ProductImageUrl}
-        ProductPrice={ProductPrice}
-        ProductName={ProductName}
-        ProductDescription={ProductDescription}
+        products={products}
+        deleteProduct={deleteProduct}
         saveUpdate={saveUpdate}
         setUpdateFormValues={setUpdateFormValues}
         formProductImageUrl={formProductImageUrl}
         formProductDescription={formProductDescription}
         formProductPrice={formProductPrice}
-        deleteProduct={deleteProduct}
         formProductName={formProductName}
-        showPopup={showPopup}
-        closePopup={() => closePopup()}
-        openPopup={() => openPopup()}
       />
 
       <FromProduct

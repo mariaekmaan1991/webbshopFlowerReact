@@ -3,7 +3,6 @@ import React, { FormEvent, ChangeEvent, useReducer } from "react";
 export function FromProduct({
   saveInfo,
   postFormValues,
-
   category,
   ProductImageUrl,
   ProductPrice,

@@ -5,7 +5,7 @@ const initialState = {
   productState: [],
 };
 
-export default function (state = initialState, action: any) {
+export default function hej(state = initialState, action) {
   switch (action.type) {
     case SET_PRODUCTS:
       return {
