@@ -7,10 +7,11 @@ import React, {
 } from "react";
 import _ from "lodash";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { DisplayProducts } from "../DisplayProducts/DisplayProducts";
-import { FromProduct } from "../FormProduct/FormProduct";
-import { getProducts } from "../../store/actions";
+
+import { AdminDisplayProducts } from "./AdminDisplayProducts/AdminDisplayProducts";
+import { FromProduct } from "./FormProduct/FormProduct";
+import { firebase } from "../firebase/firebase";
+
 export class Product {
   name = "";
   price = "";
@@ -20,20 +21,43 @@ export class Product {
 }
 
 export function Admin() {
-  /// Form post
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
-
-  const products = useSelector(
-    (state) => state.productsReducerStats.productState
-  );
-  console.log(products);
   function saveInfo(e) {
     //console.log(e, "hej");
     e.preventDefault();
   }
+
+  const [ListProduct, setListProduct] = useState([]);
+  const db = firebase.firestore();
+
+  // function getflower() {
+  //   // const db = firebase.firestore().collection("Flowershops");
+  //   const db = firebase.database().ref("flowrshops");
+  //   db.on("value", (QuerySnapshot) => {
+  //     let element = QuerySnapshot.val();
+  //     const todoList = [];
+  //     for (let id in element) {
+  //       todoList.push({ id, ...element[id] });
+  //     }
+
+  //     setListProduct(todoList);
+  //   });
+  // }
+  const getFlowerObject = async () => {
+    const data = await db.collection("maria").get();
+
+    let element =
+      data &&
+      data.docs.map((doc) => {
+        console.log(doc);
+        return { ...doc.data(), id: doc.id };
+      });
+    console.log(element);
+
+    setListProduct(element);
+  };
+  useEffect(() => {
+    getFlowerObject();
+  }, []);
 
   /// Form  put
   const [updateFormValues, setUpdateFormValues] = useState({});
@@ -42,8 +66,11 @@ export function Admin() {
   const [ProductName, setProductName] = useState();
   const [ProductPrice, setProductprice] = useState();
   const [ProductDescription, setProductDescription] = useState();
-
+  const [ProductQuantity, setFormProductQuantity] = useState();
   useEffect(() => {
+    if (updateFormValues.quantity) {
+      setFormProductQuantity(updateFormValues.quantity);
+    }
     if (updateFormValues.description) {
       setProductDescription(updateFormValues.description);
     }
@@ -57,6 +84,7 @@ export function Admin() {
       setProductName(updateFormValues.name);
     }
   }, [
+    updateFormValues.quantity,
     updateFormValues.description,
     updateFormValues.name,
     updateFormValues.imageUrl,
@@ -89,6 +117,16 @@ export function Admin() {
     }
   }
 
+  function fromProductQuantity(e) {
+    if (updateFormValues.quantity === undefined) {
+      setFormProductQuantity(e.target.value);
+    } else {
+      setFormProductQuantity(
+        ({ ...updateFormValues.quantity }, e.target.value)
+      );
+    }
+  }
+
   function formProductName(e) {
     if (updateFormValues.name === undefined) {
       setProductName(e.target.value);
@@ -113,8 +151,8 @@ export function Admin() {
       description: ProductDescription,
       price: ProductPrice,
       imageUrl: ProductImageUrl,
-      _id: updateFormValues._id,
-      //category: resultCategory,
+      id: updateFormValues.id,
+      quantity: ProductQuantity,
     };
 
     return h;
@@ -127,6 +165,7 @@ export function Admin() {
       description: ProductDescription,
       price: ProductPrice,
       imageUrl: ProductImageUrl,
+      quantity: ProductQuantity,
 
       //category: resultCategory,
     };
@@ -135,64 +174,45 @@ export function Admin() {
   }
 
   function postFormValues() {
-    let resultPut = updateFormValue();
-    let resultPost = formValuePost();
-    console.log(resultPost);
-    let id = updateFormValues._id;
+    let hej = formValuePost();
+    let updateform = updateFormValue();
+    let id = updateFormValues.id;
+    if (updateFormValues.id === undefined) {
+      db.collection("maria")
+        .add(hej)
+        .then(function () {
+          console.log("Document successfully written!");
+        })
+        .catch(function (error) {
+          console.error("Error writing document: ", error);
+        });
 
-    if (updateFormValues._id === undefined) {
-      axios
-        .post("http://localhost:8888/", resultPost)
-        .then((response) => {
-          dispatch(getProducts());
-          console.log(response.data);
-        })
-        .catch((err) => {
-          console.log(err.message.data);
-        });
+      // const db = firebase.database().ref("flowrshops");
+      // db.push(hej);
     } else {
-      axios
-        .put("http://localhost:8888/admin/updateproduct/", id, resultPut)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((err) => {
-          console.log(err.message.data);
-        });
+      console.log(updateform, "uptatera");
+      db.collection("maria").doc(id).set(updateform);
+
+      // const db = firebase.database().ref("flowrshops").child(updateform.id);
+      // db.update(updateform);
     }
   }
 
   /// button deleteProduct
   function deleteProduct(id) {
     console.log(id, "ta bort product");
-
-    axios
-      .delete(`http://localhost:8888/admin/delete/` + id)
-      .then((response) => {
-        dispatch(getProducts());
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err.message.data);
-      });
+    db.collection("maria").doc(id).delete();
+    /*  const db = firebase.database().ref("flowrshops").child(id);
+    db.remove();*/
   }
 
   /// button deleteProduct
 
   return (
     <div>
-      <DisplayProducts
-        products={products}
-        deleteProduct={deleteProduct}
-        saveUpdate={saveUpdate}
-        setUpdateFormValues={setUpdateFormValues}
-        formProductImageUrl={formProductImageUrl}
-        formProductDescription={formProductDescription}
-        formProductPrice={formProductPrice}
-        formProductName={formProductName}
-      />
-
       <FromProduct
+        fromProductQuantity={fromProductQuantity}
+        ProductQuantity={ProductQuantity}
         ProductImageUrl={ProductImageUrl}
         formProductPrice={formProductPrice}
         formProductImageUrl={formProductImageUrl}
@@ -204,6 +224,16 @@ export function Admin() {
         postFormValues={postFormValues}
         formProductName={formProductName}
         //category={category}
+      />
+      <AdminDisplayProducts
+        ListProduct={ListProduct}
+        deleteProduct={deleteProduct}
+        saveUpdate={saveUpdate}
+        setUpdateFormValues={setUpdateFormValues}
+        formProductImageUrl={formProductImageUrl}
+        formProductDescription={formProductDescription}
+        formProductPrice={formProductPrice}
+        formProductName={formProductName}
       />
     </div>
   );

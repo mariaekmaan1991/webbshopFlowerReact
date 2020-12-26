@@ -7,11 +7,13 @@ export function FromProduct({
   ProductImageUrl,
   ProductPrice,
   ProductName,
+  ProductQuantity,
   ProductDescription,
   formProductPrice,
   formProductImageUrl,
   formProductName,
   formProductDescription,
+  fromProductQuantity,
 }) {
   return (
     <form onSubmit={saveInfo}>
@@ -43,6 +45,14 @@ export function FromProduct({
         placeholder="imageUrl"
         value={ProductImageUrl}
         onChange={formProductImageUrl}
+      />
+
+      <input
+        type="number"
+        name="quantity"
+        placeholder="quantity"
+        value={ProductQuantity}
+        onChange={fromProductQuantity}
       />
       <div>
         <h5>Kategorier</h5>
