@@ -6,8 +6,6 @@ import { Products } from "./Products/Products";
 export function ProductsParent() {
   const [ListProduct, setListProduct2] = useState([]);
 
-  const [buttonDetailProduct, setbuttonDetailProduct] = useState([]);
-
   const db = firebase.firestore();
   const getFlowerObject = async () => {
     const data = await db.collection("maria").get();
@@ -24,10 +22,5 @@ export function ProductsParent() {
     getFlowerObject();
   }, []);
 
-  return (
-    <Products
-      ListProduct={ListProduct}
-      setbuttonDetailProduct={setbuttonDetailProduct}
-    />
-  );
+  return <Products ListProduct={ListProduct} />;
 }

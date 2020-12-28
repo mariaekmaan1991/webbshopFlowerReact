@@ -2,14 +2,12 @@ import { React, useEffect, useState } from "react";
 
 export function DetailProductPrint({
   DetailProductList,
-  ProductSize,
   handleProductSize,
-  handleProductQuantity,
-  ProductQuantity,
-  handleProduct,
+  handleProductQuantityDecrease,
+  handleProductQuantityIncrease,
   saveInfo,
-  id,
-  sethandleProductId,
+
+  addCart,
 }) {
   return (
     <div>
@@ -19,27 +17,34 @@ export function DetailProductPrint({
       <div> {DetailProductList.description}</div>
       <div> antal:{DetailProductList.quantity}</div>
       <form onSubmit={saveInfo}>
-        <label for="size">Choose a size:</label>
+        <label htmlFor="size">Choose a size:</label>
         <select onChange={handleProductSize} name="size" id="size">
-          <option value={ProductSize}>XS</option>
-          <option value={ProductSize}>S</option>
-          <option value={ProductSize}>M</option>
-          <option value={ProductSize}>L</option>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
         </select>
-        <label for="quantity">Antal:</label>
-        <select
-          type="number"
-          onChange={handleProductQuantity}
+        <label htmlFor="quantity">Antal:</label>
+        <button
+          onClick={(e) => handleProductQuantityIncrease(e, DetailProductList)}
           name="quantity"
           id="quantity"
         >
-          <option value={ProductQuantity}>1</option>
-          <option value={ProductQuantity}>2</option>
-          <option value={ProductQuantity}>3</option>
-          <option value={ProductQuantity}>4</option>
-          <option value={ProductQuantity}>5</option>
-        </select>
-        <button type="submit" value="" onClick={() => handleProduct(id)}>
+          +
+        </button>
+        {DetailProductList.quantity}
+        <button
+          onClick={(e) => handleProductQuantityDecrease(e, DetailProductList)}
+          name="quantity"
+          id="quantity"
+        >
+          -
+        </button>
+        <button
+          type="submit"
+          value=""
+          onClick={() => addCart(DetailProductList)}
+        >
           Lägg till varukorgen
         </button>
       </form>

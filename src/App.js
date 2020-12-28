@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Admin } from "./components/Admin/Admin";
 import {
   BrowserRouter as Router,
@@ -7,13 +7,38 @@ import {
   Route,
   Link,
   useParams,
-  useRouteMatch,
 } from "react-router-dom";
+import { firebase } from "./components/firebase/firebase";
 
-import { Products } from "./components/ProductsParent/Products/Products";
 import { ProductsParent } from "./components/ProductsParent/productsParent";
 import { DetailParent } from "./components/DetailParent/DetailParent";
 function App() {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  /*const [currentCart, setCurrentCart] = useState();
+  let currentCart2 = JSON.parse(localStorage.getItem("cart") || []);
+  useEffect(() => {
+    
+    let hej =
+      currentCart2 &&
+      currentCart2.map((m) => {
+        return {
+          name: m.name,
+          id: m.id,
+          imageUrl: m.imageUrl,
+          price: m.price,
+          quantity: m.quantity,
+          size: m.size,
+        };
+      });
+    console.log("finns currentCart", hej);
+
+    setCurrentCart(hej);
+  }, []);*/
   return (
     <div>
       <Router>
@@ -34,6 +59,7 @@ function App() {
                   <Link to="/checkout">checkout</Link>
                 </li>
               </ul>
+              {cart.length}
             </nav>
           </header>
           <main>
@@ -49,7 +75,11 @@ function App() {
                 {/* <Checkout></Checkout> */}
               </Route>
               <Route path="/products/:id">
-                <DetailParent />
+                <DetailParent
+                  cart={cart}
+                  // currentCart={currentCart}
+                  setCart={setCart}
+                />
               </Route>
               <Route exact path="/">
                 {/* <Home></Home> */}
