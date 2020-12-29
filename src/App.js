@@ -15,9 +15,17 @@ import { DetailParent } from "./components/DetailParent/DetailParent";
 function App() {
   const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  const existingData = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let cleanitem = [];
+  console.log(existingData);
+  if (existingData) {
+    cleanitem = existingData.concat(cart);
+  } else {
+    cleanitem = cart;
+  }
+  localStorage.setItem("cart", JSON.stringify(cleanitem));
+  useEffect(() => {}, [cart]);
 
   /*const [currentCart, setCurrentCart] = useState();
   let currentCart2 = JSON.parse(localStorage.getItem("cart") || []);
