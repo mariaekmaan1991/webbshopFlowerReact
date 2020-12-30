@@ -73,7 +73,8 @@ export function DetailParent({ cart, setCart, setCart3 }) {
       //   let h = currentCart[i].quantity;
       // }
     }
-    console.log("läggt till cart:", DetailProduct);
+    console.log("läggt till cart:", ProductSize);
+
     let newItem = {
       name: DetailProduct.name,
       id: DetailProduct.id,
@@ -82,7 +83,7 @@ export function DetailParent({ cart, setCart, setCart3 }) {
       size: ProductSize,
       quantity: DetailProduct.quantity,
     };
-
+    console.log("läggt till cart:", newItem);
     localBase.collection("users").add(newItem);
     //let newItems = [...cart, newItem];
     //setCart([...cart, newItem]);

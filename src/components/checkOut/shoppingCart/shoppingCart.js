@@ -25,6 +25,18 @@ export function ShoppingCart() {
       });
   }
 
+  function updateProduct(id) {
+    localBase
+      .collection("users")
+      .doc({ id: id })
+      .update({
+        name: "William",
+      })
+      .then((users) => {
+        console.log("fel?", users);
+      });
+  }
+
   let h = ShoppingCartList.map((product, id) => {
     return (
       <div key={id}>
@@ -32,7 +44,17 @@ export function ShoppingCart() {
         <div>{product.name}</div>
         <div>{product.price}</div>
         <div>{product.description}</div>
-        <button onClick>uptatera</button>
+
+        <button
+          type="submit"
+          name="tröja"
+          onClick={() => {
+            updateProduct(product.id);
+          }}
+        >
+          uptatera
+        </button>
+
         <button
           type="submit"
           name="tröja"
