@@ -12,21 +12,8 @@ import { firebase } from "./components/firebase/firebase";
 
 import { ProductsParent } from "./components/ProductsParent/productsParent";
 import { DetailParent } from "./components/DetailParent/DetailParent";
+import { CheckOutParent } from "./components/checkOut/checkOutParent/checkOutParent";
 function App() {
-  const [cart, setCart] = useState([]);
-
-  const existingData = JSON.parse(localStorage.getItem("cart")) || [];
-
-  let cleanitem = [];
-  console.log(existingData);
-  if (existingData) {
-    cleanitem = existingData.concat(cart);
-  } else {
-    cleanitem = cart;
-  }
-  localStorage.setItem("cart", JSON.stringify(cleanitem));
-  useEffect(() => {}, [cart]);
-
   /*const [currentCart, setCurrentCart] = useState();
   let currentCart2 = JSON.parse(localStorage.getItem("cart") || []);
   useEffect(() => {
@@ -67,7 +54,6 @@ function App() {
                   <Link to="/checkout">checkout</Link>
                 </li>
               </ul>
-              {cart.length}
             </nav>
           </header>
           <main>
@@ -80,14 +66,10 @@ function App() {
                 <ProductsParent />
               </Route>
               <Route exact path="/checkout">
-                {/* <Checkout></Checkout> */}
+                <CheckOutParent></CheckOutParent>
               </Route>
               <Route path="/products/:id">
-                <DetailParent
-                  cart={cart}
-                  // currentCart={currentCart}
-                  setCart={setCart}
-                />
+                <DetailParent />
               </Route>
               <Route exact path="/">
                 {/* <Home></Home> */}

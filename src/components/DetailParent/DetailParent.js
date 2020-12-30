@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 import { firebase } from "../firebase/firebase";
 import { Products } from "../ProductsParent/Products/Products";
 import { DetailProductPrint } from "./DetailProductPrint/DetailProductPrint";
-export function DetailParent({ cart, setCart }) {
+import Localbase from "localbase";
+
+export function DetailParent({ cart, setCart, setCart3 }) {
   let { id } = useParams();
   const db = firebase.firestore();
+  let localBase = new Localbase("db");
 
   function saveInfo(e) {
     e.preventDefault();
@@ -14,7 +17,6 @@ export function DetailParent({ cart, setCart }) {
   const [currentCart, setCurrentCart] = useState([]);
   const [ProductSize, setProductSize] = useState();
   const [ProductQuantity, setProductQuantity] = useState();
-  let currentCartLocalStorage = JSON.parse(localStorage.getItem("cart"));
 
   useEffect(() => {}, []);
 
@@ -52,12 +54,15 @@ export function DetailParent({ cart, setCart }) {
   //console.log(ProductQuantity, "finns ProductQuantity");
 
   function addCart(DetailProduct) {
-    if (currentCartLocalStorage) {
-      setCurrentCart(currentCartLocalStorage);
-    }
+    localBase
+      .collection("users")
+      .get()
+      .then((users) => {
+        // console.log("users:", users);
+      });
 
     console.log(" finns currentCart", currentCart, currentCart.length);
-   local.
+
     for (let i = 0; i < currentCart.length; i++) {
       console.log(currentCart[i].id);
       // if (
@@ -77,8 +82,10 @@ export function DetailParent({ cart, setCart }) {
       size: ProductSize,
       quantity: DetailProduct.quantity,
     };
+
+    localBase.collection("users").add(newItem);
     //let newItems = [...cart, newItem];
-    setCart([...cart, newItem]);
+    //setCart([...cart, newItem]);
   }
 
   return (
