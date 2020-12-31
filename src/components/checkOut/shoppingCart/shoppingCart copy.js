@@ -1,15 +1,11 @@
 import { React, useState, useEffect } from "react";
 import Localbase from "localbase";
-import ReactSelect from "react-select";
-import { Size } from "../select/select";
-
 export function ShoppingCart() {
   let localBase = new Localbase("db");
 
   const [ShoppingCartList, setShoppingCartList] = useState([]);
 
-  const [ProductSize, setProductSize] = useState();
-
+  const [ProductSize, setProductSize] = useState([]);
   useEffect(() => {
     localBase
       .collection("users")
@@ -31,7 +27,7 @@ export function ShoppingCart() {
       });
   }
 
-  function fromProductSize(e, product) {
+  function handleProductSize(e, product) {
     console.log(e.target.value, product);
     setProductSize({ ...product }, e.target.value);
 
@@ -45,8 +41,7 @@ export function ShoppingCart() {
     //     console.log("fel?", users);
     //   });
   }
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function updateProduct() {}
 
   let h = ShoppingCartList.map((product, i = parseInt(product.id)) => {
     return (
@@ -55,10 +50,23 @@ export function ShoppingCart() {
         <div>{product.name}</div>
         <div>{product.price}</div>
         <div>{product.description}</div>
-        <div>
-          <Size size={product.size} />
-        </div>
+        <div> {ProductSize}</div>
+        <select onChange={handleProductSize} name="size" id="size">
+          <option value={`XS${product.size}`}>XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+        </select>
 
+        <button
+          type="submit"
+          name="tröja"
+          onClick={() => {
+            updateProduct(product.id);
+          }}
+        >
+          uptatera
+        </button>
         <button
           type="submit"
           name="tröja"
