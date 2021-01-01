@@ -1,32 +1,58 @@
 import { React, useState, useEffect } from "react";
 
-export function Size({ size }) {
+export function Size({ size, something }) {
   const [ProductSize, setProductSize] = useState(size);
 
   function fromProductSize(e) {
     console.log(e.target.value);
     setProductSize(e.target.value);
-
-    // localBase
-    //   .collection("users")
-    //   .doc({ id: id })
-    //   .update({
-    //     name: "William",
-    //   })
-    //   .then((users) => {
-    //     console.log("fel?", users);
-    //   });
   }
+
+  function sendTheNumber() {
+    something(ProductSize);
+  }
+
+  const options = [
+    { value: "XS", label: "XS" },
+    { value: "S", label: "S" },
+    { value: "M", label: "M" },
+    { value: "L", label: "L" },
+  ];
 
   return (
     <div>
       {ProductSize}
-      <select onChange={fromProductSize} name="size" id="size">
-        <option value={size === "XS" ? size : "XS"}>XS</option>
-        <option value={size === "S" ? size : "S"}>S</option>
-        <option value={size === "M" ? size : "M"}>M</option>
-        <option value={size === "L" ? size : "L"}>L</option>
+
+      <select
+        value={ProductSize}
+        onChange={fromProductSize}
+        name="size"
+        id="size"
+      >
+        {options.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
       </select>
+      <button
+        type="submit"
+        name="tröja"
+        onClick={() => {
+          sendTheNumber();
+        }}
+      >
+        save
+      </button>
     </div>
   );
 }
+// const options = [
+//   { value: "XS", label: "Size" },
+//   { value: "S", label: "Size" },
+//   { value: "M", label: "Size" },
+//   { value: "L", label: "Size" },
+// ];
+
+// let h = options.map((m) => {
+//   let hej = { size: m.size, value: m.value };
+//   return hej;
+// });

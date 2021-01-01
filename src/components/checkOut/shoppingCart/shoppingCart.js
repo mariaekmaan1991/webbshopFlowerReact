@@ -5,10 +5,14 @@ import { Size } from "../select/select";
 
 export function ShoppingCart() {
   let localBase = new Localbase("db");
+  const [ipsumNumber, setIpsumNumber] = useState();
+
+  function updateIpsumNumber(x) {
+    setIpsumNumber(x);
+  }
+  console.log(ipsumNumber, "ipsumNumber");
 
   const [ShoppingCartList, setShoppingCartList] = useState([]);
-
-  const [ProductSize, setProductSize] = useState();
 
   useEffect(() => {
     localBase
@@ -19,6 +23,16 @@ export function ShoppingCart() {
         setShoppingCartList(users);
       });
   }, []);
+
+  function UpdateProduct(product) {
+    localBase
+      .collection("users")
+      .doc({ id: product.id })
+      .update(product)
+      .then((users) => {
+        console.log("fel?", users);
+      });
+  }
 
   function deleteProduct(id) {
     console.log(id);
@@ -31,21 +45,6 @@ export function ShoppingCart() {
       });
   }
 
-  function fromProductSize(e, product) {
-    console.log(e.target.value, product);
-    setProductSize({ ...product }, e.target.value);
-
-    // localBase
-    //   .collection("users")
-    //   .doc({ id: id })
-    //   .update({
-    //     name: "William",
-    //   })
-    //   .then((users) => {
-    //     console.log("fel?", users);
-    //   });
-  }
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   let h = ShoppingCartList.map((product, i = parseInt(product.id)) => {
@@ -55,9 +54,26 @@ export function ShoppingCart() {
         <div>{product.name}</div>
         <div>{product.price}</div>
         <div>{product.description}</div>
+        <div>{product.quantity}</div>
+
         <div>
-          <Size size={product.size} />
+          <Size
+            something={updateIpsumNumber}
+            size={product.size}
+            // ProductSize={ProductSize}
+            // setProductSize={setProductSize}
+            // fromProductSize={fromProductSize}
+          />
         </div>
+        <button
+          type="submit"
+          name="tröja"
+          onClick={() => {
+            UpdateProduct(product);
+          }}
+        >
+          update
+        </button>
 
         <button
           type="submit"
@@ -73,5 +89,5 @@ export function ShoppingCart() {
   });
   return <div>{h}</div>;
 }
-
+// har en fråga hur gör man
 //https://codesandbox.io/s/keen-sun-qp9rb?file=/src/index.js
