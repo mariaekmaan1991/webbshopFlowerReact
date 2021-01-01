@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import Localbase from "localbase";
 import ReactSelect from "react-select";
-import { Size } from "../select/select";
+import { ProductChangeSize } from "../ProductChangeSize/ProductChangeSize";
 
 export function ShoppingCart() {
   let localBase = new Localbase("db");
@@ -57,7 +57,7 @@ export function ShoppingCart() {
         <div>{product.quantity}</div>
 
         <div>
-          <Size
+          <ProductChangeSize
             something={updateIpsumNumber}
             size={product.size}
             // ProductSize={ProductSize}

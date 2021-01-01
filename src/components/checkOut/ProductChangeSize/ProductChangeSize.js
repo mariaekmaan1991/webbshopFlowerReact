@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-export function Size({ size, something }) {
+export function ProductChangeSize({ size, something }) {
   const [ProductSize, setProductSize] = useState(size);
 
   function fromProductSize(e) {
