@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import Localbase from "localbase";
-import ReactSelect from "react-select";
 import { ProductChangeSize } from "../ProductChangeSize/ProductChangeSize";
+import { ProductChangeProductQuantity } from "../ProductQuantity/ProductChangeProductQuantity";
 
 export function ShoppingCart() {
   let localBase = new Localbase("db");
@@ -11,6 +11,13 @@ export function ShoppingCart() {
     setIpsumNumber(x);
   }
   console.log(ipsumNumber, "ipsumNumber");
+
+  const [ipsumNumber2, setIpsumNumber2] = useState();
+
+  function updateIpsumNumber2(x) {
+    setIpsumNumber2(x);
+  }
+  console.log(ipsumNumber2, "ipsumNumber2");
 
   const [ShoppingCartList, setShoppingCartList] = useState([]);
 
@@ -54,7 +61,7 @@ export function ShoppingCart() {
         <div>{product.name}</div>
         <div>{product.price}</div>
         <div>{product.description}</div>
-        <div>{product.quantity}</div>
+        {/* <div> antal:{product.quantity}</div> */}
 
         <div>
           <ProductChangeSize
@@ -63,6 +70,11 @@ export function ShoppingCart() {
             // ProductSize={ProductSize}
             // setProductSize={setProductSize}
             // fromProductSize={fromProductSize}
+          />
+          <ProductChangeProductQuantity
+            productQuantity={product.quantity}
+            productid={product.id}
+            something2={updateIpsumNumber2}
           />
         </div>
         <button
