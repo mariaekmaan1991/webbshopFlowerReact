@@ -1,43 +1,46 @@
 import { React, useState, useEffect } from "react";
 import Localbase from "localbase";
 import { ProductChangeSize } from "../ProductChangeSize/ProductChangeSize";
-import { ProductChangeProductQuantity } from "../ProductQuantity/ProductChangeProductQuantity";
 
-export function ShoppingCart() {
+import { ProductChangeProductQuantity2 } from "../ProductChangeProductQuantity/ProductChangeProductQuantity2";
+
+export function ShoppingCart({
+  setNewUpdateSizeProduct,
+  setShoppingCartList,
+  ShoppingCartList,
+  NewUpdateQuantityProduct,
+  NewUpdateSizeProduct,
+  setNewUpdateQuantityProduct,
+}) {
   let localBase = new Localbase("db");
-  const [ipsumNumber, setIpsumNumber] = useState();
 
-  function updateIpsumNumber(x) {
-    setIpsumNumber(x);
+  function updateSizeProduct(x) {
+    setNewUpdateSizeProduct(x);
   }
-  console.log(ipsumNumber, "ipsumNumber");
 
-  const [ipsumNumber2, setIpsumNumber2] = useState();
-
-  function updateIpsumNumber2(x) {
-    setIpsumNumber2(x);
+  function updateQuantityProduct(x) {
+    setNewUpdateQuantityProduct(x);
   }
-  console.log(ipsumNumber2, "ipsumNumber2");
-
-  const [ShoppingCartList, setShoppingCartList] = useState([]);
-
+  console.log(NewUpdateQuantityProduct, " NewUpdateQuantityProduct");
   useEffect(() => {
     localBase
-      .collection("users")
+      .collection("Product")
       .get()
-      .then((users) => {
-        //console.log("users:", users);
-        setShoppingCartList(users);
+      .then((product) => {
+        setShoppingCartList(product);
       });
   }, []);
 
   function UpdateProduct(product) {
     localBase
-      .collection("users")
+      .collection("Product")
       .doc({ id: product.id })
-      .update(product)
-      .then((users) => {
-        console.log("fel?", users);
+      .update({
+        size: NewUpdateSizeProduct,
+        quantity: parseInt(NewUpdateQuantityProduct),
+      })
+      .then((product) => {
+        console.log("fel?", product);
       });
   }
 
@@ -59,22 +62,23 @@ export function ShoppingCart() {
       <div key={i}>
         <div>{product.imageUrl}</div>
         <div>{product.name}</div>
-        <div>{product.price}</div>
+        <div>price:{product.price}</div>
         <div>{product.description}</div>
-        {/* <div> antal:{product.quantity}</div> */}
+        <div> antal:{product.quantity}</div>
 
         <div>
           <ProductChangeSize
-            something={updateIpsumNumber}
+            updateSizeProduct={updateSizeProduct}
             size={product.size}
-            // ProductSize={ProductSize}
-            // setProductSize={setProductSize}
-            // fromProductSize={fromProductSize}
           />
-          <ProductChangeProductQuantity
+          {/* <ProductChangeProductQuantity
             productQuantity={product.quantity}
             productid={product.id}
             something2={updateIpsumNumber2}
+          /> */}
+          <ProductChangeProductQuantity2
+            updateQuantityProduct={updateQuantityProduct}
+            productquantity={product.quantity}
           />
         </div>
         <button

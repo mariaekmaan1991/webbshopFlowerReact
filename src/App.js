@@ -8,32 +8,21 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
-import { firebase } from "./components/firebase/firebase";
 
 import { ProductsParent } from "./components/ProductsParent/productsParent";
 import { DetailParent } from "./components/DetailParent/DetailParent";
-import { CheckOutParent } from "./components/checkOut/checkOutParent/checkOutParent";
-function App() {
-  /*const [currentCart, setCurrentCart] = useState();
-  let currentCart2 = JSON.parse(localStorage.getItem("cart") || []);
-  useEffect(() => {
-    
-    let hej =
-      currentCart2 &&
-      currentCart2.map((m) => {
-        return {
-          name: m.name,
-          id: m.id,
-          imageUrl: m.imageUrl,
-          price: m.price,
-          quantity: m.quantity,
-          size: m.size,
-        };
-      });
-    console.log("finns currentCart", hej);
+import { CheckOutParent } from "./components/checkOut/checkOutParent";
 
-    setCurrentCart(hej);
-  }, []);*/
+function App() {
+  const [ShoppingCartList, setShoppingCartList] = useState([]);
+
+  let shoppingCartQuantityCounter = 0;
+  let counterPrice = 0;
+  for (let i = 0; i < ShoppingCartList.length; i++) {
+    shoppingCartQuantityCounter =
+      shoppingCartQuantityCounter + parseInt(ShoppingCartList[i].quantity);
+    counterPrice = counterPrice + parseInt(ShoppingCartList[i].price);
+  }
   return (
     <div>
       <Router>
@@ -54,6 +43,8 @@ function App() {
                   <Link to="/checkout">checkout</Link>
                 </li>
               </ul>
+              varukorg:{shoppingCartQuantityCounter}
+              summa:{counterPrice}
             </nav>
           </header>
           <main>
@@ -66,7 +57,10 @@ function App() {
                 <ProductsParent />
               </Route>
               <Route exact path="/checkout">
-                <CheckOutParent></CheckOutParent>
+                <CheckOutParent
+                  setShoppingCartList={setShoppingCartList}
+                  ShoppingCartList={ShoppingCartList}
+                ></CheckOutParent>
               </Route>
               <Route path="/products/:id">
                 <DetailParent />

@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-export function ProductChangeSize({ size, something }) {
+export function ProductChangeSize({ size, updateSizeProduct }) {
   const [ProductSize, setProductSize] = useState(size);
 
   function fromProductSize(e) {
@@ -8,8 +8,8 @@ export function ProductChangeSize({ size, something }) {
     setProductSize(e.target.value);
   }
 
-  function sendTheNumber() {
-    something(ProductSize);
+  function sendTheSize() {
+    updateSizeProduct(ProductSize);
   }
 
   const options = [
@@ -37,7 +37,7 @@ export function ProductChangeSize({ size, something }) {
         type="submit"
         name="tröja"
         onClick={() => {
-          sendTheNumber();
+          sendTheSize();
         }}
       >
         save

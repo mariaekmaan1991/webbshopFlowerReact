@@ -14,7 +14,7 @@ export function DetailParent({ cart, setCart, setCart3 }) {
     e.preventDefault();
   }
   const [DetailProductList, setDetailProductList] = useState([]);
-  const [currentCart, setCurrentCart] = useState([]);
+
   const [ProductSize, setProductSize] = useState();
   const [ProductQuantity, setProductQuantity] = useState();
 
@@ -55,24 +55,22 @@ export function DetailParent({ cart, setCart, setCart3 }) {
 
   function addCart(DetailProduct) {
     localBase
-      .collection("users")
+      .collection("Product")
       .get()
       .then((users) => {
         // console.log("users:", users);
       });
 
-    console.log(" finns currentCart", currentCart, currentCart.length);
-
-    for (let i = 0; i < currentCart.length; i++) {
-      console.log(currentCart[i].id);
-      // if (
-      //   currentCart[i].id === DetailProduct.id &&
-      //   currentCart[i].size === DetailProduct.size
-      // ) {
-      //   alreadyExist = true;
-      //   let h = currentCart[i].quantity;
-      // }
-    }
+    // for (let i = 0; i < currentCart.length; i++) {
+    //   console.log(currentCart[i].id);
+    //   // if (
+    //   //   currentCart[i].id === DetailProduct.id &&
+    //   //   currentCart[i].size === DetailProduct.size
+    //   // ) {
+    //   //   alreadyExist = true;
+    //   //   let h = currentCart[i].quantity;
+    //   // }
+    // }
     console.log("läggt till cart:", ProductSize);
 
     let newItem = {
@@ -84,7 +82,7 @@ export function DetailParent({ cart, setCart, setCart3 }) {
       quantity: DetailProduct.quantity,
     };
     console.log("läggt till cart:", newItem);
-    localBase.collection("users").add(newItem);
+    localBase.collection("Product").add(newItem);
     //let newItems = [...cart, newItem];
     //setCart([...cart, newItem]);
   }
