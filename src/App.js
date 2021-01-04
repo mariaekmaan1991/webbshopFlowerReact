@@ -13,8 +13,9 @@ import { ProductsParent } from "./components/ProductsParent/productsParent";
 import { DetailParent } from "./components/DetailParent/DetailParent";
 import { CheckOutParent } from "./components/checkOut/checkOutParent";
 import { Home } from "./components/Home/home";
-import { AuthProvider } from "./components/Home/auth";
+
 import { NoMatch } from "./components/NoMatch/NoMatch";
+import { AuthProvider } from "./components/Home/auth";
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
