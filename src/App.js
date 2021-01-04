@@ -65,16 +65,14 @@ function App() {
                 <Route exact path="/login" component={LogIn} />
                 <PrivateRoute exact path="/admin" component={Admin} />
                 <Route exact path="/products" component={ProductsParent} />
-                <Route
-                  exact
-                  path="/checkout"
-                  setShoppingCartList={setShoppingCartList}
-                  ShoppingCartList={ShoppingCartList}
-                  component={CheckOutParent}
-                />
+                <Route exact path="/checkout">
+                  <CheckOutParent
+                    setShoppingCartList={setShoppingCartList}
+                    ShoppingCartList={ShoppingCartList}
+                  />
+                </Route>
                 <Route path="/products/:id" component={DetailParent} />
                 <Route exact path="/" component={Home} />
-
                 <Route path="*" component={NoMatch} />
               </Switch>
             </main>
