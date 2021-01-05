@@ -1,4 +1,7 @@
-.blue {
+@import "../../scss/mixins";
+
+.wrapper {
+  @include wrapper-main;
   .From-Admin-Main-Container {
     display: flex;
     background-color: blue;
@@ -8,10 +11,9 @@
       .Form-Admin-Container {
         display: flex;
         flex-direction: row;
-
         .Form-Admin-Container-Input {
           display: flex;
-          margin: 10px;
+          width: 200%;
         }
       }
     }

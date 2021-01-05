@@ -11,7 +11,7 @@ import axios from "axios";
 import { AdminDisplayProducts } from "./AdminDisplayProducts/AdminDisplayProducts";
 import { FromProduct } from "./FormProduct/FormProduct";
 import { firebase } from "../firebase/firebase";
-import { adminSass } from "./scss/admin.scss";
+import { adminSass } from "./admin.scss";
 
 export class Product {
   name = "";

@@ -21,7 +21,7 @@ export function FromProduct({
       <div className="From-Admin-Main-Container">
         <form onSubmit={saveInfo} className="Form-Admin">
           <div className="Form-Admin-Container">
-            <label className="Form-Admin-Input">Name </label>
+            <label className="Form-Admin-Container-Input">Name </label>
             <input
               type="text"
               name="name"
@@ -31,7 +31,7 @@ export function FromProduct({
               className="Form-Admin-Container-Input"
             />
 
-            <label className="Form-Admin-Input">Pris </label>
+            <label className="Form-Admin-Container-Input">Pris </label>
             <input
               type="number"
               name="price"
@@ -43,7 +43,7 @@ export function FromProduct({
           </div>
 
           <div className="Form-Admin-Container">
-            <label className="Form-Admin-Input">Bild </label>
+            <label className="Form-Admin-Container-Input">Bild </label>
             <input
               type="text"
               name="imageUrl"
@@ -53,7 +53,7 @@ export function FromProduct({
               className="Form-Admin-Container-Input"
             />
 
-            <label className="Form-Admin-Input">Antal </label>
+            <label className="Form-Admin-Container-Input">Antal </label>
             <input
               type="number"
               name="quantity"

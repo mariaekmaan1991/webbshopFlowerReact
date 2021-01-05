@@ -7,3 +7,8 @@
   border: none;
   border-radius: 50%;
 }
+
+@mixin wrapper-main {
+  width: 100%;
+  height: 100%;
+}
