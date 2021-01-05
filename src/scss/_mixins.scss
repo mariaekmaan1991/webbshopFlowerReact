@@ -1,0 +1,9 @@
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+@mixin buttonSmall {
+  padding: 20px 16px;
+  border: none;
+  border-radius: 50%;
+}

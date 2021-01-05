@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { useState, useEffect } from "react";
 import { Admin } from "./components/Admin/Admin";
 import {
@@ -71,6 +70,7 @@ function App() {
                     ShoppingCartList={ShoppingCartList}
                   />
                 </Route>
+
                 <Route path="/products/:id" component={DetailParent} />
                 <Route exact path="/" component={Home} />
                 <Route path="*" component={NoMatch} />

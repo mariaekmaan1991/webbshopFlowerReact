@@ -11,6 +11,7 @@ import axios from "axios";
 import { AdminDisplayProducts } from "./AdminDisplayProducts/AdminDisplayProducts";
 import { FromProduct } from "./FormProduct/FormProduct";
 import { firebase } from "../firebase/firebase";
+import { adminSass } from "./scss/admin.scss";
 
 export class Product {
   name = "";
@@ -209,7 +210,7 @@ export function Admin() {
   /// button deleteProduct
 
   return (
-    <div>
+    <div className="blue">
       <FromProduct
         fromProductQuantity={fromProductQuantity}
         ProductQuantity={ProductQuantity}
@@ -225,6 +226,7 @@ export function Admin() {
         formProductName={formProductName}
         //category={category}
       />
+
       <AdminDisplayProducts
         ListProduct={ListProduct}
         deleteProduct={deleteProduct}

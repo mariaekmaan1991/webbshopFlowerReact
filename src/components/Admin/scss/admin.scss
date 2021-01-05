@@ -1,0 +1,19 @@
+.blue {
+  .From-Admin-Main-Container {
+    display: flex;
+    background-color: blue;
+    .Form-Admin {
+      display: flex;
+      flex-direction: column;
+      .Form-Admin-Container {
+        display: flex;
+        flex-direction: row;
+
+        .Form-Admin-Container-Input {
+          display: flex;
+          margin: 10px;
+        }
+      }
+    }
+  }
+}

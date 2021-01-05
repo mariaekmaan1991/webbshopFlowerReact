@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { firebase } from "../firebase/firebase";
-import { Products } from "./Products/Products";
+import { Products } from "../Products/Products";
 
 export function ProductsParent() {
   const [ListProduct, setListProduct2] = useState([]);

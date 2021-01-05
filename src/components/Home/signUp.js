@@ -1,16 +1,16 @@
-import { React, useCallback } from "react";
+import { React, useCallback, useState } from "react";
 import { withRouter } from "react-router";
 import { firebase } from "../firebase/firebase";
 
 export const SignUp = ({ history }) => {
+  const [pending, setPending] = useState(false);
+
   const handleSignUp = useCallback(
     async (event) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await firebase
-          .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
+        await firebase.auth().createUserWithEmailAndPassword(email, password);
         history.push("/");
       } catch (error) {
         alert(error);
@@ -30,6 +30,7 @@ export const SignUp = ({ history }) => {
           Password
           <input name="password" type="password" placeholder="Password" />
         </label>
+        <label for="vehicle1">admin</label>
         <button type="submit">Sign Up</button>
       </form>
     </div>
@@ -37,3 +38,5 @@ export const SignUp = ({ history }) => {
 };
 
 export default withRouter(SignUp);
+
+//https://firebase.google.com/docs/auth/admin
