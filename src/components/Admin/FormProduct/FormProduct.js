@@ -30,7 +30,8 @@ export function FromProduct({
               onChange={formProductName}
               className="Form-Admin-Container-Input"
             />
-
+          </div>
+          <div className="Form-Admin-Container">
             <label className="Form-Admin-Container-Input">Pris </label>
             <input
               type="number"
@@ -41,7 +42,6 @@ export function FromProduct({
               className="Form-Admin-Container-Input"
             />
           </div>
-
           <div className="Form-Admin-Container">
             <label className="Form-Admin-Container-Input">Bild </label>
             <input
@@ -52,7 +52,8 @@ export function FromProduct({
               onChange={formProductImageUrl}
               className="Form-Admin-Container-Input"
             />
-
+          </div>
+          <div className="Form-Admin-Container">
             <label className="Form-Admin-Container-Input">Antal </label>
             <input
               type="number"
@@ -63,39 +64,92 @@ export function FromProduct({
               className="Form-Admin-Container-Input"
             />
           </div>
+          <div className="Form-Admin-Container-Button">
+            <div className="Form-Admin-innerContainer-Button">
+              <button
+                className="Form-Admin-Button"
+                type="submit"
+                name="smycken"
+                onClick={() => {
+                  category("smycken");
+                }}
+              >
+                Sticklingar
+              </button>
 
-          <div className="">
-            <h5>Kategorier</h5>
-            <button
-              type="submit"
-              name="smycken"
-              onClick={() => {
-                category("smycken");
-              }}
-            >
-              smycken
-            </button>
+              <button
+                className="Form-Admin-Button"
+                type="submit"
+                name="accessories"
+                onClick={() => {
+                  category("accessories");
+                }}
+              >
+                Tillbehör
+              </button>
+            </div>
+            <div className="Form-Admin-innerContainer-Button">
+              <button
+                className="Form-Admin-Button"
+                type="submit"
+                name="flower"
+                onClick={() => {
+                  category("flower");
+                }}
+              >
+                Blommor
+              </button>
 
-            <button
-              type="submit"
-              name="tröja"
-              onClick={() => {
-                category("tröja");
-              }}
-            >
-              tröja
-            </button>
+              <button
+                className="Form-Admin-Button"
+                type="submit"
+                name="Grönväxt"
+                onClick={() => {
+                  category("greenPlant");
+                }}
+              >
+                Grön växter
+              </button>
+            </div>
+            <div className="Form-Admin-innerContainer-Button">
+              <button
+                className="Form-Admin-Button"
+                type="submit"
+                name="Ovanliga blommor"
+                onClick={() => {
+                  category("UnusualFlowers");
+                }}
+              >
+                Ovanliga blommor
+              </button>
+
+              <button
+                className="Form-Admin-Button"
+                type="submit"
+                name="Pots"
+                onClick={() => {
+                  category("Pots");
+                }}
+              >
+                Krukor
+              </button>
+            </div>
           </div>
-
-          <input
+          <textarea
+            className="Form-Admin-Container-Description"
             type="text"
             name="description"
             placeholder="description"
             value={ProductDescription}
             onChange={formProductDescription}
-          />
-
-          <button type="submit" onClick={() => postFormValues()}>
+          >
+            Beskrivning
+          </textarea>
+          <button
+            className="Form-Admin-Container-PostButton"
+            type="submit"
+            onClick={() => postFormValues()}
+          >
             post
           </button>
         </form>

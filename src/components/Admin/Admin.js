@@ -11,7 +11,6 @@ import axios from "axios";
 import { AdminDisplayProducts } from "./AdminDisplayProducts/AdminDisplayProducts";
 import { FromProduct } from "./FormProduct/FormProduct";
 import { firebase } from "../firebase/firebase";
-import { adminSass } from "./admin.scss";
 
 export class Product {
   name = "";
@@ -210,7 +209,7 @@ export function Admin() {
   /// button deleteProduct
 
   return (
-    <div className="blue">
+    <React.Fragment>
       <FromProduct
         fromProductQuantity={fromProductQuantity}
         ProductQuantity={ProductQuantity}
@@ -237,6 +236,6 @@ export function Admin() {
         formProductPrice={formProductPrice}
         formProductName={formProductName}
       />
-    </div>
+    </React.Fragment>
   );
 }
