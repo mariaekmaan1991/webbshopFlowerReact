@@ -3,6 +3,7 @@ import { withRouter, Redirect } from "react-router";
 import { firebase } from "../firebase/firebase";
 
 import { AuthContext } from "./auth.js";
+import { SignUp } from "./signUp";
 
 const LogIn = ({ history }) => {
   const handleLogin = useCallback(
@@ -41,6 +42,7 @@ const LogIn = ({ history }) => {
         </label>
         <button type="submit">Log in</button>
       </form>
+      <SignUp></SignUp>
     </div>
   );
 };

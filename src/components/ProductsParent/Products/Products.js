@@ -8,30 +8,60 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 
-export function Products({ ListProduct, setbuttonDetailProduct }) {
+export function Products({
+  ListProduct,
+  setbuttonDetailProduct,
+  ProductCategories,
+  ProductCategoriesButtonGreenPlant,
+  ProductCategoriesButtonFlower,
+}) {
+  console.log(ProductCategories);
+
   let productList =
     ListProduct &&
     ListProduct.map((data, id) => {
       id = data._id;
-      return (
-        <div>
-          <Link to={"/products/" + data.id}>
-            Dina
-            <img src={data.imageUrl} alt="" />
-            <h1 key={id}>{data.name}</h1>
-            <h1>{data.price}</h1> hihih
-            <div>{`name: ${data.name}`}</div>
-            <div>{`price: ${data.price}`}</div>
-            <div>{`description: ${data.description}`}</div>
-            <div>{`id: ${data.id}`}</div>
-          </Link>
-        </div>
-      );
+      if (data.category === ProductCategories) {
+        return (
+          <div>
+            <Link to={"/products/" + data.id}>
+              Dina
+              <img src={data.imageUrl} alt="" />
+              <h1 key={id}>{data.name}</h1>
+              <h1>{data.price}</h1> hihih
+              <div>{`name: ${data.name}`}</div>
+              <div>{`price: ${data.price}`}</div>
+              <div>{`description: ${data.description}`}</div>
+              <div>{`id: ${data.id}`}</div>
+            </Link>
+          </div>
+        );
+      }
     });
 
   return (
     <div>
-      <h1>sss</h1>
+      <button
+        className="Form-Admin-Button"
+        type="submit"
+        name="flower"
+        onClick={() => {
+          ProductCategoriesButtonFlower("flower");
+        }}
+      >
+        Blommor
+      </button>
+      <button
+        className="Form-Admin-Button"
+        type="submit"
+        name="Grönväxt"
+        onClick={() => {
+          ProductCategoriesButtonGreenPlant("greenPlant");
+        }}
+      >
+        Grön växter
+      </button>
+
       <div>{productList}</div>
     </div>
   );

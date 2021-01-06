@@ -58,9 +58,5 @@ export function AdminDisplayProducts({
       );
     });
 
-  return (
-    <React.Fragment>
-      <div>{productList}</div>
-    </React.Fragment>
-  );
+  return <div className="Admin-Display-ProductList-Main">{productList}</div>;
 }

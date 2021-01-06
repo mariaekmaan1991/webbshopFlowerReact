@@ -40,7 +40,7 @@ export function CheckOutParent({ setShoppingCartList, ShoppingCartList }) {
 
   return (
     <div>
-      <form onSubmit={saveInfo} s>
+      <form onSubmit={saveInfo}>
         <ShoppingCart
           NewUpdateSizeProduct={NewUpdateSizeProduct}
           setShoppingCartList={setShoppingCartList}

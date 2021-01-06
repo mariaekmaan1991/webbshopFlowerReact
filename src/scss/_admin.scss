@@ -8,7 +8,7 @@
     background-color: blue;
     padding: 20px;
     height: 100%;
-    width: 60%;
+    width: 70%;
     padding: 5px;
 
     @include flexColumn;
@@ -41,36 +41,42 @@
     }
   }
 }
-.Admin-Display-Product-Main-Container {
-  @include flexColumn;
-  justify-content: center;
-
-  .Admin-Display-Product-Container {
-    background-color: pink;
-    justify-content: center;
-    width: 60%;
-    margin-top: 30px;
-    padding: 40px;
+.Admin-Display-ProductList-Main {
+  overflow-x: hidden;
+  background-color: green;
+  width: 70%;
+  height: 500px;
+  .Admin-Display-Product-Main-Container {
     @include flexColumn;
-    .Admin-Display-Product-Container-Name {
-      .Admin-Display-Product-Name {
-        font-size: $textSizeSmall;
-      }
-    }
+    justify-content: center;
 
-    .Admin-Display-Product-Container-ImageUrl {
-      .Admin-Display-Product-ImageUrl {
-        height: 60%;
-        width: 70%;
+    .Admin-Display-Product-Container {
+      background-color: pink;
+      justify-content: center;
+      width: 70%;
+      margin-top: 30px;
+      padding: 40px;
+      @include flexColumn;
+      .Admin-Display-Product-Container-Name {
+        .Admin-Display-Product-Name {
+          font-size: $textSizeSmall;
+        }
       }
-    }
-    .Admin-Display-Product-Container-Info {
-    }
 
-    .Admin-Display-Product-Container-Category {
-    }
-    .Admin-Display-Product-Container-Button {
-      margin: 6px;
+      .Admin-Display-Product-Container-ImageUrl {
+        .Admin-Display-Product-ImageUrl {
+          height: 60%;
+          width: 70%;
+        }
+      }
+      .Admin-Display-Product-Container-Info {
+      }
+
+      .Admin-Display-Product-Container-Category {
+      }
+      .Admin-Display-Product-Container-Button {
+        margin: 6px;
+      }
     }
   }
 }

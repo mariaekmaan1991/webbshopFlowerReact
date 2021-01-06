@@ -50,9 +50,6 @@ function App() {
                 <li>
                   <Link to="/login">log in</Link>
                 </li>
-                <li>
-                  <Link to="/signup">sign up</Link>
-                </li>
               </ul>
               varukorg:{shoppingCartQuantityCounter}
               summa:{counterPrice}
@@ -60,7 +57,6 @@ function App() {
 
             <main>
               <Switch>
-                <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/login" component={LogIn} />
                 <PrivateRoute exact path="/admin" component={Admin} />
                 <Route exact path="/products" component={ProductsParent} />

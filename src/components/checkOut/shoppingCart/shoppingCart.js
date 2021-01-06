@@ -59,8 +59,12 @@ export function ShoppingCart({
 
   let h = ShoppingCartList.map((product, i = parseInt(product.id)) => {
     return (
-      <div key={i}>
-        <div>{product.imageUrl}</div>
+      <div className="Product-ShoppingCart-Info" key={i}>
+        <img
+          className="Admin-Display-Product-ImageUrl"
+          src={product.imageUrl}
+          alt=""
+        />
         <div>{product.name}</div>
         <div>price:{product.price}</div>
         <div>{product.description}</div>
@@ -103,7 +107,7 @@ export function ShoppingCart({
       </div>
     );
   });
-  return <div>{h}</div>;
+  return <div className="ShoppingCart-List-Container"> {h}</div>;
 }
 // har en fråga hur gör man
 //https://codesandbox.io/s/keen-sun-qp9rb?file=/src/index.js
