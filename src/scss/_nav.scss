@@ -1,0 +1,19 @@
+.Nav-Box {
+  background: red;
+  height: 90px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  .Navbar {
+    display: flex;
+    .Nav-Icon {
+    }
+    .Nav-Ul {
+      display: flex;
+
+      .Nav-Li {
+        margin: 30px;
+      }
+    }
+  }
+}

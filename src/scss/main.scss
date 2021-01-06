@@ -2,9 +2,11 @@
 @import "./mixins";
 @import "./_admin.scss";
 @import "./_checkOut.scss";
-
-#root {
+@import "./_nav.scss";
+* {
   box-sizing: border-box;
+}
+#root {
   display: flex;
   width: 100%;
   height: 100%;

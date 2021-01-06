@@ -8,6 +8,11 @@ import {
   useParams,
 } from "react-router-dom";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { ProductsParent } from "./components/ProductsParent/productsParent";
 import { DetailParent } from "./components/DetailParent/DetailParent";
 import { CheckOutParent } from "./components/checkOut/checkOutParent";
@@ -30,24 +35,39 @@ function App() {
       shoppingCartQuantityCounter + parseInt(ShoppingCartList[i].quantity);
     counterPrice = counterPrice + parseInt(ShoppingCartList[i].price);
   }
+
+  const [navButton, setNavButton] = useState(false);
+
+  function NavButton(e) {
+    setShoppingCartList(e);
+  }
+
   return (
     <AuthProvider>
       <Router>
         <div className="App">
           <header className="App-header"></header>
-          <div className="navbar">
-            <nav>
-              <ul>
-                <li>
+          <div className="Nav-Box">
+            <nav className="Navbar">
+              <div className="Nav-Icon" onClick={NavButton}>
+                {navButton ? (
+                  <FontAwesomeIcon icon={faTimes} />
+                ) : (
+                  <FontAwesomeIcon icon={faBars} />
+                )}
+              </div>
+              <ul className="Nav-Ul">
+                <FontAwesomeIcon icon={faTimes} />
+                <li className="Nav-Li">
                   <Link to="/">Home</Link>
                 </li>
-                <li>
+                <li className="Nav-Li">
                   <Link to="/products">Products</Link>
                 </li>
-                <li>
+                <li className="Nav-Li">
                   <Link to="/checkout">checkout</Link>
                 </li>
-                <li>
+                <li className="Nav-Li">
                   <Link to="/login">log in</Link>
                 </li>
               </ul>
@@ -79,8 +99,10 @@ function App() {
     </AuthProvider>
   );
 }
+
 export default App;
 //https://www.youtube.com/watch?v=3ZEz-iposj8
 //https://www.youtube.com/watch?v=v0TKYSkZ2tI
 //https://firebase.google.com/docs/reference/js/firebase.database.Database
 //https://www.youtube.com/watch?v=unr4s3jd9qA
+//https://codepen.io/naturalclar/pen/zEwvbg
