@@ -23,37 +23,38 @@ export function Nav() {
   }
   return (
     <nav className="Navbar">
-      <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
-        <FontAwesomeIcon className="faBars" icon={faBars} />
-      </button>
+      <div className="Nav-Dropdown">
+        <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
+          <FontAwesomeIcon className="faBars" icon={faBars} />
+        </button>
+        {HandleMenu && (
+          <ul className="Menu-Dropdown-Content">
+            <li className="Menu-Container-Content-Li">
+              <Link className="Menu-Container-Content-Text" to="/">
+                Home
+              </Link>
+            </li>
 
-      {HandleMenu && (
-        <ul className="Menu-Dropdown-Content">
-          <li className="Menu-Container-Content-Li">
-            <Link className="Menu-Container-Content-Text" to="/">
-              Home
-            </Link>
-          </li>
+            <li className="Menu-Container-Content-Li">
+              <Link className="Menu-Container-Content-Text" to="/products">
+                Products
+              </Link>
+            </li>
 
-          <li>
-            <Link className="Menu-Container-Content-Text" to="/products">
-              Products
-            </Link>
-          </li>
+            <li className="Menu-Container-Content-Li">
+              <Link className="Menu-Container-Content-Text" to="/checkout">
+                checkout
+              </Link>
+            </li>
 
-          <li>
-            <Link className="Menu-Container-Content-Text" to="/checkout">
-              checkout
-            </Link>
-          </li>
-
-          <li>
-            <Link className="Menu-Container-Content-Text" to="/login">
-              log in
-            </Link>
-          </li>
-        </ul>
-      )}
+            <li className="Menu-Container-Content-Li">
+              <Link className="Menu-Container-Content-Text" to="/login">
+                log in
+              </Link>
+            </li>
+          </ul>
+        )}
+      </div>
     </nav>
   );
 }
