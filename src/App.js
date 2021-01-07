@@ -24,6 +24,7 @@ import LogIn from "./components/Home/login";
 import { SignUp } from "./components/Home/signUp";
 import PrivateRoute from "./components/privateRoute/privateRoute";
 import { mainsass } from "./scss/main.scss";
+import { Nav } from "./components/nav/nav";
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
@@ -36,64 +37,30 @@ function App() {
     counterPrice = counterPrice + parseInt(ShoppingCartList[i].price);
   }
 
-  const [navButton, setNavButton] = useState(false);
-
-  function NavButton(e) {
-    setShoppingCartList(e);
-  }
-
   return (
     <AuthProvider>
       <Router>
         <div className="App">
           <header className="App-header"></header>
-          <div className="Nav-Box">
-            <nav className="Navbar">
-              <div className="Nav-Icon" onClick={NavButton}>
-                {navButton ? (
-                  <FontAwesomeIcon icon={faTimes} />
-                ) : (
-                  <FontAwesomeIcon icon={faBars} />
-                )}
-              </div>
-              <ul className="Nav-Ul">
-                <FontAwesomeIcon icon={faTimes} />
-                <li className="Nav-Li">
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="Nav-Li">
-                  <Link to="/products">Products</Link>
-                </li>
-                <li className="Nav-Li">
-                  <Link to="/checkout">checkout</Link>
-                </li>
-                <li className="Nav-Li">
-                  <Link to="/login">log in</Link>
-                </li>
-              </ul>
-              varukorg:{shoppingCartQuantityCounter}
-              summa:{counterPrice}
-            </nav>
+          <Nav></Nav>
 
-            <main>
-              <Switch>
-                <Route exact path="/login" component={LogIn} />
-                <PrivateRoute exact path="/admin" component={Admin} />
-                <Route exact path="/products" component={ProductsParent} />
-                <Route exact path="/checkout">
-                  <CheckOutParent
-                    setShoppingCartList={setShoppingCartList}
-                    ShoppingCartList={ShoppingCartList}
-                  />
-                </Route>
-
-                <Route path="/products/:id" component={DetailParent} />
-                <Route exact path="/" component={Home} />
-                <Route path="*" component={NoMatch} />
-              </Switch>
-            </main>
-            <footer></footer>
-          </div>
+          <main>
+            <Switch>
+              <Route exact path="/login" component={LogIn} />
+              <PrivateRoute exact path="/admin" component={Admin} />
+              <Route exact path="/products" component={ProductsParent} />
+              <Route exact path="/checkout">
+                <CheckOutParent
+                  setShoppingCartList={setShoppingCartList}
+                  ShoppingCartList={ShoppingCartList}
+                />
+              </Route>
+              <Route path="/products/:id" component={DetailParent} />
+              <Route exact path="/" component={Home} />
+              <Route path="*" component={NoMatch} />
+            </Switch>
+          </main>
+          <footer></footer>
         </div>
       </Router>
     </AuthProvider>
@@ -106,3 +73,35 @@ export default App;
 //https://firebase.google.com/docs/reference/js/firebase.database.Database
 //https://www.youtube.com/watch?v=unr4s3jd9qA
 //https://codepen.io/naturalclar/pen/zEwvbg
+
+/*const styles = {
+    container: {
+      height: "32px",
+      width: "32px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      cursor: "pointer",
+      padding: "4px",
+    },
+    line: {
+      height: "2px",
+      width: "20px",
+      transition: "all 0.2s ease",
+    },
+    lineTop: {
+      transform: HandleMenu ? "rotate(45deg)" : "none",
+      transformOrigin: "top left",
+      marginBottom: "5px",
+    },
+    lineMiddle: {
+      opacity: HandleMenu ? 0 : 1,
+      transform: HandleMenu ? "translateX(-16px)" : "none",
+    },
+    lineBottom: {
+      transform: HandleMenu ? "translateX(-1px) rotate(-45deg)" : "none",
+      transformOrigin: "top left",
+      marginTop: "5px",
+    },
+  };*/

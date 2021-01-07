@@ -1,19 +1,69 @@
-.Nav-Box {
-  background: red;
-  height: 90px;
+.Nav {
+  background-color: black;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  .Navbar {
-    display: flex;
-    .Nav-Icon {
-    }
-    .Nav-Ul {
-      display: flex;
+  height: 50%;
 
-      .Nav-Li {
-        margin: 30px;
+  .Navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.9;
+    display: flex;
+
+    .buttonMenu {
+      height: 52px;
+      width: 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .container-content {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      // height: 50%;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      // background-color: black;
+      opacity: 0.95;
+      color: #fafafa;
+      transition: height 0.3s ease;
+      z-index: 1;
+      background-color: burlywood;
+      .menuList {
+        padding-top: 3rem;
       }
     }
   }
+}
+
+.line {
+  height: 2px;
+  width: 20px;
+  transition: all 0.2s ease;
+}
+
+.lineTop {
+  transform: rotate(45deg);
+  transform-origin: top left;
+  margin-bottom: 5px;
+}
+.lineMiddle {
+  opacity: 0;
+  transform: translateX(-16px);
+}
+
+.lineBottom {
+  transform: translateX(-1px) rotate(-45deg);
+  transform-origin: top left;
+  margin-top: 5px;
+}
+
+.menuList {
+  padding-top: 3rem;
 }

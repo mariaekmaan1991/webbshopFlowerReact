@@ -1,5 +1,6 @@
 /* App.jsx */
-class App extends React.Component {
+// eslint-disable-next-line no-undef
+class App2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,15 +70,14 @@ class App extends React.Component {
           <div style={styles.logo}>Logo</div>
         </div>
         <Menu open={this.state.menuOpen}>{menuItems}</Menu>
-        <div style={styles.body}>
-          <Footer name="Menu" />
-        </div>
+        <div style={styles.body}></div>
       </div>
     );
   }
 }
 
 /* MenuItem.jsx*/
+// eslint-disable-next-line no-undef
 class MenuItem extends React.Component {
   constructor(props) {
     super(props);
@@ -129,15 +129,16 @@ class MenuItem extends React.Component {
           }}
           onClick={this.props.onClick}
         >
-          {this.props.children}
+          {/* {this.props.children} */}
         </div>
-        <div style={styles.line} />
+        {/* <div style={styles.line} /> */}
       </div>
     );
   }
 }
 
 /* Menu.jsx */
+// eslint-disable-next-line no-undef
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -183,6 +184,7 @@ class Menu extends React.Component {
 }
 
 /* MenuButton.jsx */
+// eslint-disable-next-line no-undef
 class MenuButton extends React.Component {
   constructor(props) {
     super(props);
@@ -254,52 +256,9 @@ class MenuButton extends React.Component {
   }
 }
 
-/* Footer.jsx */
-function Footer(props) {
-  const styles = {
-    footer: {
-      position: "absolute",
-      bottom: 0,
-      width: "100%",
-      marginTop: "1rem",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      color: props.color,
-    },
-    line: {
-      height: "1px",
-      width: "90%",
-      background: props.color,
-    },
-    text: {
-      padding: "0.5rem",
-    },
-  };
-
-  return (
-    <div style={styles.footer}>
-      <div style={styles.line}></div>
-      <div style={styles.text}>
-        {props.title} created by Smashcat &copy; 2017
-      </div>
-    </div>
-  );
-}
-
-Footer.defaultProps = {
-  color: "black",
-  title: "hello world!",
-};
-
-Footer.propTypes = {
-  color: React.PropTypes.string,
-  title: React.PropTypes.string,
-};
-
 /* Main.jsx */
-class Main extends React.Component {
+// eslint-disable-next-line no-undef
+export class Main extends React.Component {
   render() {
     const styles = {
       main: {
@@ -312,10 +271,10 @@ class Main extends React.Component {
 
     return (
       <div style={styles.main}>
-        <App />
+        <App2 />
       </div>
     );
   }
 }
 
-ReactDOM.render(<Main />, document.querySelector("#root"));
+// eslint-disable-next-line no-undef
