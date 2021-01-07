@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { library } from "@fortawesome/fontawesome-svg-core";
+// import { faBars } from "@fortawesome/fontawesome-svg-core";
 
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,29 +23,36 @@ export function Nav() {
   }
   return (
     <nav className="Navbar">
-      <div>
-        <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
-          <FontAwesomeIcon icon={faBars} />
-        </button>
-      </div>
+      <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
+        <FontAwesomeIcon className="faBars" icon={faBars} />
+      </button>
+
       {HandleMenu && (
-        <div className="container-content">
-          <Link className="i" to="/">
-            Home
-          </Link>
+        <ul className="Menu-Dropdown-Content">
+          <li className="Menu-Container-Content-Li">
+            <Link className="Menu-Container-Content-Text" to="/">
+              Home
+            </Link>
+          </li>
 
-          <Link className="i" to="/products">
-            Products
-          </Link>
+          <li>
+            <Link className="Menu-Container-Content-Text" to="/products">
+              Products
+            </Link>
+          </li>
 
-          <Link className="i" to="/checkout">
-            checkout
-          </Link>
+          <li>
+            <Link className="Menu-Container-Content-Text" to="/checkout">
+              checkout
+            </Link>
+          </li>
 
-          <Link className="i" to="/login">
-            log in
-          </Link>
-        </div>
+          <li>
+            <Link className="Menu-Container-Content-Text" to="/login">
+              log in
+            </Link>
+          </li>
+        </ul>
       )}
     </nav>
   );
