@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Admin } from "./components/Admin/Admin";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,8 +8,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-
+import { Admin } from "./components/Admin/Admin";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -18,13 +17,16 @@ import { DetailParent } from "./components/DetailParent/DetailParent";
 import { CheckOutParent } from "./components/checkOut/checkOutParent";
 import { Home } from "./components/Home/home";
 import { NoMatch } from "./components/NoMatch/NoMatch";
-import { main } from "./components/NoMatch/NoMatch";
-import { AuthProvider } from "./components/Home/auth";
-import LogIn from "./components/Home/login";
-import { SignUp } from "./components/Home/signUp";
+
+import { AuthProvider } from "./components/Home/AuthProvider";
+
 import PrivateRoute from "./components/privateRoute/privateRoute";
 import { mainsass } from "./scss/main.scss";
 import { Nav } from "./components/nav/nav";
+import { Profile } from "./components/profile/Profile";
+import { Header } from "./components/header/header";
+import { LoginCustomer } from "./components/Home/LoginCustomer/loginCustomer";
+import { SignUpUserCustomer } from "./components/Home/signUpCustomer";
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
@@ -41,14 +43,15 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="App">
-          <header className="App-header"></header>
-          <Nav></Nav>
-
+          <Header />
+          <Nav />
           <main>
             <Switch>
-              <Route exact path="/login" component={LogIn} />
+              <Route exact path="/login" component={LoginCustomer} />
+              <Route exact path="/signup" component={SignUpUserCustomer} />
               <PrivateRoute exact path="/admin" component={Admin} />
               <Route exact path="/products" component={ProductsParent} />
+              <Route exact path="/profile/:id" component={Profile} />
               <Route exact path="/checkout">
                 <CheckOutParent
                   setShoppingCartList={setShoppingCartList}

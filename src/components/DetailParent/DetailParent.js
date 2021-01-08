@@ -7,6 +7,7 @@ import Localbase from "localbase";
 
 export function DetailParent({ cart, setCart, setCart3 }) {
   let { id } = useParams();
+
   const db = firebase.firestore();
   let localBase = new Localbase("db");
 

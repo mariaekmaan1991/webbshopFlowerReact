@@ -1,5 +1,5 @@
 import React, { FormEvent, ChangeEvent, useReducer } from "react";
-import { firebase } from "../../firebase/firebase";
+
 export function FromProduct({
   saveInfo,
   postFormValues,
@@ -17,7 +17,6 @@ export function FromProduct({
 }) {
   return (
     <React.Fragment>
-      <button onClick={() => firebase.auth().signOut()}>Sign out</button>
       <div className="From-Admin-Main-Container">
         <form onSubmit={saveInfo} className="Form-Admin">
           <div className="Form-Admin-Container">

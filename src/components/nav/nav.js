@@ -24,14 +24,14 @@ export function Nav() {
   return (
     <nav className="Nav site-nav">
       <div className="Nav-Dropdown">
-       <div className="Navbar"> 
-       <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
-          <FontAwesomeIcon className="faBars" icon={faBars} />
-        </button>
-        <Link className="Menu-Container-Content-Text nav-link"  to="/products">
-                Products
-        </Link>
-      </div>
+        <div className="Navbar">
+          <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
+            <FontAwesomeIcon className="faBars" icon={faBars} />
+          </button>
+          <Link className="Menu-Container-Content-Text nav-link" to="/products">
+            Products
+          </Link>
+        </div>
         {HandleMenu && (
           <ul className="Menu-Dropdown-Content">
             <li className="Menu-Container-Content-Li">
@@ -41,19 +41,28 @@ export function Nav() {
             </li>
 
             <li className="Menu-Container-Content-Li">
-              <Link className="Menu-Container-Content-Text nav-link"  to="/products">
+              <Link
+                className="Menu-Container-Content-Text nav-link"
+                to="/products"
+              >
                 Products
               </Link>
             </li>
 
             <li className="Menu-Container-Content-Li">
-              <Link className="Menu-Container-Content-Text nav-link" to="/checkout">
+              <Link
+                className="Menu-Container-Content-Text nav-link"
+                to="/checkout"
+              >
                 checkout
               </Link>
             </li>
 
             <li className="Menu-Container-Content-Li">
-              <Link className="Menu-Container-Content-Text nav-link"to="/login">
+              <Link
+                className="Menu-Container-Content-Text nav-link"
+                to="/login"
+              >
                 log in
               </Link>
             </li>

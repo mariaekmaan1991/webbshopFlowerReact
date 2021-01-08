@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-import { Test } from "../../test";
 
 export function Maria() {
   return <div></div>;
