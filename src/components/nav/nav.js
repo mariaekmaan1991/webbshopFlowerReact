@@ -22,33 +22,38 @@ export function Nav() {
     }
   }
   return (
-    <nav className="Navbar">
+    <nav className="Nav site-nav">
       <div className="Nav-Dropdown">
-        <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
+       <div className="Navbar"> 
+       <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
           <FontAwesomeIcon className="faBars" icon={faBars} />
         </button>
+        <Link className="Menu-Container-Content-Text nav-link"  to="/products">
+                Products
+        </Link>
+      </div>
         {HandleMenu && (
           <ul className="Menu-Dropdown-Content">
             <li className="Menu-Container-Content-Li">
-              <Link className="Menu-Container-Content-Text" to="/">
+              <Link className="Menu-Container-Content-Text nav-link" to="/">
                 Home
               </Link>
             </li>
 
             <li className="Menu-Container-Content-Li">
-              <Link className="Menu-Container-Content-Text" to="/products">
+              <Link className="Menu-Container-Content-Text nav-link"  to="/products">
                 Products
               </Link>
             </li>
 
             <li className="Menu-Container-Content-Li">
-              <Link className="Menu-Container-Content-Text" to="/checkout">
+              <Link className="Menu-Container-Content-Text nav-link" to="/checkout">
                 checkout
               </Link>
             </li>
 
             <li className="Menu-Container-Content-Li">
-              <Link className="Menu-Container-Content-Text" to="/login">
+              <Link className="Menu-Container-Content-Text nav-link"to="/login">
                 log in
               </Link>
             </li>

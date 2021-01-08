@@ -1,10 +1,12 @@
 import { React, useState, useEffect, useReducer } from "react";
+import { SignUp } from "../../Home/signUp";
 
-export function FormNewCustomer({ setSecondFormData }) {
-  function formForTheCustomer(e, id) {
-    setSecondFormData({ [id]: e.target.value });
-  }
+export function FormNewCustomer({
+  formForTheCustomer,
+  formForTheCustomerMember,
 
+  FormDataCustomerMember,
+}) {
   return (
     <form className="Form-Customer-Mainbox">
       <div className="Form-firstname-Customer-Box">
@@ -13,7 +15,7 @@ export function FormNewCustomer({ setSecondFormData }) {
           type="text"
           placeholder="firstname"
           name="title"
-          onChange={(e) => formForTheCustomer(e, "firstname")}
+          onChange={(e) => formForTheCustomer(e, "Firstname")}
         />
       </div>
       <div className="Form-LastName-Customer-Box">
@@ -38,7 +40,6 @@ export function FormNewCustomer({ setSecondFormData }) {
           />
         </div>
       </div>
-
       <div className="Form-LastName-Mail-Box">
         <div className="Form-LastName-Mail">
           <input
@@ -61,7 +62,6 @@ export function FormNewCustomer({ setSecondFormData }) {
           />
         </div>
       </div>
-
       <div className="Form-ZIP-Code-Box">
         <div className="Form-ZIP-Code">
           <input
@@ -72,9 +72,16 @@ export function FormNewCustomer({ setSecondFormData }) {
             onChange={(e) => formForTheCustomer(e, "ZIP-Code")}
           />
         </div>
+      </div>{" "}
+      <div>
+        <label class="container">Jag vill bli medlem</label>
+        <input
+          type="checkbox"
+          onChange={(e) => formForTheCustomerMember(e, "Member")}
+        />
+        {FormDataCustomerMember && <SignUp></SignUp>}
       </div>
-
-      <div className="Form-Customer-SaveInfo"></div>
     </form>
   );
 }
+// fråga hur kopplar jag databaserna varukorgen tillsammas sign

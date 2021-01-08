@@ -65,45 +65,47 @@ export function ShoppingCart({
           src={product.imageUrl}
           alt=""
         />
-        <div>{product.name}</div>
-        <div>price:{product.price}</div>
-        <div>{product.description}</div>
-        <div> antal:{product.quantity}</div>
+        <div className="ShoppingCart-List-Content-Item">
+          <div>{product.name}</div>
+          <div>price:{product.price}</div>
+          <div>{product.description}</div>
+          <div> antal:{product.quantity}</div>
 
-        <div>
-          <ProductChangeSize
-            updateSizeProduct={updateSizeProduct}
-            size={product.size}
-          />
-          {/* <ProductChangeProductQuantity
+          <div>
+            <ProductChangeSize
+              updateSizeProduct={updateSizeProduct}
+              size={product.size}
+            />
+            {/* <ProductChangeProductQuantity
             productQuantity={product.quantity}
             productid={product.id}
             something2={updateIpsumNumber2}
           /> */}
-          <ProductChangeProductQuantity2
-            updateQuantityProduct={updateQuantityProduct}
-            productquantity={product.quantity}
-          />
-        </div>
-        <button
-          type="submit"
-          name="tröja"
-          onClick={() => {
-            UpdateProduct(product);
-          }}
-        >
-          update
-        </button>
+            <ProductChangeProductQuantity2
+              updateQuantityProduct={updateQuantityProduct}
+              productquantity={product.quantity}
+            />
+          </div>
+          <button
+            type="submit"
+            name="tröja"
+            onClick={() => {
+              UpdateProduct(product);
+            }}
+          >
+            update
+          </button>
 
-        <button
-          type="submit"
-          name="tröja"
-          onClick={() => {
-            deleteProduct(product.id);
-          }}
-        >
-          radera
-        </button>
+          <button
+            type="submit"
+            name="tröja"
+            onClick={() => {
+              deleteProduct(product.id);
+            }}
+          >
+            radera
+          </button>
+        </div>
       </div>
     );
   });

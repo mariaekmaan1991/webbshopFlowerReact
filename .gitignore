@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+env
+/config.js
+/flowershopmaria-e43ce-firebase-adminsdk-ulvdc-ed15050aac.json
+/firebase.js

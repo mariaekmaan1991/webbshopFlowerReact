@@ -73,35 +73,3 @@ export default App;
 //https://firebase.google.com/docs/reference/js/firebase.database.Database
 //https://www.youtube.com/watch?v=unr4s3jd9qA
 //https://codepen.io/naturalclar/pen/zEwvbg
-
-/*const styles = {
-    container: {
-      height: "32px",
-      width: "32px",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      cursor: "pointer",
-      padding: "4px",
-    },
-    line: {
-      height: "2px",
-      width: "20px",
-      transition: "all 0.2s ease",
-    },
-    lineTop: {
-      transform: HandleMenu ? "rotate(45deg)" : "none",
-      transformOrigin: "top left",
-      marginBottom: "5px",
-    },
-    lineMiddle: {
-      opacity: HandleMenu ? 0 : 1,
-      transform: HandleMenu ? "translateX(-16px)" : "none",
-    },
-    lineBottom: {
-      transform: HandleMenu ? "translateX(-1px) rotate(-45deg)" : "none",
-      transformOrigin: "top left",
-      marginTop: "5px",
-    },
-  };*/

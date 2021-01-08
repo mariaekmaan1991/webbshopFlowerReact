@@ -4,17 +4,28 @@
   width: 100%;
   height: 500px;
   justify-content: center;
+  margin: 10px;
 
+  @include flexColumn;
   .Product-ShoppingCart-Info {
     margin-top: 30px;
     width: 100%;
     justify-content: center;
     background-color: rebeccapurple;
+    display: flex;
+    @include flexColumn;
     .Admin-Display-Product-ImageUrl {
       width: 70%;
       justify-content: center;
       height: 70%;
     }
+    .ShoppingCart-List-Content-InnreContainer {
+      @include flexColumn;
+      .ShoppingCart-List-Content-Item {
+        display: flex;
+      }
+    }
   }
 }
+
 //https://www.youtube.com/watch?v=fL8cFqhTHwA
