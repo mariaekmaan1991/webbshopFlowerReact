@@ -12,28 +12,28 @@
     background-color: #e7c5a5;
     width: 100%;
     @include flexRow;
-    .Navbar{
-       display: flex;
-    
-    .buttonMenu {
-      @include flexColumn;
-      height: 50px;
-      width: 50px;
-      background-color: rgb(159, 189, 162);
-      z-index: 300;
-      border: none;
+    .Navbar {
+      display: flex;
 
-      .faBars {
+      .buttonMenu {
+        @include flexColumn;
         height: 50px;
         width: 50px;
-        position: absolute;
-        left: 0px;
-        top: 0px;
+        background-color: rgb(159, 189, 162);
         z-index: 300;
-        color: rgb(254, 255, 254);
+        border: none;
+
+        .faBars {
+          height: 50px;
+          width: 50px;
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          z-index: 300;
+          color: rgb(254, 255, 254);
+        }
       }
     }
-  } 
     .Menu-Dropdown-Content {
       @include flexRow;
       position: absolute;
@@ -56,36 +56,29 @@
           color: black;
           z-index: 100;
           display: flex;
-          
-          
         }
-        
-        
+
+        .Menu-Container-Content-Text:hover {
+          position: relative;
+          padding-bottom: 3px;
+        }
+
+        .Menu-Container-Content-Text::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          max-width: 100px;
+          height: 2px;
+          bottom: 250px;
+          list-style-type: none;
+          visibility: hidden;
+        }
+        &:hover ::before {
+          visibility: visible;
+          padding: 1px;
+          background-color: rgb(245, 245, 245);
+        }
       }
-      
     }
   }
-  .site-nav  .nav-link {
-    position: relative;
-    padding-bottom: 2px;
-    z-index: 100;
-  }
-  .site-nav  .nav-link::before  {
-    content:" ";
-    position: absolute;
-    width: 100%;
-    max-width: 100px;
-    height: 2px;
-    bottom: 4px;
-    background-color: rgb(207, 10, 10);
-    visibility: hidden;
-    z-index: 100;
-  
-  }
-  .site-nav  .nav-link :hover::before{
-    visibility: visible;
-    z-index: 100;
-  
-  }
-  
 }
