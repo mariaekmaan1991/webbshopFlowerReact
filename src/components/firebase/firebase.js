@@ -5,14 +5,13 @@ import "firebase/firestore";
 import "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCV8aVnA77akdCWtDiwt25g5dpfkrOg3fs",
-  authDomain: "flowershopmaria-e43ce.firebaseapp.com",
-  databaseURL:
-    "https://flowershopmaria-e43ce-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "flowershopmaria-e43ce",
-  storageBucket: "flowershopmaria-e43ce.appspot.com",
-  messagingSenderId: "454534574680",
-  appId: "1:454534574680:web:4d879f7649801e3925102d",
+  apiKey: "AIzaSyCMgdAXMEpCr7J2stlDiiV1Ps4draa7gHY",
+  authDomain: "powerflowershop-b5edb.firebaseapp.com",
+  projectId: "powerflowershop-b5edb",
+  storageBucket: "powerflowershop-b5edb.appspot.com",
+  messagingSenderId: "523492980667",
+  appId: "1:523492980667:web:6319bbe7f5368d0480769e",
+  measurementId: "G-Z2X941ELV6",
 };
 console.log(firebaseConfig);
 firebase.initializeApp(firebaseConfig);

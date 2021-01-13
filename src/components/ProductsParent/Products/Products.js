@@ -21,49 +21,19 @@ export function Products({
     ListProduct &&
     ListProduct.map((data, id) => {
       id = data._id;
-      if (data.category === ProductCategories) {
-        return (
-          <div>
-            <Link to={"/products/" + data.id}>
-              Dina
-              <img src={data.imageUrl} alt="" />
-              <h1 key={id}>{data.name}</h1>
-              <h1>{data.price}</h1> hihih
-              <div>{`name: ${data.name}`}</div>
-              <div>{`price: ${data.price}`}</div>
-              <div>{`description: ${data.description}`}</div>
-              <div>{`id: ${data.id}`}</div>
-            </Link>
-          </div>
-        );
-      }
+      // if (data.category === ProductCategories) {
+      return (
+        <div className="Product-Content" key={id}>
+          <Link to={"/products/" + data.id}>
+            <img className="Product-Image" src={data.imageUrl} alt="" />
+            <div className="Product-Content-Text">
+              <div className="Product-Content-Name">{`name: ${data.name}`}</div>
+              <div className="Product-Content-Price">{`price: ${data.price}`}</div>
+            </div>
+          </Link>
+        </div>
+      );
     });
-
-  return (
-    <div>
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="flower"
-        onClick={() => {
-          ProductCategoriesButtonFlower("flower");
-        }}
-      >
-        Blommor
-      </button>
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="Grönväxt"
-        onClick={() => {
-          ProductCategoriesButtonGreenPlant("greenPlant");
-        }}
-      >
-        Grön växter
-      </button>
-
-      <div>{productList}</div>
-    </div>
-  );
+  return <div className="Product-Content-List">{productList}</div>;
 }
 //https://codesandbox.io/s/react-router-nesting-forked-3b6h7?file=/example.js

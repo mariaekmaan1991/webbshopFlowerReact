@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
   // här kollar om använadare finns
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user.email, "usser");
       setCurrentUser(user);
       setLoding();
     });
