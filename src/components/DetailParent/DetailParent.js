@@ -22,7 +22,7 @@ export function DetailParent({ cart, setCart, setCart3 }) {
   useEffect(() => {}, []);
 
   useEffect(() => {
-    const data = db.collection("maria").doc(id);
+    const data = db.collection("Product").doc(id);
     data
       .get()
       .then(function (doc) {

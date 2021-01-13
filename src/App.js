@@ -18,15 +18,14 @@ import { CheckOutParent } from "./components/checkOut/checkOutParent";
 import { Home } from "./components/Home/home";
 import { NoMatch } from "./components/NoMatch/NoMatch";
 
-import { AuthProvider } from "./components/Home/AuthProvider";
-
 import PrivateRoute from "./components/privateRoute/privateRoute";
 import { mainsass } from "./scss/main.scss";
 import { Nav } from "./components/nav/nav";
 import { Profile } from "./components/profile/Profile";
 import { Header } from "./components/header/header";
-import { LoginCustomer } from "./components/Home/LoginCustomer/loginCustomer";
-import { SignUpUserCustomer } from "./components/Home/signUpCustomer";
+import { LoginCustomer } from "./components/firebase/LoginCustomer/loginCustomer";
+import { SignUpUserCustomer } from "./components/firebase/signUpCustomer";
+import { AuthProvider } from "./components/firebase/AuthProvider";
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);

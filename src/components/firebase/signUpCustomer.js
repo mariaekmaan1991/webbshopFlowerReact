@@ -1,7 +1,7 @@
 import { React, useCallback, useState } from "react";
-import { firebase } from "../firebase/firebase";
+
 import { useForm } from "react-hook-form";
-import { signUp } from "../firebase/auther.js";
+import { signUp } from "./auth.js";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export const SignUpUserCustomer = (props) => {

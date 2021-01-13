@@ -1,6 +1,5 @@
 import { React, useState, useEffect, useContext, createContext } from "react";
-
-import { firebase } from "../firebase/firebase";
+import { firebase } from "./firebase";
 
 export const AuthContext = createContext();
 
@@ -9,9 +8,16 @@ export const AuthProvider = ({ children }) => {
   const [Isloading, setLoding] = useState(false);
   // här kollar om använadare finns
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      setLoding();
+    firebase.auth().onAuthStateChanged(async (user) => {
+      let isAdmin = false;
+
+      if (!!user) {
+        const token = await user.getIdTokenResult();
+        console.log(token);
+        isAdmin = token.claims.email; //email
+        console.log(user.uid, "user", isAdmin, "isAdmin");
+      }
+      setCurrentUser({ user: user, isAdmin: isAdmin });
     });
   }, []);
   // console.log(currentUser.email, "finnscurrentUser???");
@@ -22,8 +28,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-export const useSession = () => {
-  const session = useContext(AuthContext);
-  return session;
-};
+
 //  funktion gör att man kan använda currentUser i en annan file

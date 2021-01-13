@@ -59,38 +59,47 @@ export function ShoppingCart({
 
   let h = ShoppingCartList.map((product, i = parseInt(product.id)) => {
     return (
-      <div className="Product-ShoppingCart-Info" key={i}>
-        <img
-          className="Admin-Display-Product-ImageUrl"
-          src={product.imageUrl}
-          alt=""
-        />
+      <div className="Product-ShoppingCart-Container" key={i}>
         <div className="ShoppingCart-List-Content-Item">
-          <div>{product.name}</div>
-          <div>price:{product.price}</div>
-          <div>{product.description}</div>
-          <div> antal:{product.quantity}</div>
+          <img
+            className="Admin-Display-Product-ImageUrl"
+            src={product.imageUrl}
+            alt=""
+          />
+        </div>
 
-          <div>
-            <ProductChangeSize
-              updateSizeProduct={updateSizeProduct}
-              size={product.size}
-            />
-            {/* <ProductChangeProductQuantity
+        <div className="ShoppingCart-List-Content-Item">{product.name}</div>
+        <div className="ShoppingCart-List-Content-Item">
+          price:{product.price}
+        </div>
+        <div className="ShoppingCart-List-Content-Item">
+          {product.description}
+        </div>
+
+        <div className="ShoppingCart-List-Content-Item">
+          <ProductChangeSize
+            NewUpdateQuantityProduct={NewUpdateQuantityProduct}
+            updateSizeProduct={updateSizeProduct}
+            size={product.size}
+          />
+        </div>
+        {/* <ProductChangeProductQuantity
             productQuantity={product.quantity}
             productid={product.id}
             something2={updateIpsumNumber2}
           /> */}
-            <ProductChangeProductQuantity2
-              updateQuantityProduct={updateQuantityProduct}
-              productquantity={product.quantity}
-            />
-          </div>
+        <div className="ShoppingCart-List-Content-Item">
+          <ProductChangeProductQuantity2
+            updateQuantityProduct={updateQuantityProduct}
+            productquantity={product.quantity}
+          />
+        </div>
+        <div className="ShoppingCart-List-Content-Item">
           <button
             type="submit"
             name="tröja"
             onClick={() => {
-              UpdateProduct(product);
+              UpdateProduct(product.id);
             }}
           >
             update

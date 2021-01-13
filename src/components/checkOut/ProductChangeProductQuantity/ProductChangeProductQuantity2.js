@@ -28,6 +28,7 @@ export function ProductChangeProductQuantity2({
 
   return (
     <div>
+      antal:
       {ProductQuantity}
       <select
         value={ProductQuantity}
@@ -51,15 +52,3 @@ export function ProductChangeProductQuantity2({
     </div>
   );
 }
-
-// const options = [
-//   { value: "XS", label: "Size" },
-//   { value: "S", label: "Size" },
-//   { value: "M", label: "Size" },
-//   { value: "L", label: "Size" },
-// ];
-
-// let h = options.map((m) => {
-//   let hej = { size: m.size, value: m.value };
-//   return hej;
-// });

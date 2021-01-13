@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useReducer } from "react";
-import { SignUpUserCustomer } from "../../Home/signUpCustomer";
+import { SignUpUserCustomer } from "../../firebase/signUpCustomer";
 
 export function FormNewCustomer({
   formForTheCustomer,

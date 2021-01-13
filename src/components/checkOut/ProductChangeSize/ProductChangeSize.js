@@ -9,7 +9,7 @@ export function ProductChangeSize({ size, updateSizeProduct }) {
   }
 
   function sendTheSize() {
-    updateSizeProduct(ProductSize);
+    updateSizeProduct(ProductSize, size);
   }
 
   const options = [
@@ -21,8 +21,7 @@ export function ProductChangeSize({ size, updateSizeProduct }) {
 
   return (
     <div>
-      {ProductSize}
-
+      storlek:{ProductSize}
       <select
         value={ProductSize}
         onChange={fromProductSize}

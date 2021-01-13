@@ -1,18 +1,18 @@
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./flowershopmaria-e43ce-firebase-adminsdk-ulvdc-ed15050aac.json");
+var serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL:
-    "https://flowershopmaria-e43ce-default-rtdb.europe-west1.firebasedatabase.app",
+    "https://powerflowershop-b5edb-default-rtdb.europe-west1.firebasedatabase.app",
 });
 
 const uid = process.argv[2];
 
 admin
   .auth()
-  .setCustomUserClaims(uid, { admin: true })
+  .setCustomUserClaims(uid, { IsAdmin: true })
   .then(() => {
     console.log(" admin finns! ", uid);
     process.exit();

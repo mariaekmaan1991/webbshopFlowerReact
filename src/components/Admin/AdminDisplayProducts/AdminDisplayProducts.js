@@ -14,11 +14,11 @@ export function AdminDisplayProducts({
 
   let productList =
     ListProduct &&
-    ListProduct.map((data, id) => {
+    ListProduct.map((data, index = parseInt(data.id)) => {
       console.log(data, "hh");
       return (
         <div className="Admin-Display-Product-Main-Container">
-          <div className="Admin-Display-Product-Container" key={id}>
+          <div className="Admin-Display-Product-Container" key={index}>
             <div className="Admin-Display-Product-Container-Name">
               {`id: ${data.id}`}
               <h2 className="Admin-Display-Product-Name">
