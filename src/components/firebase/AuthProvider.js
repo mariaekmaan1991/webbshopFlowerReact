@@ -9,15 +9,15 @@ export const AuthProvider = ({ children }) => {
   // här kollar om använadare finns
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
-      let isAdmin = false;
+      let IsAdmin = false;
 
       if (!!user) {
         const token = await user.getIdTokenResult();
         console.log(token);
-        isAdmin = token.claims.email; //email
-        console.log(user.uid, "user", isAdmin, "isAdmin");
+        IsAdmin = token.claims.IsAdmin; //email
+        console.log(user.uid, "user", IsAdmin, "isAdmin");
       }
-      setCurrentUser({ user: user, isAdmin: isAdmin });
+      setCurrentUser({ user: user, IsAdmin: IsAdmin });
     });
   }, []);
   // console.log(currentUser.email, "finnscurrentUser???");
