@@ -3,18 +3,25 @@ import { Route, Redirect } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 
 const ProfileRedirect = ({ component: Component, ...rest }) => {
-  const { user, isAdmin } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
+  console.log(
+    " finns currentUser, isAdmin ",
+    currentUser.IsAdmin,
+    currentUser.user
+  );
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        !user ? (
+        !currentUser.user ? (
           <Component {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: isAdmin ? "/users" : `/profile/${user.uid}`,
+              pathname: currentUser.IsAdmin
+                ? "/users"
+                : `/profile/${currentUser.user}`,
               state: { from: props.location },
             }}
           />

@@ -8,24 +8,32 @@ export const LoginCustomer = (props) => {
 
   const { register, handleSubmit, reset } = useForm();
 
+  const routeOnLogin = async (user) => {
+    const token = await user.getIdTokenResult();
+    if (token.claims.admin) {
+      props.history.push("/admin");
+    } else {
+      props.history.push(`/profile/${user.uid}`);
+    }
+  };
+
   const onSubmit = async (data) => {
     let user;
     setLoding(true);
     try {
       user = await LogIn(data);
-      console.log(user);
+      console.log(user.uid);
       reset();
     } catch (error) {
       console.log(error);
-    }
 
-    if (user) {
-      props.history.push(`/profile/${user.uid}`);
-    } else {
-      setLoding(false);
+      if (user) {
+        routeOnLogin(user);
+      } else {
+        setLoding(false);
+      }
     }
   };
-
   return (
     <div>
       {Isloading}

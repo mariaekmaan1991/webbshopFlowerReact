@@ -9,20 +9,20 @@ export const Profile = () => {
   const [ProfileUser, setProfileUser] = useState();
 
   useEffect(() => {
-    const data = db.collection("maria").doc(id);
-    data
-      .get()
-      .then(function (doc) {
-        if (doc.exists) {
-          // console.log("Document data:", doc.data());
-          setProfileUser({ ...doc.data(), id: doc.id });
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch(function (error) {
-        console.log("Error getting document:", error);
-      });
+    // const data = db.collection("maria").doc(id);
+    // data
+    //   .get()
+    //   .then(function (doc) {
+    //     if (doc.exists) {
+    //       // console.log("Document data:", doc.data());
+    //       setProfileUser({ ...doc.data(), id: doc.id });
+    //     } else {
+    //       console.log("No such document!");
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log("Error getting document:", error);
+    //   });
   }, []);
 
   return (

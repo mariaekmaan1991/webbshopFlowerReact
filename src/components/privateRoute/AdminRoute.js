@@ -4,14 +4,18 @@ import { Redirect, Route } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 
 const AdminRoute = ({ component: RouteComponent, ...rest }) => {
-  const { currentUser, isAdmin } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
-  console.log(" finns currentUser, isAdmin ", currentUser, isAdmin);
+  console.log(
+    " finns currentUser, isAdmin ",
+    currentUser.IsAdmin,
+    currentUser.user
+  );
   return (
     <Route
       {...rest}
       render={(routeProps) => {
-        if (!!currentUser && isAdmin) {
+        if (!!currentUser.user && !!currentUser.IsAdmin) {
           <RouteComponent {...routeProps} />;
         } else {
           <Redirect to={"/login"} />;

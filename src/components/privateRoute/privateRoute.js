@@ -5,6 +5,8 @@ import { AuthContext } from "../firebase/AuthProvider";
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   const { currentUser } = useContext(AuthContext);
 
+  console.log(" finns currentUser,  currentUser ", currentUser);
+
   return (
     <Route
       {...rest}
@@ -20,4 +22,5 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
 };
 
 export default PrivateRoute;
+
 //https://codesandbox.io/s/react-router-nesting-forked-3b6h7?file=/example.js
