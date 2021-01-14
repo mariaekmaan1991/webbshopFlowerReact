@@ -26,6 +26,8 @@ import { Header } from "./components/header/header";
 import { LoginCustomer } from "./components/firebase/LoginCustomer/loginCustomer";
 import { SignUpUserCustomer } from "./components/firebase/signUpCustomer";
 import { AuthProvider } from "./components/firebase/AuthProvider";
+import AdminRoute from "./components/privateRoute/AdminRoute";
+import ProfileRedirect from "./components/privateRoute/ProfileRedirect";
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
@@ -48,9 +50,9 @@ function App() {
             <Switch>
               <Route exact path="/login" component={LoginCustomer} />
               <Route exact path="/signup" component={SignUpUserCustomer} />
-              <PrivateRoute exact path="/admin" component={Admin} />
+              <AdminRoute exact path="/admin" component={Admin} />
               <Route exact path="/products" component={ProductsParent} />
-              <Route exact path="/profile/:id" component={Profile} />
+              <PrivateRoute exact path="/profile/:id" component={Profile} />
               <Route exact path="/checkout">
                 <CheckOutParent
                   setShoppingCartList={setShoppingCartList}
