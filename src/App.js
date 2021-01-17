@@ -53,11 +53,11 @@ function App() {
           <Nav />
           <main>
             <Switch>
-              <Route exact path="/admin" component={Admin} />
+              <AdminRoute exact path="/admin" component={Admin} />
+              <AdminRoute exact path="/adminuser" component={AdminUser} />
               <ProfileRedirect exact path="/signup" component={Signup} />
               <ProfileRedirect exact path="/login" component={LogInUser} />
               <PrivateRoute exact path="/profile/:id" component={ProfileUser} />
-              <AdminRoute exact path="/adminuser" component={AdminUser} />{" "}
               <Route exact path="/products" component={ProductsParent} />
               <Route exact path="/checkout">
                 <CheckOutParent
