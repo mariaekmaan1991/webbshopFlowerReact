@@ -5,11 +5,11 @@ export const signUp = async ({ firstname, lastname, email, password }) => {
     .auth()
     .createUserWithEmailAndPassword(email, password);
   const user = resp.user;
-  await user.updateProfile({ displayName: `${firstname}``${lastname}` });
+  await user.updateProfile({ displayName: `${firstname} ${lastname}` });
   return user;
 };
 
-export const logout = () => {
+export const logOut = () => {
   firebase.auth().signOut();
 };
 

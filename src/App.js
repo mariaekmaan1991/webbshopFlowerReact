@@ -6,6 +6,7 @@ import {
   Route,
   Link,
   useParams,
+  Redirect,
 } from "react-router-dom";
 
 import { Admin } from "./components/Admin/Admin";
@@ -48,11 +49,15 @@ function App() {
           <Nav />
           <main>
             <Switch>
-              <Route exact path="/login" component={LoginCustomer} />
-              <Route exact path="/signup" component={SignUpUserCustomer} />
-              <AdminRoute exact path="/admin" component={Admin} />
+              <ProfileRedirect exact path="/login" component={LoginCustomer} />
+              <ProfileRedirect
+                exact
+                path="/signup"
+                component={SignUpUserCustomer}
+              />
+              {/* <AdminRoute exact path="/admin" component={Admin} /> */}
               <Route exact path="/products" component={ProductsParent} />
-              <PrivateRoute exact path="/profile/:id" component={Profile} />
+              {/* <PrivateRoute exact path="/profile/:id" component={Profile} /> */}
               <Route exact path="/checkout">
                 <CheckOutParent
                   setShoppingCartList={setShoppingCartList}
@@ -60,7 +65,7 @@ function App() {
                 />
               </Route>
               <Route path="/products/:id" component={DetailParent} />
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" to="/login" component={Home} />
               <Route path="*" component={NoMatch} />
             </Switch>
           </main>

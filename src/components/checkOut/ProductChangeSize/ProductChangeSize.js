@@ -1,15 +1,16 @@
 import { React, useState, useEffect } from "react";
 
 export function ProductChangeSize({ size, updateSizeProduct }) {
-  const [ProductSize, setProductSize] = useState(size);
+  const [productSize, setProductSize] = useState(size);
 
   function fromProductSize(e) {
     console.log(e.target.value);
     setProductSize(e.target.value);
+    // updateSizeProduct(productSize, size);
   }
 
   function sendTheSize() {
-    updateSizeProduct(ProductSize, size);
+    updateSizeProduct(productSize, size);
   }
 
   const options = [
@@ -21,9 +22,9 @@ export function ProductChangeSize({ size, updateSizeProduct }) {
 
   return (
     <div>
-      storlek:{ProductSize}
+      storlek:{productSize}
       <select
-        value={ProductSize}
+        value={productSize}
         onChange={fromProductSize}
         name="size"
         id="size"

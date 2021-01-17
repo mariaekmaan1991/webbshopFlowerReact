@@ -6,31 +6,47 @@ import { ButtonProduct } from "./ButtonProduct";
 import { Products } from "./Products/Products";
 
 export function ProductsParent() {
-  const [ListProduct, setListProduct2] = useState([]);
-  const [ProductCategories, setProductCategories] = useState();
-  const db = firebase.firestore();
-  const getFlowerObject = async () => {
-    const data = await db.collection("Product").get();
+  const [listProduct, setListProduct] = useState([]);
+  const [productCategorieSelect, setProductCategorieSelect] = useState();
 
-    let element =
-      data &&
-      data.docs.map((doc) => {
-        return { ...doc.data(), id: doc.id };
-      });
-
-    setListProduct2(element);
-  };
   useEffect(() => {
-    getFlowerObject();
+    const db = firebase.firestore();
+    (async () => {
+      const snapshot = await db.collection("Product").get();
+      const booksArray = [];
+      snapshot.forEach((doc) => {
+        booksArray.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      });
+      setListProduct(booksArray);
+    })();
   }, []);
 
+  console.log(listProduct);
+  /*
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Product")
+      .onSnapshot((snapshot) => {
+        setListProduct(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+        );
+      });
+  }, []);
+*/
+  console.log(listProduct);
   function ProductCategoriesButtonFlower(e) {
-    setProductCategories(e);
+    setProductCategorieSelect(e);
   }
   function ProductCategoriesButtonGreenPlant(e) {
-    setProductCategories(e);
+    setProductCategorieSelect(e);
   }
-
   return (
     <div>
       <ButtonProduct
@@ -38,11 +54,25 @@ export function ProductsParent() {
         ProductCategoriesButtonFlower={ProductCategoriesButtonFlower}
       ></ButtonProduct>
       <Products
-        ListProduct={ListProduct}
-        ProductCategories={ProductCategories}
+        listProduct={listProduct}
+        productCategorieSelect={productCategorieSelect}
         ProductCategoriesButtonGreenPlant={ProductCategoriesButtonGreenPlant}
         ProductCategoriesButtonFlower={ProductCategoriesButtonFlower}
       />
     </div>
   );
 }
+
+// useEffect(() => {
+//   firebase
+//     .firestore()
+//     .collection("Product")
+//     .onSnapshot((snapshot) => {
+//       setListProduct(
+//         snapshot.docs.map((doc) => ({
+//           id: doc.id,
+//           ...doc.data(),
+//         }))
+//       );
+//     });
+// }, []);

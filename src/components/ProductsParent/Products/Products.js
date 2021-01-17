@@ -1,58 +1,56 @@
 import { React, useState, useEffect } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import { ProductItem } from "./productItem";
 
 export function Products({
-  ListProduct,
+  listProduct,
   setbuttonDetailProduct,
-  ProductCategories,
+
+  productCategorieSelect,
   ProductCategoriesButtonGreenPlant,
   ProductCategoriesButtonFlower,
 }) {
-  console.log(ProductCategories);
-  const [ProductCategorie, setProductCategorie] = useState();
+  console.log(listProduct);
 
-  let hej = ListProduct.map((data, i = parseInt(data.id)) => {
-    // return data.category.forEach((dataCategory, index) => {
-    //   console.log(dataCategory.category);
-    return (
-      <div className="Product-Content" key={i}>
-        <Link to={"/products/" + data.id}>
-          <img className="Product-Image" src={data.imageUrl} alt="" />
-          <div className="Product-Content-Text">
-            <div className="Product-Content-Name">{`name: ${data.name}`}</div>
-            <div className="Product-Content-Price">{`price: ${data.price}`}</div>
+  // let result = listProduct.map((data) => {
+  //   let hej = data.category.filter((category) => {
+  //     if (category === productCategorieSelect) return category;
+  //   });
 
-            {/* {dataCategory.category} */}
+  //   return (
+  //     <div className="Product-Content">
+  //       {hej}
+  //       <Link to={"/products/" + data.id}>
+  //         <img className="Product-Image" src={data.imageUrl} alt="" />
+  //         <div className="Product-Content-Text">
+  //           <div className="Product-Content-Name">{`name: ${data.name}`}</div>
+  //           <div className="Product-Content-Price">{`price: ${data.name}`}</div>
+  //         </div>
+  //       </Link>
+  //     </div>
+  //   );
+  // });
+  console.log(productCategorieSelect, "productCategorieSelect");
+
+  let h =
+    listProduct &&
+    listProduct.map((data, index = parseInt(data.id)) => {
+      data.category.forEach((category) => {
+        console.log(category.category, data.name);
+
+        return (
+          <div className="Product-Content-List">
+            <ProductItem
+              dataCategory={category.category}
+              name={data.name}
+              key={index}
+              productCategorieSelect={productCategorieSelect}
+            />
+            {data.name}
+            {category.category}
           </div>
-        </Link>
-      </div>
-    );
-    // });
-  });
-
-  return <div className="Product-Content-List">{hej}</div>;
+        );
+      });
+    });
+  return <div>{h}</div>;
 }
-//https://codesandbox.io/s/react-router-nesting-forked-3b6h7?file=/example.js
-/*  return (
-    <div>
-      {ListProduct.map((data, id) => {
-        data.category.forEach((dataCategory, id) => {
-          id = data._id;
-          return (
-            <div className="Product-Content" key={id}>
-              <Link to={"/products/" + data.id}>
-                <img className="Product-Image" src={data.imageUrl} alt="" />
-                <div className="Product-Content-Text">
-                  <div className="Product-Content-Name">{`name: ${data.name}`}</div>
-                  <div className="Product-Content-Price">{`price: ${data.price}`}</div>
-                  {dataCategory}
-                  {ListProduct}
-                </div>
-              </Link>
-            </div>
-          );
-        });
-      })}
-    </div>
-  );
-}*/

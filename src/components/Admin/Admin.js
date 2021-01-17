@@ -43,7 +43,7 @@ export function Admin() {
   //   });
   // }
   const getFlowerObject = async () => {
-    const data = await db.collection("maria").get();
+    const data = await db.collection("Product").get();
 
     let element =
       data &&

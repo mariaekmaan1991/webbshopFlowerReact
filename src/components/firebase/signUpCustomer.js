@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { signUp } from "./auth.js";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
-export const SignUpUserCustomer = (props) => {
+export const SignUpUserCustomer = ({ history }) => {
   const [isLoading, setLoding] = useState(false);
 
   const { register, handleSubmit, reset } = useForm();
@@ -20,7 +20,7 @@ export const SignUpUserCustomer = (props) => {
     }
 
     if (newUser) {
-      props.history.push(`/profile/${newUser.uid}`);
+      history.push(`/profile/${newUser.uid}`);
     } else {
       setLoding(false);
     }

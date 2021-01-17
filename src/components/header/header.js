@@ -7,16 +7,18 @@ import {
   useParams,
   useHistory,
 } from "react-router-dom";
+import { logOut } from "../firebase/auth";
 
 export function Header() {
   const history = useHistory();
 
-  const logoutUser = async () => {
-    history.push("/signup");
+  const logOutUser = async () => {
+    await logOut;
+    history.push("/login");
   };
   return (
     <div>
-      <button onClick={logoutUser}>loga ut</button>
+      <button onClick={logOutUser}>loga ut</button>
     </div>
   );
 }

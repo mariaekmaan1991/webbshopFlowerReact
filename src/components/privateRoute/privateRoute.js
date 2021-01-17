@@ -3,21 +3,18 @@ import { Redirect, Route } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-  const { currentUser } = useContext(AuthContext);
-
-  console.log(" finns currentUser,  currentUser ", currentUser);
-
   return (
-    <Route
-      {...rest}
-      render={(routeProps) =>
-        !!currentUser ? (
-          <RouteComponent {...routeProps} />
-        ) : (
-          <Redirect to={"/login"} />
-        )
-      }
-    />
+    <div></div>
+    // <Route
+    //   {...rest}
+    //   render={(props) => {
+    //     // const id = props.match.params.id;
+    //     if (!!currentUser.user && currentUser.IsAdmin) {
+    //       return <RouteComponent {...props} />;
+    //     } else {
+    //       return <Redirect to="/login" />;
+    //     }
+    //   }}
   );
 };
 

@@ -3,17 +3,17 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { LogIn } from "../auth";
 
-export const LoginCustomer = (props) => {
+export const LoginCustomer = ({ history }) => {
   const [Isloading, setLoding] = useState(false);
 
   const { register, handleSubmit, reset } = useForm();
 
   const routeOnLogin = async (user) => {
     const token = await user.getIdTokenResult();
-    if (token.claims.admin) {
-      props.history.push("/admin");
+    if (!!token.claims.admin) {
+      history.push("/admin");
     } else {
-      props.history.push(`/profile/${user.uid}`);
+      history.push(`/profile/${user.uid}`);
     }
   };
 
