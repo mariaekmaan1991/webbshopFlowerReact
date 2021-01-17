@@ -35,5 +35,5 @@ env
 /database.rules.json
 /serviceAccountKey.json
 /.eslintcache
-
+./firebase/config.js
 

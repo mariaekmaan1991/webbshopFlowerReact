@@ -25,21 +25,7 @@ export function ProductsParent() {
   }, []);
 
   console.log(listProduct);
-  /*
-  useEffect(() => {
-    firebase
-      .firestore()
-      .collection("Product")
-      .onSnapshot((snapshot) => {
-        setListProduct(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }))
-        );
-      });
-  }, []);
-*/
+
   console.log(listProduct);
   function ProductCategoriesButtonFlower(e) {
     setProductCategorieSelect(e);

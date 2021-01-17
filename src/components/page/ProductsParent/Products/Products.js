@@ -37,19 +37,12 @@ export function Products({
     listProduct.map((data, index = parseInt(data.id)) => {
       data.category.forEach((category) => {
         console.log(category.category, data.name);
-
-        return (
-          <div className="Product-Content-List">
-            <ProductItem
-              dataCategory={category.category}
-              name={data.name}
-              key={index}
-              productCategorieSelect={productCategorieSelect}
-            />
-            {data.name}
-            {category.category}
-          </div>
-        );
+        <ProductItem
+          dataCategory={category.category}
+          name={data.name}
+          key={index}
+          productCategorieSelect={productCategorieSelect}
+        />;
       });
     });
   return <div>{h}</div>;

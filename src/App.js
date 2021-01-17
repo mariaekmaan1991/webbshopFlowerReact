@@ -35,6 +35,7 @@ import { ProfileUser } from "./components/page/ProfileUser/ProfileUser";
 import { AdminRoute } from "./route/AdminRoute";
 import { ProfileRedirect } from "./route/ProfileRedirect";
 import { PrivateRoute } from "./route/PrivateRoute";
+
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
 
