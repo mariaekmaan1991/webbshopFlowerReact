@@ -7,32 +7,26 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import { LogIn } from "../../firebase/auth";
+import { signUp } from "../../../firebase/auth";
 
-export function LogInUser({ history }) {
+export function Signup({ history }) {
   const { register, handleSubmit, reset } = useForm();
 
   const [isLoading, setLoadning] = useState(false);
-  const routeOnLogin = async (user) => {
-    const token = await user.getIdTokenResult();
-    if (token.claims.IsAdmin) {
-      history.push("/adminuser");
-    } else {
-      history.push(`/profile/${user.uid}`);
-    }
-  };
+
   const Submit = async (data) => {
-    let user;
+    let newUser;
     setLoadning(true);
     try {
-      user = await LogIn(data);
+      newUser = await signUp(data);
       reset();
     } catch (error) {
       console.log(error);
     }
 
-    if (user) {
-      routeOnLogin(user);
+    if (newUser) {
+      console.log(newUser.uid);
+      history.push(`/profile/${newUser.uid}`);
     } else {
       setLoadning(false);
     }
@@ -44,6 +38,30 @@ export function LogInUser({ history }) {
       <div className="ui card login-card">
         <div className="content">
           <form className={formClassName} onSubmit={handleSubmit(Submit)}>
+            <div className="two fields">
+              <div className="field">
+                <label>
+                  First Name
+                  <input
+                    type="text"
+                    name="firstName"
+                    placeholder="First Name"
+                    ref={register}
+                  />
+                </label>
+              </div>
+              <div className="field">
+                <label>
+                  Last Name
+                  <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    ref={register}
+                  />
+                </label>
+              </div>
+            </div>
             <div className="field">
               <label>
                 Email
@@ -67,10 +85,10 @@ export function LogInUser({ history }) {
               </label>
             </div>
             <div>
-              <button className="buttonlogin" type="submit">
-                log in
+              <button className="ui primary button login" type="submit">
+                Sign Up
               </button>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/login">log in</Link>
             </div>
           </form>
         </div>

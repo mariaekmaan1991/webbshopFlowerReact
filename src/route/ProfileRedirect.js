@@ -2,7 +2,7 @@ import { React, useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 // import { useSession } from "../../firebase/UserProvider";
-import { UserContext } from "../../firebase/UserProvider";
+import { UserContext } from "../firebase/UserProvider";
 export const ProfileRedirect = ({ component: Component, ...rest }) => {
   const { currentUser } = useContext(UserContext);
   // const { user, isAdmin } = useSession();

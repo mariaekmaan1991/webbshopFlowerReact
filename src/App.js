@@ -9,31 +9,32 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Admin } from "./components/Admin/Admin";
+import { Admin } from "./components/page/Admin/Admin";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { ProductsParent } from "./components/ProductsParent/productsParent";
-import { DetailParent } from "./components/DetailParent/DetailParent";
-import { CheckOutParent } from "./components/checkOut/checkOutParent";
-import { Home } from "./components/Home/home";
-import { NoMatch } from "./components/NoMatch/NoMatch";
+import { ProductsParent } from "./components/page/ProductsParent/productsParent";
+import { DetailParent } from "./components/page/DetailParent/DetailParent";
+import { CheckOutParent } from "./components/page/checkOut/checkOutParent";
+import { Home } from "./components/page/Home/home";
+import { NoMatch } from "./components/page/NoMatch/NoMatch";
 
 import { mainsass } from "./scss/main.scss";
 import { Nav } from "./components/nav/nav";
 
 import { Header } from "./components/header/header";
 
-import { Signup } from "./components/Signup";
+import { Signup } from "./components/page/SignUp/Signup";
 
 import { UserProvider } from "./firebase/UserProvider";
-import { ProfileRedirect } from "./components/router/ProfileRedirect";
-import { LogInUser } from "./components/loginUser/LogInUser";
-import { PrivateRoute } from "./components/router/PrivateRoute";
-import { AdminRoute } from "./components/router/AdminRouter";
-import { AdminUser } from "./components/adminUser/adminUser";
-import { ProfileUser } from "./components/ProfileUser/ProfileUser";
 
+import { LogInUser } from "./components/page/loginUser/LogInUser";
+
+import { AdminUser } from "./components/page/adminUser/adminUser";
+import { ProfileUser } from "./components/page/ProfileUser/ProfileUser";
+import { AdminRoute } from "./route/AdminRoute";
+import { ProfileRedirect } from "./route/ProfileRedirect";
+import { PrivateRoute } from "./route/PrivateRoute";
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
 

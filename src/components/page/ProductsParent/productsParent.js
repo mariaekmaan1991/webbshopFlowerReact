@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { firebase } from "../../firebase/config";
+import { firebase } from "../../../firebase/config";
 import { ButtonProduct } from "./ButtonProduct";
 
 import { Products } from "./Products/Products";

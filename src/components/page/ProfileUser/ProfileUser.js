@@ -1,12 +1,12 @@
 import { React, useContext, useEffect, useState } from "react";
-import { firebase } from "../../firebase/config";
-import { UserContext } from "../../firebase/UserProvider";
-
-import { updateUserDocument } from "../../firebase/user";
+import { firebase } from "../../../firebase/config";
+import { UserContext } from "../../../firebase/UserProvider";
+import { updateUserDocument } from "../../../firebase/user";
 
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { ProfileImage } from "../ProfileImage/ProfileImage";
+import { ProfileImage } from "../../ProfileImage/ProfileImage";
+
 export function ProfileUser() {
   const { currentUser } = useContext(UserContext);
   console.log("finns här Dina???", currentUser.user.uid);

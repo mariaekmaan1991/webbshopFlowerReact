@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useReducer } from "react";
 import Localbase from "localbase";
 
-import { firebase } from "../../firebase/config";
+import { firebase } from "../../../firebase/config";
 import { FormNewCustomer } from "./formNewCustomer/formNewCustomer";
 import { ShoppingCart } from "./shoppingCart/shoppingCart";
 
