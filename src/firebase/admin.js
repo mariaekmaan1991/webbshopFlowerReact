@@ -1,11 +1,10 @@
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./serviceAccountKey.json");
+var serviceAccount = require("../../serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL:
-    "https://powerflowershop-b5edb-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: "https://fir-test-34550-default-rtdb.firebaseio.com",
 });
 
 const uid = process.argv[2];

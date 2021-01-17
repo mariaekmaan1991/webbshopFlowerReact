@@ -1,5 +1,4 @@
 import { React, useState, useEffect, useReducer } from "react";
-import { SignUpUserCustomer } from "../../firebase/signUpCustomer";
 
 export function FormNewCustomer({
   formForTheCustomer,
@@ -16,7 +15,7 @@ export function FormNewCustomer({
       />
 
       {FormDataCustomerMember === true ? (
-        <SignUpUserCustomer />
+        <div>inlogg till nåt</div>
       ) : (
         <div className="Form-Customer-Mainbox">
           <div className="Form-firstname-Customer-Box">

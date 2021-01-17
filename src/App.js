@@ -19,16 +19,20 @@ import { CheckOutParent } from "./components/checkOut/checkOutParent";
 import { Home } from "./components/Home/home";
 import { NoMatch } from "./components/NoMatch/NoMatch";
 
-import PrivateRoute from "./components/privateRoute/privateRoute";
 import { mainsass } from "./scss/main.scss";
 import { Nav } from "./components/nav/nav";
-import { Profile } from "./components/profile/Profile";
+
 import { Header } from "./components/header/header";
-import { LoginCustomer } from "./components/firebase/LoginCustomer/loginCustomer";
-import { SignUpUserCustomer } from "./components/firebase/signUpCustomer";
-import { AuthProvider } from "./components/firebase/AuthProvider";
-import AdminRoute from "./components/privateRoute/AdminRoute";
-import ProfileRedirect from "./components/privateRoute/ProfileRedirect";
+
+import { Signup } from "./components/Signup";
+
+import { UserProvider } from "./firebase/UserProvider";
+import { ProfileRedirect } from "./components/router/ProfileRedirect";
+import { LogInUser } from "./components/loginUser/LogInUser";
+import { PrivateRoute } from "./components/router/PrivateRoute";
+import { AdminRoute } from "./components/router/AdminRouter";
+import { AdminUser } from "./components/adminUser/adminUser";
+import { ProfileUser } from "./components/ProfileUser/ProfileUser";
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
@@ -42,22 +46,19 @@ function App() {
   }
 
   return (
-    <AuthProvider>
+    <UserProvider>
       <Router>
         <div className="App">
           <Header />
           <Nav />
           <main>
             <Switch>
-              <ProfileRedirect exact path="/login" component={LoginCustomer} />
-              <ProfileRedirect
-                exact
-                path="/signup"
-                component={SignUpUserCustomer}
-              />
-              {/* <AdminRoute exact path="/admin" component={Admin} /> */}
+              <Route exact path="/admin" component={Admin} />
+              <ProfileRedirect exact path="/signup" component={Signup} />
+              <ProfileRedirect exact path="/login" component={LogInUser} />
+              <PrivateRoute exact path="/profile/:id" component={ProfileUser} />
+              <AdminRoute exact path="/adminuser" component={AdminUser} />{" "}
               <Route exact path="/products" component={ProductsParent} />
-              {/* <PrivateRoute exact path="/profile/:id" component={Profile} /> */}
               <Route exact path="/checkout">
                 <CheckOutParent
                   setShoppingCartList={setShoppingCartList}
@@ -65,14 +66,14 @@ function App() {
                 />
               </Route>
               <Route path="/products/:id" component={DetailParent} />
-              <Route exact path="/" to="/login" component={Home} />
+              <Route exact path="/" component={Home} />
               <Route path="*" component={NoMatch} />
             </Switch>
           </main>
           <footer></footer>
         </div>
       </Router>
-    </AuthProvider>
+    </UserProvider>
   );
 }
 

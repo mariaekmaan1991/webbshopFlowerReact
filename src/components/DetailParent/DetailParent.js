@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { firebase } from "../firebase/firebase";
-import { Products } from "../ProductsParent/Products/Products";
+import { firebase } from "../../firebase/config";
 import { DetailProductPrint } from "./DetailProductPrint/DetailProductPrint";
 import Localbase from "localbase";
 

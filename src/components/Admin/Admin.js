@@ -10,7 +10,7 @@ import axios from "axios";
 
 import { AdminDisplayProducts } from "./AdminDisplayProducts/AdminDisplayProducts";
 import { FromProduct } from "./FormProduct/FormProduct";
-import { firebase } from "../firebase/firebase";
+import { firebase } from "../../firebase/config";
 
 export class Product {
   name = "";
