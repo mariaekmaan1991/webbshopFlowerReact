@@ -126,7 +126,7 @@ export function FromProduct({
                 type="submit"
                 name="Ovanliga blommor"
                 onClick={() => {
-                  formCategoryProduct({ category: "UnusualFlowers" });
+                  formCategoryProduct({ category: "unusualFlowers" });
                 }}
               >
                 Ovanliga blommor
@@ -137,7 +137,7 @@ export function FromProduct({
                 type="submit"
                 name="Pots"
                 onClick={() => {
-                  formCategoryProduct({ category: "Pots" });
+                  formCategoryProduct({ category: "pots" });
                 }}
               >
                 Krukor

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 import { firebase } from "../../../firebase/config";
-import { ButtonProduct } from "./ButtonProduct";
+import { ProductroductCategoryButton } from "./ProductroductCategoryButton/ProductroductCategoryButton";
 
 import { Products } from "./Products/Products";
 
 export function ProductsParent() {
   const [listProduct, setListProduct] = useState([]);
-  const [productCategorieSelect, setProductCategorieSelect] = useState();
+  const [productCategorieSelect, setProductCategorieSelect] = useState(
+    "accessories"
+  );
 
   useEffect(() => {
     const db = firebase.firestore();
@@ -35,10 +37,10 @@ export function ProductsParent() {
   }
   return (
     <div>
-      <ButtonProduct
+      <ProductroductCategoryButton
         ProductCategoriesButtonGreenPlant={ProductCategoriesButtonGreenPlant}
         ProductCategoriesButtonFlower={ProductCategoriesButtonFlower}
-      ></ButtonProduct>
+      />
       <Products
         listProduct={listProduct}
         productCategorieSelect={productCategorieSelect}
@@ -62,3 +64,5 @@ export function ProductsParent() {
 //       );
 //     });
 // }, []);
+
+//https://gronvaxtriket.se/wp-content/uploads/2020/11/IMG_2390-scaled.jpg

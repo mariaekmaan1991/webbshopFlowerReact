@@ -162,6 +162,7 @@ export function Admin() {
       imageUrl: productImageUrl,
       id: updateFormValues.id,
       quantity: productQuantity,
+      category: categoryProduct,
     };
 
     return h;
@@ -175,8 +176,7 @@ export function Admin() {
       price: productPrice,
       imageUrl: productImageUrl,
       quantity: productQuantity,
-
-      //category: resultCategory,
+      category: categoryProduct,
     };
 
     return h;
@@ -185,6 +185,7 @@ export function Admin() {
   function postFormValues() {
     let hej = formValuePost();
     let updateform = updateFormValue();
+    console.log(hej);
     let id = updateFormValues.id;
     if (updateFormValues.id === undefined) {
       db.collection("Product")
@@ -243,5 +244,3 @@ export function Admin() {
     </React.Fragment>
   );
 }
-
-https://gronvaxtriket.se/wp-content/uploads/2021/01/IMG_3411-scaled.jpg
