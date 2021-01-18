@@ -69,6 +69,13 @@ export function Admin() {
   const [productQuantity, setFormProductQuantity] = useState();
   const [descriptionProduct, setFromDescriptionProduct] = useState();
 
+  const [categoryProduct, setCategoryProduct] = useState([]);
+
+  console.log(categoryProduct);
+  function formCategoryProduct(text) {
+    setCategoryProduct([...categoryProduct, text]);
+  }
+
   useEffect(() => {
     if (updateFormValues.quantity) {
       setFormProductQuantity(updateFormValues.quantity);
@@ -225,6 +232,7 @@ export function Admin() {
         formProductName={formProductName}
         descriptionProduct={descriptionProduct}
         formDescriptionProduct={formDescriptionProduct}
+        formCategoryProduct={formCategoryProduct}
       />
       <AdminDisplayProducts
         ListProduct={ListProduct}
@@ -235,3 +243,5 @@ export function Admin() {
     </React.Fragment>
   );
 }
+
+https://gronvaxtriket.se/wp-content/uploads/2021/01/IMG_3411-scaled.jpg

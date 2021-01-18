@@ -3,7 +3,7 @@ import React, { FormEvent, ChangeEvent, useReducer } from "react";
 export function FromProduct({
   saveInfo,
   postFormValues,
-  category,
+  formCategoryProduct,
   productImageUrl,
   productPrice,
   productName,
@@ -69,20 +69,29 @@ export function FromProduct({
               <button
                 className="Form-Admin-Button"
                 type="submit"
-                name="smycken"
+                name="esy"
                 onClick={() => {
-                  category("smycken");
+                  formCategoryProduct({ category: "Cuttings" });
                 }}
               >
                 Sticklingar
               </button>
-
+              <button
+                className="Form-Admin-Button"
+                type="submit"
+                name="esy"
+                onClick={() => {
+                  formCategoryProduct({ category: "easy-careflowers" });
+                }}
+              >
+                lätt skötta
+              </button>
               <button
                 className="Form-Admin-Button"
                 type="submit"
                 name="accessories"
                 onClick={() => {
-                  category("accessories");
+                  formCategoryProduct({ category: "accessories" });
                 }}
               >
                 Tillbehör
@@ -94,7 +103,7 @@ export function FromProduct({
                 type="submit"
                 name="flower"
                 onClick={() => {
-                  category("flower");
+                  formCategoryProduct({ category: "flower" });
                 }}
               >
                 Blommor
@@ -105,7 +114,7 @@ export function FromProduct({
                 type="submit"
                 name="Grönväxt"
                 onClick={() => {
-                  category("greenPlant");
+                  formCategoryProduct({ category: "greenPlant" });
                 }}
               >
                 Grön växter
@@ -117,7 +126,7 @@ export function FromProduct({
                 type="submit"
                 name="Ovanliga blommor"
                 onClick={() => {
-                  category("UnusualFlowers");
+                  formCategoryProduct({ category: "UnusualFlowers" });
                 }}
               >
                 Ovanliga blommor
@@ -128,7 +137,7 @@ export function FromProduct({
                 type="submit"
                 name="Pots"
                 onClick={() => {
-                  category("Pots");
+                  formCategoryProduct({ category: "Pots" });
                 }}
               >
                 Krukor
