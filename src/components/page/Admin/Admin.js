@@ -62,17 +62,19 @@ export function Admin() {
   /// Form  put
   const [updateFormValues, setUpdateFormValues] = useState({});
 
-  const [ProductImageUrl, setProductImageUrl] = useState();
-  const [ProductName, setProductName] = useState();
-  const [ProductPrice, setProductprice] = useState();
-  const [ProductDescription, setProductDescription] = useState();
-  const [ProductQuantity, setFormProductQuantity] = useState();
+  const [productImageUrl, setProductImageUrl] = useState();
+  const [productName, setProductName] = useState();
+  const [productPrice, setProductprice] = useState();
+
+  const [productQuantity, setFormProductQuantity] = useState();
+  const [descriptionProduct, setFromDescriptionProduct] = useState();
+
   useEffect(() => {
     if (updateFormValues.quantity) {
       setFormProductQuantity(updateFormValues.quantity);
     }
     if (updateFormValues.description) {
-      setProductDescription(updateFormValues.description);
+      setFromDescriptionProduct(updateFormValues.description);
     }
     if (updateFormValues.imageUrl) {
       setProductImageUrl(updateFormValues.imageUrl);
@@ -107,11 +109,11 @@ export function Admin() {
     }
   }
 
-  function formProductDescription(e) {
+  function formDescriptionProduct(e) {
     if (updateFormValues.description === undefined) {
-      setProductDescription(e.target.value);
+      setFromDescriptionProduct(e.target.value);
     } else {
-      setProductDescription(
+      setFromDescriptionProduct(
         ({ ...updateFormValues.description }, e.target.value)
       );
     }
@@ -147,12 +149,12 @@ export function Admin() {
   function updateFormValue() {
     // let resultCategory = category(text);
     let h = {
-      name: ProductName,
-      description: ProductDescription,
-      price: ProductPrice,
-      imageUrl: ProductImageUrl,
+      name: productName,
+      description: descriptionProduct,
+      price: productPrice,
+      imageUrl: productImageUrl,
       id: updateFormValues.id,
-      quantity: ProductQuantity,
+      quantity: productQuantity,
     };
 
     return h;
@@ -161,11 +163,11 @@ export function Admin() {
   function formValuePost() {
     // let resultCategory = category(text);
     let h = {
-      name: ProductName,
-      description: ProductDescription,
-      price: ProductPrice,
-      imageUrl: ProductImageUrl,
-      quantity: ProductQuantity,
+      name: productName,
+      description: descriptionProduct,
+      price: productPrice,
+      imageUrl: productImageUrl,
+      quantity: productQuantity,
 
       //category: resultCategory,
     };
@@ -178,7 +180,7 @@ export function Admin() {
     let updateform = updateFormValue();
     let id = updateFormValues.id;
     if (updateFormValues.id === undefined) {
-      db.collection("maria")
+      db.collection("Product")
         .add(hej)
         .then(function () {
           console.log("Document successfully written!");
@@ -191,7 +193,7 @@ export function Admin() {
       // db.push(hej);
     } else {
       console.log(updateform, "uptatera");
-      db.collection("maria").doc(id).set(updateform);
+      db.collection("Product").doc(id).set(updateform);
 
       // const db = firebase.database().ref("flowrshops").child(updateform.id);
       // db.update(updateform);
@@ -201,7 +203,7 @@ export function Admin() {
   /// button deleteProduct
   function deleteProduct(id) {
     console.log(id, "ta bort product");
-    db.collection("maria").doc(id).delete();
+    db.collection("Product").doc(id).delete();
     /*  const db = firebase.database().ref("flowrshops").child(id);
     db.remove();*/
   }
@@ -212,29 +214,23 @@ export function Admin() {
     <React.Fragment>
       <FromProduct
         fromProductQuantity={fromProductQuantity}
-        ProductQuantity={ProductQuantity}
-        ProductImageUrl={ProductImageUrl}
+        productQuantity={productQuantity}
+        productImageUrl={productImageUrl}
         formProductPrice={formProductPrice}
         formProductImageUrl={formProductImageUrl}
-        formProductDescription={formProductDescription}
-        ProductPrice={ProductPrice}
-        ProductName={ProductName}
-        ProductDescription={ProductDescription}
+        productPrice={productPrice}
+        productName={productName}
         saveInfo={saveInfo}
         postFormValues={postFormValues}
         formProductName={formProductName}
-        //category={category}
+        descriptionProduct={descriptionProduct}
+        formDescriptionProduct={formDescriptionProduct}
       />
-
       <AdminDisplayProducts
         ListProduct={ListProduct}
         deleteProduct={deleteProduct}
         saveUpdate={saveUpdate}
         setUpdateFormValues={setUpdateFormValues}
-        formProductImageUrl={formProductImageUrl}
-        formProductDescription={formProductDescription}
-        formProductPrice={formProductPrice}
-        formProductName={formProductName}
       />
     </React.Fragment>
   );

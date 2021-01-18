@@ -4,15 +4,16 @@ export function FromProduct({
   saveInfo,
   postFormValues,
   category,
-  ProductImageUrl,
-  ProductPrice,
-  ProductName,
-  ProductQuantity,
-  ProductDescription,
+  productImageUrl,
+  productPrice,
+  productName,
+  productQuantity,
+
   formProductPrice,
   formProductImageUrl,
   formProductName,
-  formProductDescription,
+  descriptionProduct,
+  formDescriptionProduct,
   fromProductQuantity,
 }) {
   return (
@@ -25,7 +26,7 @@ export function FromProduct({
               type="text"
               name="name"
               placeholder="Name"
-              value={ProductName}
+              value={productName}
               onChange={formProductName}
               className="Form-Admin-Container-Input"
             />
@@ -36,7 +37,7 @@ export function FromProduct({
               type="number"
               name="price"
               placeholder="price"
-              value={ProductPrice}
+              value={productPrice}
               onChange={formProductPrice}
               className="Form-Admin-Container-Input"
             />
@@ -47,7 +48,7 @@ export function FromProduct({
               type="text"
               name="imageUrl"
               placeholder="imageUrl"
-              value={ProductImageUrl}
+              value={productImageUrl}
               onChange={formProductImageUrl}
               className="Form-Admin-Container-Input"
             />
@@ -58,7 +59,7 @@ export function FromProduct({
               type="number"
               name="quantity"
               placeholder="quantity"
-              value={ProductQuantity}
+              value={productQuantity}
               onChange={fromProductQuantity}
               className="Form-Admin-Container-Input"
             />
@@ -134,16 +135,15 @@ export function FromProduct({
               </button>
             </div>
           </div>
-          <textarea
+
+          <input
             className="Form-Admin-Container-Description"
             type="text"
             name="description"
             placeholder="description"
-            value={ProductDescription}
-            onChange={formProductDescription}
-          >
-            Beskrivning
-          </textarea>
+            value={descriptionProduct}
+            onChange={formDescriptionProduct}
+          ></input>
           <button
             className="Form-Admin-Container-PostButton"
             type="submit"
