@@ -1,28 +1,22 @@
 import { React, useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
-
-import { firebase } from "../../firebase/config";
-import { UserContext } from "../../firebase/UserProvider";
 
 export function Header() {
-  const history = useHistory();
-  const { currentUser } = useContext(UserContext);
+  // const cardBackground = {
+  //   backgroundImage: `url(${require("../../image/pngfind.com-flower-graphic-png-5486160.png")})`,
+  // };
 
-  const logOutUser = async () => {
-    await firebase.auth().signOut();
-
-    history.push("/signup");
-  };
   return (
-    <header>
-      {currentUser.user === null ? (
-        <div>utloogad</div>
-      ) : (
-        <div>
-          <button onClick={logOutUser}>loga ut</button>
+    <header className="Main-Header">
+      <section className="Header-Line-Container">
+        <div className="Header-Line-Container-Text">
+          <h3> Välkommen till Flower Power!</h3>
         </div>
-      )}
+        <div className="Header-Line-Container-Image">
+          <img src={"/annie-spratt-01Wa3tPoQQ8-unsplash.jpg"} alt="profile" />
+        </div>
+      </section>
     </header>
   );
 }
 //https://codesandbox.io/s/react-router-nesting-forked-3b6h7?file=/example.js
+//https://www.freecodecamp.org/news/react-background-image-tutorial-how-to-set-backgroundimage-with-inline-css-style/

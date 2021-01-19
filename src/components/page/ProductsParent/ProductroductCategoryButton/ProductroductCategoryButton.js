@@ -10,7 +10,8 @@ import {
 
 export function ProductroductCategoryButton({
   ProductCategoriesButtonGreenPlant,
-  ProductCategoriesButtonFlower,
+
+  ProductCategoriesButton,
 }) {
   return (
     <div>
@@ -19,7 +20,17 @@ export function ProductroductCategoryButton({
         type="submit"
         name="flower"
         onClick={() => {
-          ProductCategoriesButtonFlower("Flower");
+          ProductCategoriesButton({ category: " " });
+        }}
+      >
+        set
+      </button>
+      <button
+        className="Form-Admin-Button"
+        type="submit"
+        name="flower"
+        onClick={() => {
+          ProductCategoriesButton({ category: "Flower" });
         }}
       >
         Blommor
@@ -29,7 +40,7 @@ export function ProductroductCategoryButton({
         type="submit"
         name="flower"
         onClick={() => {
-          ProductCategoriesButtonFlower("easy-careflowers");
+          ProductCategoriesButton({ category: "easy-careflowers" });
         }}
       >
         lätt skötta växter Blommor
@@ -39,7 +50,7 @@ export function ProductroductCategoryButton({
         type="submit"
         name="flower"
         onClick={() => {
-          ProductCategoriesButtonFlower("Pots");
+          ProductCategoriesButton({ category: "Pots" });
         }}
       >
         krukor
@@ -49,7 +60,7 @@ export function ProductroductCategoryButton({
         type="submit"
         name="Grönväxt"
         onClick={() => {
-          ProductCategoriesButtonGreenPlant("greenPlant");
+          ProductCategoriesButton({ category: "greenPlant" });
         }}
       >
         Grön växter
@@ -59,7 +70,7 @@ export function ProductroductCategoryButton({
         type="submit"
         name="Grönväxt"
         onClick={() => {
-          ProductCategoriesButtonGreenPlant("greenPlant");
+          ProductCategoriesButton({ category: "accessories" });
         }}
       >
         accessories

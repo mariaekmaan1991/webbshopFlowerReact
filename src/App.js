@@ -51,10 +51,7 @@ function App() {
     <UserProvider>
       <Router>
         <div className="App">
-          {shoppingCartQuantityCounter}
-          <Header />
-          {counterPrice}
-          <Nav />
+          <Nav></Nav>
           <main>
             <Switch>
               <Route exact path="/admin" component={Admin} />

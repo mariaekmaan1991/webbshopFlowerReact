@@ -12,13 +12,22 @@ export function Products({
   ProductCategoriesButtonGreenPlant,
   ProductCategoriesButtonFlower,
 }) {
+  const [showProduct, setShowProduct] = useState([]);
+  fiterProductOrder();
+  function fiterProductOrder() {
+    let resultorder = listProduct.sort(function (a, b) {
+      return a.price - b.price;
+    });
+    console.log(resultorder);
+  }
   let categoryList = [];
-  filterProduct();
-  function filterProduct(params) {
+  filterProductButton();
+  function filterProductButton(params) {
     listProduct &&
       listProduct.map((data, index = parseInt(data.id)) => {
         data.category.map((category) => {
-          if (category.category === productCategorieSelect) {
+          // productCategorieSelect.category.map((categoryLista) => {
+          if (category.category === productCategorieSelect.category) {
             let Product = {
               category: category.category,
               name: data.name,
@@ -32,6 +41,7 @@ export function Products({
             categoryList.push(Product);
           }
         });
+        // });
       });
   }
 
@@ -49,5 +59,37 @@ export function Products({
     );
   });
 
-  return <div>{resultat}</div>;
+  return (
+    <div>
+      {resultat}
+      <button
+        className="Form-Admin-Button"
+        type="submit"
+        name="Grönväxt"
+        onClick={() => {}}
+      >
+        sortera
+      </button>
+    </div>
+  );
 }
+// function min(numbers) {
+//   let minNumber = numbers[0];
+//   for (let i = 1; i < numbers.length; i++) {
+//     const number = numbers[i];
+//     if (number < minNumber) {
+//       minNumber = number;
+//     }
+//   }
+//   return minNumber;
+// }
+// function max(numbers) {
+//   let maxNumber = numbers[0];
+//   for (let i = 1; i < numbers.length; i++) {
+//     const number = numbers[i];
+//     if (number > maxNumber) {
+//       maxNumber = number;
+//     }
+//   }
+//   return maxNumber;
+// }

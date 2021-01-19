@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import { faBars } from "@fortawesome/fontawesome-svg-core";
+import { useHistory } from "react-router-dom";
 
+import { firebase } from "../../firebase/config";
+import { UserContext } from "../../firebase/UserProvider";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,6 +24,16 @@ export function Nav() {
       setHandleMenu(true);
     }
   }
+
+  const history = useHistory();
+  const { currentUser } = useContext(UserContext);
+
+  const logOutUser = async () => {
+    await firebase.auth().signOut();
+
+    history.push("/signup");
+  };
+
   return (
     <nav className="Nav site-nav">
       <div className="Nav-Dropdown">
@@ -28,6 +41,14 @@ export function Nav() {
           <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
             <FontAwesomeIcon className="faBars" icon={faBars} />
           </button>
+
+          {currentUser.user === null ? (
+            <div>utloogad</div>
+          ) : (
+            <div>
+              <button onClick={logOutUser}>loga ut</button>
+            </div>
+          )}
           <Link className="Menu-Container-Content-Text nav-link" to="/products">
             Products
           </Link>
