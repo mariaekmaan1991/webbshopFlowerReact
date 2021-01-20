@@ -7,20 +7,20 @@
   height: 50px;
 
   .Nav-Dropdown {
-    position: relative;
     display: inline-block;
     background-color: #e7c5a5;
     width: 100%;
-    position: sticky;
+    position: fixed;
+    position: relative;
     top: 0px;
-    @include flexRow;
+    @include flexColumn;
     .Navbar {
       display: flex;
-
       .buttonMenu {
         @include flexColumn;
         height: 50px;
         width: 50px;
+        position: relative;
         background-color: rgb(159, 189, 162);
         z-index: 300;
         border: none;
