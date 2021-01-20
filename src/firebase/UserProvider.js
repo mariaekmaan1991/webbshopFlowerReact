@@ -12,7 +12,7 @@ export const UserProvider = (props) => {
   //   const [Isloading, setLoding] = useState(false);
   // här kollar om använadare finns
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       let IsAdmin = false;
 
       if (!!user) {
@@ -23,7 +23,6 @@ export const UserProvider = (props) => {
 
       setCurrentUser({ loading: false, user, IsAdmin });
     });
-    return () => unsubscribe();
   }, []);
   console.log(currentUser, "finnscurrentUser???");
 
@@ -32,8 +31,4 @@ export const UserProvider = (props) => {
       {!currentUser.loading && props.children}
     </UserContext.Provider>
   );
-};
-export const useSession = () => {
-  const session = useContext(UserContext);
-  return session;
 };

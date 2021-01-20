@@ -3,10 +3,11 @@
   width: 100%;
   @include flexColumn;
   .Product-Content {
-    width: 90%;
+    width: 30%;
     background-color: brown;
     margin: 10px;
-    @include flexColumn;
+    @include flexRow;
+    flex-wrap: wrap;
     .Product-Image {
       width: 100%;
       justify-content: center;
@@ -40,7 +41,7 @@
 
     .Product-Content {
       background-color: hotpink;
-      width: 50%;
+      width: 30%;
 
       .Product-Image {
         width: 100%;

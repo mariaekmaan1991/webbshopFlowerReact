@@ -7,10 +7,12 @@ import { Products } from "./Products/Products";
 
 export function ProductsParent() {
   const [listProduct, setListProduct] = useState([]);
-  const [productCategorieSelect, setProductCategorieSelect] = useState([
-    { category: "Pots" },
-  ]);
-  console.log(productCategorieSelect);
+  // const [productCategorieSelect, setProductCategorieSelect] = useState([
+  //   { category: "Pots" },
+  // ]);
+
+  const [productCategorieSelect, setProductCategorieSelect] = useState("pots");
+
   useEffect(() => {
     const db = firebase.firestore();
     (async () => {
@@ -29,12 +31,12 @@ export function ProductsParent() {
   console.log(listProduct);
 
   console.log(listProduct);
-  // function ProductCategoriesButtonFlower(e) {
-  //   setProductCategorieSelect(productCategorieSelect, e);
-  // }
   function ProductCategoriesButton(e) {
-    setProductCategorieSelect([...productCategorieSelect, e]);
+    setProductCategorieSelect(e);
   }
+  // function ProductCategoriesButton(e) {
+  //   setProductCategorieSelect([...productCategorieSelect, e]);
+  // }
 
   return (
     <div>

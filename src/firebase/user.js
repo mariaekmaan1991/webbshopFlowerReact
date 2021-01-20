@@ -1,22 +1,17 @@
 import "firebase/auth";
 
 import { firebase } from "./config";
+
+export const createUserNoMemberDocument = async (user) => {
+  const db = firebase.firestore();
+
+  await db.collection("User").doc(user.uid).set(user);
+};
+
 export const createUserDocument = async (user) => {
   const db = firebase.firestore();
 
-  const userProfile = {
-    uid: user.uid,
-    email: user.email,
-    name: user.displayName,
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
-    phone: "",
-    specialty: "",
-    ip: "",
-  };
-  await db.collection("User").doc(user.uid).set(userProfile);
+  await db.collection("User").doc(user.uid).set(user);
 };
 
 export const updateUserDocument = async (user) => {

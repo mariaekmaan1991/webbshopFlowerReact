@@ -7,29 +7,21 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import { signUp } from "../../../firebase/auth";
+import { SignUpDontBeMember } from "../../../firebase/auth";
 
-export function Signup({ history }) {
+export function SignUpNoMember({ history }) {
   const { register, handleSubmit, reset } = useForm();
 
   const [isLoading, setLoadning] = useState(false);
 
   const Submit = async (data) => {
-    console.log(data);
     let newUser;
     setLoadning(true);
     try {
-      newUser = await signUp(data);
+      newUser = await SignUpDontBeMember(data);
       reset();
     } catch (error) {
       console.log(error);
-    }
-
-    if (newUser) {
-      console.log(newUser.uid);
-      history.push(`/profile/${newUser.uid}`);
-    } else {
-      setLoadning(false);
     }
   };
 
@@ -46,8 +38,20 @@ export function Signup({ history }) {
                   <input
                     type="text"
                     name="firstName"
-                    placeholder="FirstName"
+                    placeholder="First Name"
                     ref={register}
+                  />
+                </label>
+              </div>
+              <div className="field">
+                <label>
+                  Password
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    ref={register}
+                    disabled
                   />
                 </label>
               </div>
@@ -57,7 +61,7 @@ export function Signup({ history }) {
                   <input
                     type="text"
                     name="lastName"
-                    placeholder="LastName"
+                    placeholder="Last Name"
                     ref={register}
                   />
                 </label>
@@ -70,17 +74,6 @@ export function Signup({ history }) {
                   type="email"
                   name="email"
                   placeholder="Email"
-                  ref={register}
-                />
-              </label>
-            </div>
-            <div className="field">
-              <label>
-                Password
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
                   ref={register}
                 />
               </label>

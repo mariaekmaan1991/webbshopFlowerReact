@@ -1,13 +1,65 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { createUserDocument } from "./user";
-export const signUp = async ({ firstName, lastName, email, password }) => {
+import { createUserNoMemberDocument, createUserDocument } from "./user";
+
+export const signUp = async ({
+  firstName,
+  lastName,
+  email,
+  password,
+  phone,
+  address,
+  zip,
+  city,
+}) => {
   const resp = await firebase
     .auth()
     .createUserWithEmailAndPassword(email, password);
   const user = resp.user;
-  await user.updateProfile({ displayName: `${firstName} ${lastName}` });
-  await createUserDocument(user); //här hämtas input inlogg
+
+  let userProfile = {
+    user: user.uid,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    phone: phone,
+    address: address,
+    zip: zip,
+    city: city,
+    member: true,
+  };
+
+  await createUserDocument(userProfile); //här hämtas input inlogg
+  return user;
+};
+
+let password = "00000000";
+export const SignUpDontBeMember = async ({
+  firstName,
+  lastName,
+  email,
+  phone,
+  address,
+  zip,
+  city,
+}) => {
+  const resp = await firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password);
+  const user = resp.user;
+  let userProfile = {
+    user: user.uid,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    phone: phone,
+    address: address,
+    zip: zip,
+    city: city,
+    member: false,
+  };
+
+  await createUserNoMemberDocument(userProfile); //här hämtas input inlogg
   return user;
 };
 

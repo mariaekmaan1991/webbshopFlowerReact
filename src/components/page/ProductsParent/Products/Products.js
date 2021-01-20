@@ -7,12 +7,12 @@ class Product {
 export function Products({
   listProduct,
   setbuttonDetailProduct,
-
   productCategorieSelect,
   ProductCategoriesButtonGreenPlant,
   ProductCategoriesButtonFlower,
 }) {
   const [showProduct, setShowProduct] = useState([]);
+
   fiterProductOrder();
   function fiterProductOrder() {
     let resultorder = listProduct.sort(function (a, b) {
@@ -20,6 +20,9 @@ export function Products({
     });
     console.log(resultorder);
   }
+
+  console.log(productCategorieSelect);
+
   let categoryList = [];
   filterProductButton();
   function filterProductButton(params) {
@@ -47,31 +50,19 @@ export function Products({
 
   let resultat = categoryList.map((data) => {
     return (
-      <Link to={`/products/${data.id}`}>
-        <div>{data.category}</div>
-        <div> {data.name}</div>
-        <div> {data.description}</div>
-        <div> {data.price}</div>
-        <div> {data.imageUrl}</div>
-        <div> {data.id}</div>
-        <div> {data.quantity}</div>
-      </Link>
+      <div className="Product-Content">
+        <Link to={`/products/${data.id}`}>
+          <img className="Product-Image" src={data.imageUrl} alt="hej" />
+          <div className="Product-Content-Text">
+            <div className="Product-Content-Name"> {data.name}</div>
+            <div className="Product-Content-Price"> {data.price}</div>
+          </div>
+        </Link>
+      </div>
     );
   });
 
-  return (
-    <div>
-      {resultat}
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="Grönväxt"
-        onClick={() => {}}
-      >
-        sortera
-      </button>
-    </div>
-  );
+  return <div className="Product-Content-List">{resultat}</div>;
 }
 // function min(numbers) {
 //   let minNumber = numbers[0];

@@ -35,6 +35,7 @@ import { ProfileUser } from "./components/page/ProfileUser/ProfileUser";
 import { AdminRoute } from "./route/AdminRoute";
 import { ProfileRedirect } from "./route/ProfileRedirect";
 import { PrivateRoute } from "./route/PrivateRoute";
+import { OrderConfirmation } from "./components/page/orderConfirmation/orderConfirmation";
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
@@ -60,6 +61,11 @@ function App() {
               <ProfileRedirect exact path="/login" component={LogInUser} />
               <PrivateRoute exact path="/profile/:id" component={ProfileUser} />
               <Route exact path="/products" component={ProductsParent} />
+              <Route
+                exact
+                path="/orderconfirmation/:id"
+                component={OrderConfirmation}
+              />
               <Route exact path="/checkout">
                 <CheckOutParent
                   setShoppingCartList={setShoppingCartList}
