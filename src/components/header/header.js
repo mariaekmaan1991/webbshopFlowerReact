@@ -8,12 +8,8 @@ export function Header() {
   return (
     <header className="Main-Header">
       <section className="Header-Line-Container">
-        <div className="Header-Line-Container-Text">
-          <h3> Välkommen till Flower Power!</h3>
-        </div>
-        <div className="Header-Line-Container-Image">
-          <img src={"/annie-spratt-01Wa3tPoQQ8-unsplash.jpg"} alt="profile" />
-        </div>
+        <h3> Välkommen till Flower Power!</h3>
+        <img src={"/annie-spratt-01Wa3tPoQQ8-unsplash.jpg"} alt="profile" />
       </section>
     </header>
   );

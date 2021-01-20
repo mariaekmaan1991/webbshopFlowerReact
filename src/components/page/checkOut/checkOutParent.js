@@ -75,7 +75,7 @@ export function CheckOutParent({ setShoppingCartList, ShoppingCartList }) {
           onChange={(e) => formForTheCustomerMember(e, "Member")}
         />
 
-        {FormDataCustomerMember === true ? (
+        {/* {FormDataCustomerMember === true ? (
           <Signup
             ShoppingCartList={ShoppingCartList}
             FormDataCustomerMember={FormDataCustomerMember}
@@ -85,7 +85,7 @@ export function CheckOutParent({ setShoppingCartList, ShoppingCartList }) {
             ShoppingCartList={ShoppingCartList}
             FormDataCustomerMember={FormDataCustomerMember}
           />
-        )}
+        )} */}
       </form>
     </div>
   );

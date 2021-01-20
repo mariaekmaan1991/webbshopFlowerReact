@@ -1,46 +1,28 @@
 .Main-Header {
-  width: 100%;
-  //   background-color: rgb(198, 158, 105);
-  height: 50vh;
-  top: 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   .Header-Line-Container {
-    display: flex;
-    height: 100%;
     width: 100%;
-    flex-direction: column;
+    position: relative;
+    // opacity: 0.6;
 
-    .Header-Line-Container-Image {
-      display: flex;
+    img {
       height: 50%;
-      img {
-        position: absolute;
-        height: 75%;
-        width: 100%;
-      }
-    }
-    .Header-Line-Container-Text {
-      background: linear-gradient(150deg, rgb(0, 0, 0), rgb(46, 46, 45));
-      position: absolute;
-      height: 75%;
       width: 100%;
-      z-index: 2;
-
-      opacity: 0.6;
-      h3 {
-        position: absolute;
-        top: 150px;
-        left: 10px;
-        right: 10px;
-        font-weight: lighter;
-        color: rgb(255, 255, 255);
-        font-size: 8vmin;
-        text-align: center;
-        z-index: 9;
-      }
+    }
+    h3 {
+      color: white;
+      top: 150px;
+      left: 100px;
+      font-size: 30px;
+      position: absolute;
     }
   }
 }
+
 //https://css-transform.moro.es/
+/*
+.Header-Line-Container-Image {
+      display: flex;
+      height: 50%;
+      background: linear-gradient(150deg, rgb(0, 0, 0), rgb(46, 46, 45));
+      width: 100%;
+      opacity: 0.6;*/

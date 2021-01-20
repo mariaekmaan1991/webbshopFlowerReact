@@ -54,17 +54,17 @@
         z-index: 100;
         list-style-type: none;
         display: flex;
+
         .Menu-Container-Content-Text {
           color: black;
-          z-index: 100;
+          z-index: 10;
           display: flex;
-        }
-
-        .Menu-Container-Content-Text:hover {
           position: relative;
+          text-decoration: none;
+        }
+        .Menu-Container-Content-Text:hover {
           padding-bottom: 3px;
         }
-
         .Menu-Container-Content-Text::before {
           content: "";
           position: absolute;

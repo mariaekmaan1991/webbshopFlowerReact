@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { firebase } from "../../firebase/config";
 import { UserContext } from "../../firebase/UserProvider";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   BrowserRouter as Router,
@@ -18,7 +18,7 @@ export function Nav() {
   const [HandleMenu, setHandleMenu] = useState(false);
 
   function openHandleMenuClick() {
-    if (HandleMenu !== false) {
+    if (HandleMenu) {
       setHandleMenu(false);
     } else {
       setHandleMenu(true);
@@ -43,9 +43,10 @@ export function Nav() {
           </button>
 
           {currentUser.user === null ? (
-            <div>utloogad</div>
+            <Link to="/login">Logga in</Link>
           ) : (
             <div>
+              <FontAwesomeIcon className="faBars" icon={faUser} />
               <button onClick={logOutUser}>loga ut</button>
             </div>
           )}
