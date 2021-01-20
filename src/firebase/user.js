@@ -8,10 +8,10 @@ export const createUserNoMemberDocument = async (user) => {
   await db.collection("User").doc(user.uid).set(user);
 };
 
-export const createUserDocument = async (user) => {
+export const createUserDocument = async (userProfile) => {
   const db = firebase.firestore();
 
-  await db.collection("User").doc(user.uid).set(user);
+  await db.collection("User").doc(userProfile.uid).set(userProfile);
 };
 
 export const updateUserDocument = async (user) => {

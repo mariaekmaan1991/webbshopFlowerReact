@@ -3,8 +3,6 @@ import "firebase/auth";
 import { createUserNoMemberDocument, createUserDocument } from "./user";
 
 export const signUp = async ({
-  firstName,
-  lastName,
   email,
   password,
   phone,
@@ -15,22 +13,21 @@ export const signUp = async ({
   const resp = await firebase
     .auth()
     .createUserWithEmailAndPassword(email, password);
-  const user = resp.user;
 
-  let userProfile = {
-    user: user.uid,
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    phone: phone,
+  const user = resp.user;
+  const userProfile = {
+    uid: user.uid,
+    email: user.email,
+    name: user.displayName,
     address: address,
-    zip: zip,
     city: city,
-    member: true,
+    zip: zip,
+    phone: phone,
   };
 
+  // await user.updateProfile({ displayName: `${firstName} ${lastName}` });
   await createUserDocument(userProfile); //här hämtas input inlogg
-  return user;
+  return userProfile;
 };
 
 let password = "00000000";
