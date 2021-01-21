@@ -42,7 +42,7 @@ export function FormCheckOutOrder({
               type="text"
               placeholder="Adress"
               name="title"
-              onChange={(e) => formTheCustomer(e, "addresss")}
+              onChange={(e) => formTheCustomer(e, "address")}
             />
           </div>
         </div>
@@ -92,7 +92,7 @@ export function FormCheckOutOrder({
               type="number"
               placeholder="ZIP code"
               name="title"
-              onChange={(e) => formTheCustomer(e, "ZIP-Code")}
+              onChange={(e) => formTheCustomer(e, "zipcode")}
             />
           </div>
         </div>

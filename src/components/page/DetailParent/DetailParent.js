@@ -55,7 +55,7 @@ export function DetailParent({ cart, setCart, setCart3 }) {
 
   function addCart(DetailProduct) {
     localBase
-      .collection("Product")
+      .collection("Products")
       .get()
       .then((users) => {
         // console.log("users:", users);
@@ -82,7 +82,7 @@ export function DetailParent({ cart, setCart, setCart3 }) {
       quantity: DetailProduct.quantity,
     };
     console.log("läggt till cart:", newItem);
-    localBase.collection("Product").add(newItem);
+    localBase.collection("Products").add(newItem);
     //let newItems = [...cart, newItem];
     //setCart([...cart, newItem]);
   }

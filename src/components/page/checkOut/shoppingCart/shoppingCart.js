@@ -21,19 +21,9 @@ export function ShoppingCart({
   function updateQuantityProduct(x) {
     setNewUpdateQuantityProduct(x);
   }
-  console.log(NewUpdateQuantityProduct, " NewUpdateQuantityProduct");
-  useEffect(() => {
-    localBase
-      .collection("Product")
-      .get()
-      .then((product) => {
-        setShoppingCartList(product);
-      });
-  }, []);
-
   function UpdateProduct(product) {
     localBase
-      .collection("Product")
+      .collection("Products")
       .doc({ id: product.id })
       .update({
         size: NewUpdateSizeProduct,
@@ -47,7 +37,7 @@ export function ShoppingCart({
   function deleteProduct(id) {
     console.log(id);
     localBase
-      .collection("users")
+      .collection("Products")
       .doc({ id: id })
       .delete()
       .then((users) => {

@@ -39,17 +39,17 @@ import { OrderConfirmation } from "./components/page/orderConfirmation/orderConf
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
-  const [quantityCounter, setquantityCounter] = useState();
-function cart(){
-  let shoppingQuantityCounter = 0;
+//   const [quantityCounter, setquantityCounter] = useState();
+// // function cart(){
+//   let shoppingQuantityCounter = 0;
 
-  for (let i = 0; i < ShoppingCartList.length; i++) {
-    shoppingQuantityCounter =shoppingQuantityCounter + parseInt(ShoppingCartList[i].quantity);
-  }
-return shoppingQuantityCounter
-}
-let QuantityCounterTotal= cart()
-console.log(quantityCounter)
+//   for (let i = 0; i < ShoppingCartList.length; i++) {
+//     shoppingQuantityCounter =shoppingQuantityCounter + parseInt(ShoppingCartList[i].quantity);
+//   }
+// return shoppingQuantityCounter
+// }
+// let QuantityCounterTotal= cart()
+
   let localBase = new Localbase("db");
   useEffect(() => {
 
@@ -72,7 +72,7 @@ console.log(quantityCounter)
     <UserProvider>
       <Router>
         <div className="App">
-          <Nav QuantityCounterTotal={QuantityCounterTotal}></Nav>
+          <Nav></Nav>
           <main>
             <Switch>
               <Route exact path="/admin" component={Admin} />

@@ -41,7 +41,7 @@ export function Nav({QuantityCounterTotal}) {
           <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
             <FontAwesomeIcon className="faBars" icon={faBars} />
           </button>
-          <div>{QuantityCounterTotal}</div>
+          <div></div>
 
           {currentUser.user === null ? (
             <Link to="/login">Logga in</Link>
