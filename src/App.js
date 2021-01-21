@@ -29,7 +29,7 @@ import { Signup } from "./components/page/SignUp/Signup";
 import { UserProvider } from "./firebase/UserProvider";
 
 import { LogInUser } from "./components/page/loginUser/LogInUser";
-
+import Localbase from "localbase";
 import { AdminUser } from "./components/page/adminUser/adminUser";
 import { ProfileUser } from "./components/page/ProfileUser/ProfileUser";
 import { AdminRoute } from "./route/AdminRoute";
@@ -39,20 +39,40 @@ import { OrderConfirmation } from "./components/page/orderConfirmation/orderConf
 
 function App() {
   const [ShoppingCartList, setShoppingCartList] = useState([]);
+  const [quantityCounter, setquantityCounter] = useState();
+function cart(){
+  let shoppingQuantityCounter = 0;
 
-  let shoppingCartQuantityCounter = 0;
-  let counterPrice = 0;
   for (let i = 0; i < ShoppingCartList.length; i++) {
-    shoppingCartQuantityCounter =
-      shoppingCartQuantityCounter + parseInt(ShoppingCartList[i].quantity);
-    counterPrice = counterPrice + parseInt(ShoppingCartList[i].price);
+    shoppingQuantityCounter =shoppingQuantityCounter + parseInt(ShoppingCartList[i].quantity);
   }
+return shoppingQuantityCounter
+}
+let QuantityCounterTotal= cart()
+console.log(quantityCounter)
+  let localBase = new Localbase("db");
+  useEffect(() => {
+
+    localBase
+      .collection("Products")
+      .get()
+      .then((product) => {
+        setShoppingCartList(product);
+      });
+      // localBase
+      // .collection("cart")
+      // .add({cart:h})
+      // .then((e) => {
+      //   console.log(e)
+       
+      // });
+  }, []);
 
   return (
     <UserProvider>
       <Router>
         <div className="App">
-          <Nav></Nav>
+          <Nav QuantityCounterTotal={QuantityCounterTotal}></Nav>
           <main>
             <Switch>
               <Route exact path="/admin" component={Admin} />
