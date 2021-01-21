@@ -35,40 +35,8 @@ export function CheckOutParent({ setShoppingCartList, ShoppingCartList }) {
     e.preventDefault();
   }
   const db = firebase.firestore();
-  function carts() {
-    let cart = {
-      basket: ShoppingCartList,
-    };
 
-    // db.collection("customerorder")
-    //   .set(cart})
-    //   .then(function () {
-    //     console.log("Document successfully written!");
-    //   }).catch(function (error) {
-    //     console.log("Error getting document:", error);
-    //   });
-  }
-
-  // function postFormValues(e) {
-  //   let cart = {
-  //     basket: ShoppingCartList,
-
-  //   };
-  
-  //    console.log(cart , "cart cart")
-  //     db.collection("customerorder")
-  //       .add(cart)
-  //       .then(function () {
-  //         console.log("Document successfully written!");
-  //       })
-  //       .catch(function (error) {
-  //         console.error("Error writing document: ", error);
-  //       });
-  // }
-
-console.log(formDataCustomer)
-const  sendOrder= async(e)=> {
-   
+  const sendOrder = async (e) => {
     let userInfo;
     if (formCustomerMemberValue === true) {
       const res = await firebase
@@ -77,7 +45,7 @@ const  sendOrder= async(e)=> {
           formDataCustomer.email,
           formDataCustomer.password
         );
-    const user = res.user;
+      const user = res.user;
       userInfo = {
         uid: user.uid,
         email: user.email,
@@ -90,14 +58,12 @@ const  sendOrder= async(e)=> {
       };
 
       let cart = {
-      
         uid: user.uid,
         email: user.email,
         shoppingCart: ShoppingCartList,
-  
       };
 
-      console.log(cart , "cart cart")
+      console.log(cart, "cart cart");
       db.collection("customerorder")
         .add(cart)
         .then(function () {
@@ -107,17 +73,17 @@ const  sendOrder= async(e)=> {
           console.error("Error writing document: ", error);
         });
 
-        db.collection("User")
+      db.collection("User")
         .add(userInfo)
         .then(function () {
           console.log("Document successfully written!");
         });
     } else {
-      let passWord = "0000";
+      let password = "6777868678";
       const resp = await firebase
         .auth()
-        .createUserWithEmailAndPassword(formDataCustomer.email, passWord);
-     const user = resp.user;
+        .createUserWithEmailAndPassword(formDataCustomer.email, password);
+      const user = resp.user;
       userInfo = {
         uid: user.uid,
         email: user.email,
@@ -126,23 +92,25 @@ const  sendOrder= async(e)=> {
         address: formDataCustomer.address,
         phone: formDataCustomer.phone,
         zipcode: formDataCustomer.zipcode,
-        member: false,
+      };
+      let carts = {
+        uid: user.uid,
+        email: user.email,
+        shoppingCart: ShoppingCartList,
       };
 
       db.collection("User")
         .add(userInfo)
         .then(function () {
           console.log("Document successfully written!");
+        })
+        .catch(function (error) {
+          console.error("Error writing document: ", error);
         });
-        let cart2 = {
-          uid: user.uid,
-          email: user.email,
-          shoppingCart: ShoppingCartList,
-    
-        };
-        console.log(cart2 , "cart cart")
-        db.collection("customerorder")
-        .add(cart2)
+
+      console.log(carts, "cart cart");
+      db.collection("customerorder")
+        .add(carts)
         .then(function () {
           console.log("Document successfully written!");
         })
@@ -150,11 +118,7 @@ const  sendOrder= async(e)=> {
           console.error("Error writing document: ", error);
         });
     }
-   
-  
-     
-  }
-
+  };
 
   return (
     <div>
@@ -176,7 +140,6 @@ const  sendOrder= async(e)=> {
           formCustomerMember={formCustomerMember}
         />
 
-
         {/* <button
                 className="Form-Admin-Button"
                 type="submit"
@@ -189,18 +152,16 @@ const  sendOrder= async(e)=> {
               >
                post
               </button> */}
-              <button
-                className="Form-Admin-Button"
-                type="submit"
-                name="esy"
-                onClick={(e) => {
-                  sendOrder(e
-                  
-                  );
-                }}
-              >
-              sendOrder
-              </button>
+        <button
+          className="Form-Admin-Button"
+          type="submit"
+          name="esy"
+          onClick={(e) => {
+            sendOrder(e);
+          }}
+        >
+          sendOrder
+        </button>
       </form>
     </div>
   );
