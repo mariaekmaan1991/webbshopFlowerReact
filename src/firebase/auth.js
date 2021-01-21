@@ -44,16 +44,14 @@ export const SignUpDontBeMember = async ({
     .auth()
     .createUserWithEmailAndPassword(email, password);
   const user = resp.user;
-  let userProfile = {
-    user: user.uid,
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    phone: phone,
+  const userProfile = {
+    uid: user.uid,
+    email: user.email,
+    name: user.displayName,
     address: address,
-    zip: zip,
     city: city,
-    member: false,
+    zip: zip,
+    phone: phone,
   };
 
   await createUserNoMemberDocument(userProfile); //här hämtas input inlogg

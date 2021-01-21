@@ -18,10 +18,10 @@ export function Products({
     let resultorder = listProduct.sort(function (a, b) {
       return a.price - b.price;
     });
-    console.log(resultorder);
+   
   }
 
-  console.log(productCategorieSelect);
+
 
   let categoryList = [];
   filterProductButton();

@@ -28,9 +28,6 @@ export function ProductsParent() {
     })();
   }, []);
 
-  console.log(listProduct);
-
-  console.log(listProduct);
   function ProductCategoriesButton(e) {
     setProductCategorieSelect(e);
   }
