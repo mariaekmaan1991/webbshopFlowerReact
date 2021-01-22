@@ -45,27 +45,31 @@ export function Nav({ QuantityCounterTotal }) {
           <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
             <FontAwesomeIcon className="faBars" icon={faBars} />
           </button>
-          <div className="faShoppingCart-Icon-Content">
-            <div className="faShoppingCart-Icon-Content">
-              <FontAwesomeIcon
-                className="faShoppingCart"
-                icon={faShoppingCart}
-              />
-              {QuantityCounterTotal}
-            </div>
-          </div>
 
           {currentUser.user === null ? (
-            <Link to="/login">Logga in</Link>
+            <div className="Loggin-Content">
+              <Link to="/login">Logga in</Link>{" "}
+              <div className="faShoppingCart-Icon-Content-Container">
+                <FontAwesomeIcon
+                  className="faShoppingCart"
+                  icon={faShoppingCart}
+                />
+                {QuantityCounterTotal}
+              </div>
+            </div>
           ) : (
-            <div>
+            <div className="Loggin-Content">
               <FontAwesomeIcon className="faBars" icon={faUser} />
               <button onClick={logOutUser}>loga ut</button>
+              <div className="faShoppingCart-Icon-Content-Container">
+                <FontAwesomeIcon
+                  className="faShoppingCart"
+                  icon={faShoppingCart}
+                />
+                {QuantityCounterTotal}
+              </div>
             </div>
           )}
-          <Link className="Menu-Container-Content-Text nav-link" to="/products">
-            Products
-          </Link>
         </div>
         {HandleMenu && (
           <ul className="Menu-Dropdown-Content">

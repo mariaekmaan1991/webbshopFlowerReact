@@ -38,16 +38,26 @@
       }
       .faShoppingCart-Icon-Content {
         @include flexRow;
-        width: 40%;
+        width: 10%;
         .faShoppingCart-Icon-Content-Container {
           @include flexRow;
-          width: 40%;
-
+          width: 10%;
+          background-color: lightgray;
           .faShoppingCart {
             display: flex;
             background-color: lightgray;
-            width: 60%;
+            justify-items: flex-end;
           }
+        }
+      }
+      .Loggin-Content {
+        width: 90%;
+        margin: 4px;
+        display: flex;
+
+        justify-content: flex-end;
+        .faShoppingCart-Icon-Content-Container {
+          margin-left: 10px;
         }
       }
     }
