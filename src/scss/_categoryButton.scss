@@ -1,0 +1,45 @@
+.Form-Main-Container-Category-Button {
+  @include flexColumn;
+  background-color: indianred;
+  justify-content: center;
+  .Form-InnerContainer-Category-Button {
+    @include flexColumn;
+    justify-content: center;
+    .Form-Container-Category-Button {
+      background-color: green;
+      margin: 10px;
+      .Form-Admin-Button {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .Form-Main-Container-Category-Button {
+    @include flexRow;
+    background-color: indianred;
+    justify-content: center;
+    .Form-Container-Category-Button {
+      margin: 10px;
+      background-color: rgb(58, 53, 154);
+      @include flexColumn;
+      .Form-Admin-Button {
+        display: flex;
+        margin: 10px;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 800px) {
+  .Form-Main-Container-Category-Button {
+    background-color: indianred;
+    .Form-Container-Category-Button {
+      margin: 10px;
+
+      .Form-Admin-Button {
+        display: flex;
+      }
+    }
+  }
+}

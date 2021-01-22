@@ -6,7 +6,7 @@
   .ShoppingCart-List-Container {
     overflow-x: hidden;
     background-color: green;
-    width: 90%;
+    width: 100%;
     height: 400px;
     @include flexColumn;
     justify-content: center;
@@ -27,6 +27,27 @@
           display: flex;
           background-color: rgb(192, 117, 154);
         }
+      }
+    }
+  }
+}
+
+.Form-Customer-Main-Container {
+  background-color: lawngreen;
+  @include flexColumn;
+  margin: 10px;
+  padding: 10px;
+
+  .Form-Customer-Container {
+    @include flexRow;
+    background-color: rgb(54, 42, 165);
+    .Container {
+      width: 100%;
+      margin: 5px;
+      background-color: rgb(165, 42, 136);
+      input {
+        width: 90%;
+        margin: 5px;
       }
     }
   }

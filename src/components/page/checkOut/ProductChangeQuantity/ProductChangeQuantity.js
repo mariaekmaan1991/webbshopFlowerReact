@@ -1,10 +1,10 @@
 import { React, useState, useReducer, useEffect } from "react";
 
-export function ProductChangeProductQuantity2({
+export function ProductChangeQuantity({
   productquantity,
   updateQuantityProduct,
 }) {
-  const [ProductQuantity, setProductQuantity] = useState(productquantity);
+  const [productQuantity, setProductQuantity] = useState(productquantity);
 
   function fromProductQuantity(e) {
     console.log(e.target.value);
@@ -12,7 +12,7 @@ export function ProductChangeProductQuantity2({
   }
 
   function sendNewSize() {
-    updateQuantityProduct(ProductQuantity);
+    updateQuantityProduct(productQuantity);
   }
 
   const options = [
@@ -29,9 +29,9 @@ export function ProductChangeProductQuantity2({
   return (
     <div>
       antal:
-      {ProductQuantity}
+      {productQuantity}
       <select
-        value={ProductQuantity}
+        value={productQuantity}
         onChange={fromProductQuantity}
         name="size"
         id="size"

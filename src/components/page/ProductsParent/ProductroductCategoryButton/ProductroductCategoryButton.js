@@ -1,80 +1,86 @@
 import { React, useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
 
-export function ProductroductCategoryButton({
-  ProductCategoriesButtonGreenPlant,
-
-  ProductCategoriesButton,
-}) {
+export function ProductCategoryButton({ ProductCategoriesButton }) {
   return (
-    <div>
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="flower"
-        onClick={() => {
-          ProductCategoriesButton({ category: " " });
-        }}
-      >
-        set
-      </button>
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="flower"
-        onClick={() => {
-          ProductCategoriesButton({ category: "Flower" });
-        }}
-      >
-        Blommor
-      </button>
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="flower"
-        onClick={() => {
-          ProductCategoriesButton({ category: "easy-careflowers" });
-        }}
-      >
-        lätt skötta växter Blommor
-      </button>
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="flower"
-        onClick={() => {
-          ProductCategoriesButton({ category: "Pots" });
-        }}
-      >
-        krukor
-      </button>
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="Grönväxt"
-        onClick={() => {
-          ProductCategoriesButton({ category: "greenPlant" });
-        }}
-      >
-        Grön växter
-      </button>
-      <button
-        className="Form-Admin-Button"
-        type="submit"
-        name="Grönväxt"
-        onClick={() => {
-          ProductCategoriesButton({ category: "accessories" });
-        }}
-      >
-        accessories
-      </button>
+    <div className="Form-Main-Container-Category-Button">
+      <div className="Form-InnerContainer-Category-Button">
+        <div className="Form-Container-Category-Button">
+          <button
+            className="Form-Admin-Button"
+            type="submit"
+            name="flower"
+            onClick={() => {
+              ProductCategoriesButton({ category: " " });
+            }}
+          >
+            set
+          </button>
+        </div>
+        <div className="Form-Container-Category-Button">
+          <button
+            className="Form-Admin-Button"
+            type="submit"
+            name="flower"
+            onClick={() => {
+              ProductCategoriesButton({ category: "Flower" });
+            }}
+          >
+            Blommor
+          </button>
+        </div>
+      </div>
+      <div className="Form-InnerContainer-Category-Button">
+        <div className="Form-Container-Category-Button">
+          <button
+            className="Form-Admin-Button"
+            type="submit"
+            name="flower"
+            onClick={() => {
+              ProductCategoriesButton({ category: "easy-careflowers" });
+            }}
+          >
+            lätt skötta växter Blommor
+          </button>
+        </div>
+        <div className="Form-Container-Category-Button">
+          <button
+            className="Form-Admin-Button"
+            type="submit"
+            name="flower"
+            onClick={() => {
+              ProductCategoriesButton({ category: "Pots" });
+            }}
+          >
+            krukor
+          </button>
+        </div>
+      </div>
+      <div className="Form-InnerContainer-Category-Button">
+        <div className="Form-Container-Category-Button">
+          <button
+            className="Form-Admin-Button"
+            type="submit"
+            name="Grönväxt"
+            onClick={() => {
+              ProductCategoriesButton({ category: "greenPlant" });
+            }}
+          >
+            Grön växter
+          </button>
+        </div>
+        <div className="Form-Container-Category-Button">
+          <button
+            className="Form-Admin-Button"
+            type="submit"
+            name="Grönväxt"
+            onClick={() => {
+              ProductCategoriesButton({ category: "accessories" });
+            }}
+          >
+            accessories
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

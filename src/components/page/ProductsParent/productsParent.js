@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { firebase } from "../../../firebase/config";
-import { ProductroductCategoryButton } from "./ProductroductCategoryButton/ProductroductCategoryButton";
+import { ProductCategoryButton } from "./ProductroductCategoryButton/ProductroductCategoryButton";
 
 import { Products } from "./Products/Products";
 
@@ -39,7 +39,7 @@ export function ProductsParent() {
 
   return (
     <div>
-      <ProductroductCategoryButton
+      <ProductCategoryButton
         ProductCategoriesButton={ProductCategoriesButton}
         // ProductCategoriesButtonSet={ProductCategoriesButtonSet}
         // ProductCategoriesButtonGreenPlant={ProductCategoriesButtonGreenPlant}

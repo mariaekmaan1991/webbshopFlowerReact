@@ -6,97 +6,104 @@ export function FormCheckOutOrder({
   formCustomerMember,
 }) {
   return (
-    <div>
-      <label className="container">
-        Jag vill bli medlem
-        <input type="checkbox" onChange={(e) => formCustomerMember(e, true)} />
-      </label>
-      <div className="Form-Customer-Mainbox">
-        <div className="Form-firstname-Customer-Box">
-          Efternamn
+    <div className="Form-Customer-Main-Container">
+      <div className="Form-Customer-Container">
+        <label className="Container">
+          Jag vill bli medlem
           <input
-            className="New-Form-FirstName-Innerbox"
+            className="New-Form-Name-Innerbox"
+            type="checkbox"
+            onChange={(e) => formCustomerMember(e, true)}
+          />
+        </label>
+      </div>
+      <div className="Form-Customer-Container">
+        <label className="Container">
+          Förnamn
+          <input
+            className="Form-Customer-Innerbox"
             type="text"
-            placeholder="Efternamn"
+            placeholder="Förnamn"
             name="title"
             onChange={(e) => formTheCustomer(e, "firstname")}
           />
-        </div>
-        <div className="Form-Customer-Box">
-          <div className="Form-Customer">
-            förnamn
-            <input
-              className="Form-Customer-Innerbox"
-              type="text"
-              placeholder="Efternamn"
-              name="title"
-              onChange={(e) => formTheCustomer(e, "lastname")}
-            />
-          </div>
-        </div>
-        <div className="Form-Address-Box">
-          <div className="Form-Address">
-            adress
-            <input
-              className="Form-Address-Innerbox"
-              type="text"
-              placeholder="Adress"
-              name="title"
-              onChange={(e) => formTheCustomer(e, "address")}
-            />
-          </div>
-        </div>
-        <div className="Form-Mail-Box">
-          <div className="Form-Mail">
-            Mail
-            <input
-              className="Form-Mail-Innerbox"
-              type="text"
-              placeholder="Mail"
-              name="title"
-              onChange={(e) => formTheCustomer(e, "email")}
-            />
-          </div>
-        </div>
-
-        {formCustomerMemberValue === true ? (
-          <div className="Form-Mail">
-            <label>
-              Lösenord
-              <input
-                type="password"
-                name="password"
-                placeholder="Lösenord"
-                onChange={(e) => formTheCustomer(e, "password")}
-              />
-            </label>
-          </div>
-        ) : null}
-        <div className="Form-Mobile-Number-Box">
-          <div className="Form-Mobile-Number">
-            Mobil
-            <input
-              className="Form-Mobile-Number-Innerbox"
-              type="text"
-              placeholder="Mobile Number"
-              name="title"
-              onChange={(e) => formTheCustomer(e, "phone")}
-            />
-          </div>
-        </div>
-        <div className="Form-ZIP-Code-Box">
-          <div className="Form-ZIP-Code">
-            Zip
-            <input
-              className="Form-ZIP-Code-Innerbox"
-              type="number"
-              placeholder="ZIP code"
-              name="title"
-              onChange={(e) => formTheCustomer(e, "zipcode")}
-            />
-          </div>
-        </div>
+        </label>
       </div>
+      <div className="Form-Customer-Container">
+        <label className="Container">
+          Efternam
+          <input
+            className="Form-Customer-Innerbox"
+            type="text"
+            placeholder="Efternamn"
+            name="title"
+            onChange={(e) => formTheCustomer(e, "lastname")}
+          />
+        </label>
+      </div>
+      <div className="Form-Customer-Container">
+        <label className="Container">
+          adress
+          <input
+            className="Form-Address-Innerbox"
+            type="text"
+            placeholder="Adress"
+            name="title"
+            onChange={(e) => formTheCustomer(e, "address")}
+          />
+        </label>
+      </div>
+
+      <div className="Form-Customer-Container">
+        <label className="Container">
+          Zip
+          <input
+            className="Form-ZIP-Code-Innerbox"
+            type="number"
+            placeholder="ZIP code"
+            name="title"
+            onChange={(e) => formTheCustomer(e, "zipcode")}
+          />
+        </label>
+      </div>
+      <div className="Form-Customer-Container">
+        <label className="Container">
+          Mobil
+          <input
+            className="Form-Mobile-Number-Innerbox"
+            type="text"
+            placeholder="Mobile Number"
+            name="title"
+            onChange={(e) => formTheCustomer(e, "phone")}
+          />
+        </label>
+      </div>
+      <div className="Form-Customer-Container">
+        <label className="Container">
+          Mail
+          <input
+            className="Form-Mail-Input"
+            type="text"
+            placeholder="Mail"
+            name="title"
+            onChange={(e) => formTheCustomer(e, "email")}
+          />
+        </label>
+      </div>
+
+      {formCustomerMemberValue === true ? (
+        <div className="Form-Customer-Container">
+          <label className="Container">
+            Lösenord
+            <input
+              type="password"
+              name="password"
+              placeholder="Lösenord"
+              onChange={(e) => formTheCustomer(e, "password")}
+            />
+          </label>
+        </div>
+      ) : null}
     </div>
   );
 }

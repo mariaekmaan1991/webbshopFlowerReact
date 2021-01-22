@@ -1,14 +1,14 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import Localbase from "localbase";
 import { ProductChangeSize } from "../ProductChangeSize/ProductChangeSize";
 
-import { ProductChangeProductQuantity2 } from "../ProductChangeProductQuantity/ProductChangeProductQuantity2";
+import { ProductChangeQuantity } from "../ProductChangeQuantity/ProductChangeQuantity";
 
 export function ShoppingCart({
   setNewUpdateSizeProduct,
   shoppingCartList,
-  NewUpdateQuantityProduct,
-  NewUpdateSizeProduct,
+  newUpdateQuantityProduct,
+  newUpdateSizeProduct,
   setNewUpdateQuantityProduct,
 }) {
   let localBase = new Localbase("db");
@@ -25,8 +25,8 @@ export function ShoppingCart({
       .collection("Products")
       .doc({ id: product.id })
       .update({
-        size: NewUpdateSizeProduct,
-        quantity: parseInt(NewUpdateQuantityProduct),
+        size: newUpdateSizeProduct,
+        quantity: parseInt(newUpdateQuantityProduct),
       })
       .then((product) => {
         console.log("fel?", product);
@@ -67,7 +67,7 @@ export function ShoppingCart({
 
         <div className="ShoppingCart-List-Content-Item">
           <ProductChangeSize
-            NewUpdateQuantityProduct={NewUpdateQuantityProduct}
+            newUpdateQuantityProduct={newUpdateQuantityProduct}
             updateSizeProduct={updateSizeProduct}
             size={product.size}
           />
@@ -78,7 +78,7 @@ export function ShoppingCart({
             something2={updateIpsumNumber2}
           /> */}
         <div className="ShoppingCart-List-Content-Item">
-          <ProductChangeProductQuantity2
+          <ProductChangeQuantity
             updateQuantityProduct={updateQuantityProduct}
             productquantity={product.quantity}
           />
