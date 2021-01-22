@@ -4,16 +4,15 @@
   width: 100%;
   height: 60%;
   justify-content: center;
-
   .Form-Container-Category-Button {
     @include flexColumn;
-    width: 100%;
+    width: 98%;
     justify-items: center;
     .Form-Admin-Button {
       display: flex;
-      width: 100%;
+      width: 95%;
+      margin: 10px;
       text-align: center;
-      margin: 5px;
       padding: 10px;
       background: rgb(144, 144, 204);
       border: none;

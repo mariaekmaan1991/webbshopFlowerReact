@@ -2,10 +2,11 @@
   background-color: rgb(198, 228, 173);
   width: 100%;
   @include flexColumn;
+  justify-content: center;
   .Product-Content {
-    width: 30%;
+    width: 85%;
     background-color: brown;
-    margin: 10px;
+    margin: 30px;
     @include flexRow;
     flex-wrap: wrap;
     .Product-Image {
