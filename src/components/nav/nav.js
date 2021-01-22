@@ -4,7 +4,11 @@ import { useHistory } from "react-router-dom";
 
 import { firebase } from "../../firebase/config";
 import { UserContext } from "../../firebase/UserProvider";
-import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faUser,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   BrowserRouter as Router,
@@ -41,7 +45,15 @@ export function Nav({ QuantityCounterTotal }) {
           <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
             <FontAwesomeIcon className="faBars" icon={faBars} />
           </button>
-          <div>{QuantityCounterTotal}</div>
+          <div className="faShoppingCart-Icon-Content">
+            <div className="faShoppingCart-Icon-Content">
+              <FontAwesomeIcon
+                className="faShoppingCart"
+                icon={faShoppingCart}
+              />
+              {QuantityCounterTotal}
+            </div>
+          </div>
 
           {currentUser.user === null ? (
             <Link to="/login">Logga in</Link>

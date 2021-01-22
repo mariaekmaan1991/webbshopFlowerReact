@@ -16,8 +16,9 @@
     @include flexColumn;
     .Navbar {
       display: flex;
+      @include flexRow;
       .buttonMenu {
-        @include flexColumn;
+        display: flex;
         height: 50px;
         width: 50px;
         position: relative;
@@ -33,6 +34,20 @@
           top: 0px;
           z-index: 300;
           color: rgb(254, 255, 254);
+        }
+      }
+      .faShoppingCart-Icon-Content {
+        @include flexRow;
+        width: 40%;
+        .faShoppingCart-Icon-Content-Container {
+          @include flexRow;
+          width: 40%;
+
+          .faShoppingCart {
+            display: flex;
+            background-color: lightgray;
+            width: 60%;
+          }
         }
       }
     }
