@@ -38,45 +38,45 @@ import { PrivateRoute } from "./route/PrivateRoute";
 import { OrderConfirmation } from "./components/page/orderConfirmation/orderConfirmation";
 
 function App() {
-  const [ShoppingCartList, setShoppingCartList] = useState([]);
-//   const [quantityCounter, setquantityCounter] = useState();
-// // function cart(){
-//   let shoppingQuantityCounter = 0;
+  const [shoppingCartList, setShoppingCartList] = useState([]);
+  //   const [quantityCounter, setquantityCounter] = useState();
+  function cart() {
+    let shoppingQuantityCounter = 0;
 
-//   for (let i = 0; i < ShoppingCartList.length; i++) {
-//     shoppingQuantityCounter =shoppingQuantityCounter + parseInt(ShoppingCartList[i].quantity);
-//   }
-// return shoppingQuantityCounter
-// }
-// let QuantityCounterTotal= cart()
+    for (let i = 0; i < shoppingCartList.length; i++) {
+      shoppingQuantityCounter =
+        shoppingQuantityCounter + parseInt(shoppingCartList[i].quantity);
+    }
+    return shoppingQuantityCounter;
+  }
+  let QuantityCounterTotal = cart();
 
   let localBase = new Localbase("db");
   useEffect(() => {
-
     localBase
       .collection("Products")
       .get()
       .then((product) => {
         setShoppingCartList(product);
       });
-      // localBase
-      // .collection("cart")
-      // .add({cart:h})
-      // .then((e) => {
-      //   console.log(e)
-       
-      // });
-  }, []);
+    // localBase
+    // .collection("cart")
+    // .add({cart:h})
+    // .then((e) => {
+    //   console.log(e)
 
+    // });
+  }, []);
+  console.log(shoppingCartList);
   return (
     <UserProvider>
       <Router>
         <div className="App">
-          <Nav></Nav>
+          <Nav QuantityCounterTotal={QuantityCounterTotal}></Nav>
           <main>
             <Switch>
               <Route exact path="/admin" component={Admin} />
-              <AdminRoute exact path="/adminuser" component={AdminUser} />
+              <Route exact path="/adminuser" component={AdminUser} />
               <ProfileRedirect exact path="/signup" component={Signup} />
               <ProfileRedirect exact path="/login" component={LogInUser} />
               <PrivateRoute exact path="/profile/:id" component={ProfileUser} />
@@ -89,7 +89,7 @@ function App() {
               <Route exact path="/checkout">
                 <CheckOutParent
                   setShoppingCartList={setShoppingCartList}
-                  ShoppingCartList={ShoppingCartList}
+                  shoppingCartList={shoppingCartList}
                 />
               </Route>
               <Route path="/products/:id" component={DetailParent} />

@@ -21,50 +21,58 @@ export function FromProduct({
       <div className="From-Admin-Main-Container">
         <form onSubmit={saveInfo} className="Form-Admin">
           <div className="Form-Admin-Container">
-            <label className="Form-Admin-Container-Input">Name </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={productName}
-              onChange={formProductName}
-              className="Form-Admin-Container-Input"
-            />
+            <label className="Form-Admin-Container-Label">
+              Name
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={productName}
+                onChange={formProductName}
+                className="Form-Admin-Container-Input"
+              />
+            </label>
           </div>
           <div className="Form-Admin-Container">
-            <label className="Form-Admin-Container-Input">Pris </label>
-            <input
-              type="number"
-              name="price"
-              placeholder="price"
-              value={productPrice}
-              onChange={formProductPrice}
-              className="Form-Admin-Container-Input"
-            />
+            <label className="Form-Admin-Container-Input">
+              Pris
+              <input
+                type="number"
+                name="price"
+                placeholder="price"
+                value={productPrice}
+                onChange={formProductPrice}
+                className="Form-Admin-Container-Input"
+              />
+            </label>
           </div>
           <div className="Form-Admin-Container">
-            <label className="Form-Admin-Container-Input">Bild </label>
-            <input
-              type="text"
-              name="imageUrl"
-              placeholder="imageUrl"
-              value={productImageUrl}
-              onChange={formProductImageUrl}
-              className="Form-Admin-Container-Input"
-            />
+            <label className="Form-Admin-Container-Input">
+              Bild
+              <input
+                type="text"
+                name="imageUrl"
+                placeholder="imageUrl"
+                value={productImageUrl}
+                onChange={formProductImageUrl}
+                className="Form-Admin-Container-Input"
+              />
+            </label>
           </div>
           <div className="Form-Admin-Container">
-            <label className="Form-Admin-Container-Input">Antal </label>
-            <input
-              type="number"
-              name="quantity"
-              placeholder="quantity"
-              value={productQuantity}
-              onChange={fromProductQuantity}
-              className="Form-Admin-Container-Input"
-            />
+            <label className="Form-Admin-Container-Input">
+              Antal
+              <input
+                type="number"
+                name="quantity"
+                placeholder="quantity"
+                value={productQuantity}
+                onChange={fromProductQuantity}
+                className="Form-Admin-Container-Input"
+              />
+            </label>
           </div>
-          <div className="Form-Admin-Container-Button">
+          <div className="Form-Admin-Main-Container-Button">
             <div className="Form-Admin-innerContainer-Button">
               <button
                 className="Form-Admin-Button"
@@ -144,15 +152,17 @@ export function FromProduct({
               </button>
             </div>
           </div>
-
-          <input
-            className="Form-Admin-Container-Description"
-            type="text"
-            name="description"
-            placeholder="description"
-            value={descriptionProduct}
-            onChange={formDescriptionProduct}
-          ></input>
+          <label>
+            Beskrivning
+            <input
+              className="Form-Admin-Container-Description"
+              type="text"
+              name="description"
+              placeholder="description"
+              value={descriptionProduct}
+              onChange={formDescriptionProduct}
+            ></input>
+          </label>
           <button
             className="Form-Admin-Container-PostButton"
             type="submit"

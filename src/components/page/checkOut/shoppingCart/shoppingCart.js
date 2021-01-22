@@ -6,8 +6,7 @@ import { ProductChangeProductQuantity2 } from "../ProductChangeProductQuantity/P
 
 export function ShoppingCart({
   setNewUpdateSizeProduct,
-  setShoppingCartList,
-  ShoppingCartList,
+  shoppingCartList,
   NewUpdateQuantityProduct,
   NewUpdateSizeProduct,
   setNewUpdateQuantityProduct,
@@ -47,7 +46,7 @@ export function ShoppingCart({
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  let h = ShoppingCartList.map((product, i = parseInt(product.id)) => {
+  let h = shoppingCartList.map((product, i = parseInt(product.id)) => {
     return (
       <div className="Product-ShoppingCart-Container" key={i}>
         <div className="ShoppingCart-List-Content-Item">

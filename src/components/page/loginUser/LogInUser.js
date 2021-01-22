@@ -21,6 +21,7 @@ export function LogInUser({ history }) {
       history.push(`/profile/${user.uid}`);
     }
   };
+
   const Submit = async (data) => {
     let user;
     setLoadning(true);

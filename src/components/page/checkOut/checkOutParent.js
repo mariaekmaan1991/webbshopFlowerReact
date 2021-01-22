@@ -2,10 +2,10 @@ import { React, useState, useEffect, useReducer } from "react";
 import Localbase from "localbase";
 
 import { ShoppingCart } from "./shoppingCart/shoppingCart";
-import { FormCheckOutOrder } from "./formCheckOutOrder./formCheckOutOrder";
+import { FormCheckOutOrder } from "./formCheckOutOrder/formCheckOutOrder";
 import { firebase } from "../../../firebase/config";
-export function CheckOutParent({ setShoppingCartList, ShoppingCartList }) {
-  console.log(ShoppingCartList, "finns ShoppingCartList");
+export function CheckOutParent({ setShoppingCartList, shoppingCartList }) {
+  console.log(shoppingCartList, "finns shoppingCartList");
   const [formDataCustomer, setFormDataCustomer] = useReducer(
     (state, newstate) => ({
       ...state,
@@ -36,133 +36,132 @@ export function CheckOutParent({ setShoppingCartList, ShoppingCartList }) {
   }
   const db = firebase.firestore();
 
-  const sendOrder = async (e) => {
-    let userInfo;
-    if (formCustomerMemberValue === true) {
-      const res = await firebase
-        .auth()
-        .createUserWithEmailAndPassword(
-          formDataCustomer.email,
-          formDataCustomer.password
-        );
-      const user = res.user;
-      userInfo = {
-        uid: user.uid,
-        email: user.email,
-        firstname: formDataCustomer.firstname,
-        lastname: formDataCustomer.lastname,
-        address: formDataCustomer.address,
-        phone: formDataCustomer.phone,
-        zipcode: formDataCustomer.zipcode,
-        member: formCustomerMemberValue,
-      };
+  // const sendOrder = async (e) => {
+  //   let userInfo;
+  //   if (formCustomerMemberValue === true) {
+  //     const res = await firebase
+  //       .auth()
+  //       .createUserWithEmailAndPassword(
+  //         formDataCustomer.email,
+  //         formDataCustomer.password
+  //       );
+  //     const user = res.user;
+  //     userInfo = {
+  //       uid: user.uid,
+  //       email: user.email,
+  //       firstname: formDataCustomer.firstname,
+  //       lastname: formDataCustomer.lastname,
+  //       address: formDataCustomer.address,
+  //       phone: formDataCustomer.phone,
+  //       zipcode: formDataCustomer.zipcode,
+  //       member: formCustomerMemberValue,
+  //     };
 
-      let cart = {
-        uid: user.uid,
-        email: user.email,
-        shoppingCart: ShoppingCartList,
-      };
+  //     let cart = {
+  //       uid: user.uid,
+  //       email: user.email,
+  //       shoppingCart: shoppingCartList,
+  //     };
 
-      console.log(cart, "cart cart");
-      db.collection("customerorder")
-        .add(cart)
-        .then(function () {
-          console.log("Document successfully written!");
-        })
-        .catch(function (error) {
-          console.error("Error writing document: ", error);
-        });
+  //     console.log(cart, "cart cart");
+  //     db.collection("customerorder")
+  //       .add(cart)
+  //       .then(function () {
+  //         console.log("Document successfully written!");
+  //       })
+  //       .catch(function (error) {
+  //         console.error("Error writing document: ", error);
+  //       });
 
-      db.collection("User")
-        .add(userInfo)
-        .then(function () {
-          console.log("Document successfully written!");
-        });
-    } else {
-      let password = "6777868678";
-      const resp = await firebase
-        .auth()
-        .createUserWithEmailAndPassword(formDataCustomer.email, password);
-      const user = resp.user;
-      userInfo = {
-        uid: user.uid,
-        email: user.email,
-        firstname: formDataCustomer.firstname,
-        lastname: formDataCustomer.lastname,
-        address: formDataCustomer.address,
-        phone: formDataCustomer.phone,
-        zipcode: formDataCustomer.zipcode,
-      };
-      let carts = {
-        uid: user.uid,
-        email: user.email,
-        shoppingCart: ShoppingCartList,
-      };
+  //     db.collection("User")
+  //       .add(userInfo)
+  //       .then(function () {
+  //         console.log("Document successfully written!");
+  //       });
+  //   } else {
+  //     let password = "6777868678";
+  //     const resp = await firebase
+  //       .auth()
+  //       .createUserWithEmailAndPassword(formDataCustomer.email, password);
+  //     const user = resp.user;
+  //     userInfo = {
+  //       uid: user.uid,
+  //       email: user.email,
+  //       firstname: formDataCustomer.firstname,
+  //       lastname: formDataCustomer.lastname,
+  //       address: formDataCustomer.address,
+  //       phone: formDataCustomer.phone,
+  //       zipcode: formDataCustomer.zipcode,
+  //     };
+  //     let carts = {
+  //       uid: user.uid,
+  //       email: user.email,
+  //       shoppingCart: shoppingCartList,
+  //     };
 
-      db.collection("User")
-        .add(userInfo)
-        .then(function () {
-          console.log("Document successfully written!");
-        })
-        .catch(function (error) {
-          console.error("Error writing document: ", error);
-        });
+  //     db.collection("User")
+  //       .add(userInfo)
+  //       .then(function () {
+  //         console.log("Document successfully written!");
+  //       })
+  //       .catch(function (error) {
+  //         console.error("Error writing document: ", error);
+  //       });
 
-      console.log(carts, "cart cart");
-      db.collection("customerorder")
-        .add(carts)
-        .then(function () {
-          console.log("Document successfully written!");
-        })
-        .catch(function (error) {
-          console.error("Error writing document: ", error);
-        });
-    }
-  };
+  //     console.log(carts, "cart cart");
+  //     db.collection("customerorder")
+  //       .add(carts)
+  //       .then(function () {
+  //         console.log("Document successfully written!");
+  //       })
+  //       .catch(function (error) {
+  //         console.error("Error writing document: ", error);
+  //       });
+  //   }
+  // };
 
-  return (
-    <div>
-      <form
-        onSubmit={saveInfo}
-        className="Form-ShoppingCart-Main-Content-Container"
-      >
-        <ShoppingCart
-          NewUpdateSizeProduct={NewUpdateSizeProduct}
-          setShoppingCartList={setShoppingCartList}
-          ShoppingCartList={ShoppingCartList}
-          setNewUpdateQuantityProduct={setNewUpdateQuantityProduct}
-          setNewUpdateSizeProduct={setNewUpdateSizeProduct}
-          NewUpdateQuantityProduct={NewUpdateQuantityProduct}
-        />
-        <FormCheckOutOrder
-          formCustomerMemberValue={formCustomerMemberValue}
-          formTheCustomer={formTheCustomer}
-          formCustomerMember={formCustomerMember}
-        />
+  // return (
+  //   <div>
+  //     <form
+  //       onSubmit={saveInfo}
+  //       className="Form-ShoppingCart-Main-Content-Container"
+  //     >
+  //       <ShoppingCart
+  //         NewUpdateSizeProduct={NewUpdateSizeProduct}
+  //         setShoppingCartList={setShoppingCartList}
+  //         shoppingCartList={shoppingCartList}
+  //         setNewUpdateQuantityProduct={setNewUpdateQuantityProduct}
+  //         setNewUpdateSizeProduct={setNewUpdateSizeProduct}
+  //         NewUpdateQuantityProduct={NewUpdateQuantityProduct}
+  //       />
+  //       <FormCheckOutOrder
+  //         formCustomerMemberValue={formCustomerMemberValue}
+  //         formTheCustomer={formTheCustomer}
+  //         formCustomerMember={formCustomerMember}
+  //       />
 
-        {/* <button
-                className="Form-Admin-Button"
-                type="submit"
-                name="esy"
-                onClick={(e) => {
-                  postFormValues(e
-                  
-                  );
-                }}
-              >
-               post
-              </button> */}
-        <button
-          className="Form-Admin-Button"
-          type="submit"
-          name="esy"
-          onClick={(e) => {
-            sendOrder(e);
-          }}
-        >
-          sendOrder
-        </button>
-      </form>
-    </div>
-  );
+  //       {/* <button
+  //               className="Form-Admin-Button"
+  //               type="submit"
+  //               name="esy"
+  //               onClick={(e) => {
+  //                 postFormValues(e
+
+  //                 );
+  //               }}
+  //             >
+  //              post
+  //             </button> */}
+  //       <button
+  //         className="Form-Admin-Button"
+  //         type="submit"
+  //         name="esy"
+  //         onClick={(e) => {
+  //           sendOrder(e);
+  //         }}
+  //       >
+  //         sendOrder
+  //       </button>
+  //     </form>
+  return <div></div>;
 }

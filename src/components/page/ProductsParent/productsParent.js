@@ -11,7 +11,9 @@ export function ProductsParent() {
   //   { category: "Pots" },
   // ]);
 
-  const [productCategorieSelect, setProductCategorieSelect] = useState("pots");
+  const [productCategorieSelect, setProductCategorieSelect] = useState({
+    category: "Pots",
+  });
 
   useEffect(() => {
     const db = firebase.firestore();

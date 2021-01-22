@@ -50,8 +50,7 @@ export function ProfileUser() {
   if (!userDocument) {
     return null;
   }
-  //formClassName
-  console.log(userDocument);
+
   return (
     <div>
       <ProfileImage id={params.id} />

@@ -55,7 +55,6 @@ export function ProfileUser() {
   console.log(userDocument);
   return (
     <div>
-      {/* <ProfileImage id={params.id} /> */}
       <ProfileImage id={params.id} />
       <div
         className="add-form-container"

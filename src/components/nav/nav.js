@@ -14,7 +14,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-export function Nav({QuantityCounterTotal}) {
+export function Nav({ QuantityCounterTotal }) {
   const [HandleMenu, setHandleMenu] = useState(false);
 
   function openHandleMenuClick() {
@@ -41,7 +41,7 @@ export function Nav({QuantityCounterTotal}) {
           <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
             <FontAwesomeIcon className="faBars" icon={faBars} />
           </button>
-          <div></div>
+          <div>{QuantityCounterTotal}</div>
 
           {currentUser.user === null ? (
             <Link to="/login">Logga in</Link>
