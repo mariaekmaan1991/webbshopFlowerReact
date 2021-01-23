@@ -121,48 +121,34 @@ export function CheckOutParent({ setShoppingCartList, shoppingCartList }) {
   };
 
   return (
-    <div>
-      <form
-        onSubmit={saveInfo}
-        className="Form-ShoppingCart-Main-Content-Container"
+    <form
+      onSubmit={saveInfo}
+      className="Form-ShoppingCart-Main-Content-Container"
+    >
+      <ShoppingCart
+        newUpdateSizeProduct={newUpdateSizeProduct}
+        setShoppingCartList={setShoppingCartList}
+        shoppingCartList={shoppingCartList}
+        setNewUpdateQuantityProduct={setNewUpdateQuantityProduct}
+        setNewUpdateSizeProduct={setNewUpdateSizeProduct}
+        newUpdateQuantityProduct={newUpdateQuantityProduct}
+      />
+      <FormCheckOutOrder
+        formCustomerMemberValue={formCustomerMemberValue}
+        formTheCustomer={formTheCustomer}
+        formCustomerMember={formCustomerMember}
+      />
+
+      <button
+        className="Form-Admin-Button"
+        type="submit"
+        name="esy"
+        onClick={(e) => {
+          sendOrder(e);
+        }}
       >
-        <ShoppingCart
-          newUpdateSizeProduct={newUpdateSizeProduct}
-          setShoppingCartList={setShoppingCartList}
-          shoppingCartList={shoppingCartList}
-          setNewUpdateQuantityProduct={setNewUpdateQuantityProduct}
-          setNewUpdateSizeProduct={setNewUpdateSizeProduct}
-          newUpdateQuantityProduct={newUpdateQuantityProduct}
-        />
-        <FormCheckOutOrder
-          formCustomerMemberValue={formCustomerMemberValue}
-          formTheCustomer={formTheCustomer}
-          formCustomerMember={formCustomerMember}
-        />
-
-        {/* <button
-                className="Form-Admin-Button"
-                type="submit"
-                name="esy"
-                onClick={(e) => {
-                  postFormValues(e
-
-                  );
-                }}
-              >
-               post
-              </button> */}
-        <button
-          className="Form-Admin-Button"
-          type="submit"
-          name="esy"
-          onClick={(e) => {
-            sendOrder(e);
-          }}
-        >
-          sendOrder
-        </button>
-      </form>
-    </div>
+        sendOrder
+      </button>
+    </form>
   );
 }

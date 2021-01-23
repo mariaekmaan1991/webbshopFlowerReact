@@ -8,7 +8,7 @@ export function FormCheckOutOrder({
   return (
     <div className="Form-Customer-Main-Container">
       <div className="Form-Customer-Container">
-        <label className="Container">
+        <label className="Form-Customer-Container-Label">
           Jag vill bli medlem
           <input
             className="New-Form-Name-Innerbox"
@@ -18,10 +18,10 @@ export function FormCheckOutOrder({
         </label>
       </div>
       <div className="Form-Customer-Container">
-        <label className="Container">
+        <label className="Form-Customer-Container-Label">
           Förnamn
           <input
-            className="Form-Customer-Innerbox"
+            className="Form-Customer-Container-Input"
             type="text"
             placeholder="Förnamn"
             name="title"
@@ -30,10 +30,10 @@ export function FormCheckOutOrder({
         </label>
       </div>
       <div className="Form-Customer-Container">
-        <label className="Container">
+        <label className="Form-Customer-Container-Label">
           Efternam
           <input
-            className="Form-Customer-Innerbox"
+            className="Form-Customer-Container-Input"
             type="text"
             placeholder="Efternamn"
             name="title"
@@ -42,7 +42,7 @@ export function FormCheckOutOrder({
         </label>
       </div>
       <div className="Form-Customer-Container">
-        <label className="Container">
+        <label className="Form-Customer-Container-Label">
           adress
           <input
             className="Form-Address-Innerbox"
@@ -55,7 +55,7 @@ export function FormCheckOutOrder({
       </div>
 
       <div className="Form-Customer-Container">
-        <label className="Container">
+        <label className="Form-Customer-Container-Label">
           Zip
           <input
             className="Form-ZIP-Code-Innerbox"
@@ -67,7 +67,7 @@ export function FormCheckOutOrder({
         </label>
       </div>
       <div className="Form-Customer-Container">
-        <label className="Container">
+        <label className="Form-Customer-Container-Label">
           Mobil
           <input
             className="Form-Mobile-Number-Innerbox"
@@ -79,7 +79,7 @@ export function FormCheckOutOrder({
         </label>
       </div>
       <div className="Form-Customer-Container">
-        <label className="Container">
+        <label className="Form-Customer-Container-Label">
           Mail
           <input
             className="Form-Mail-Input"
@@ -93,7 +93,7 @@ export function FormCheckOutOrder({
 
       {formCustomerMemberValue === true ? (
         <div className="Form-Customer-Container">
-          <label className="Container">
+          <label className="Form-Customer-Container-Label">
             Lösenord
             <input
               type="password"
