@@ -21,10 +21,12 @@
         background-color: rgb(128, 43, 0);
         @include flexColumn;
         width: 100%;
-        height: 70%;
+        height: 80%;
+        min-width: 100px;
         justify-content: center;
         .Image-Cart {
           width: 100%;
+          min-width: 100px;
           height: 100%;
           display: flex;
           background-color: rgb(128, 43, 0);
@@ -76,7 +78,7 @@
   }
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 400px) {
   .Form-ShoppingCart-Main-Content-Container {
     background-color: rgb(216, 226, 226);
     width: 100%;
@@ -89,18 +91,20 @@
         @include flexRow;
         width: 95%;
         margin: 8px;
+        height: 100%;
+        justify-content: space-evenly;
         .ShoppingCart-Image-Content {
-          width: 60%;
+          width: 50%;
           height: 100%;
           .Image-Cart {
             height: 100%;
-            width: 50%;
+            width: 100%;
           }
         }
         .ShoppingCart-Container-Content-Item {
           justify-content: space-evenly;
           @include flexColumn;
-          width: 30%;
+          width: 100%;
           height: 100%;
           background-color: chocolate;
           .ShoppingCart-Content-Item {
@@ -129,12 +133,13 @@
     .ShoppingCart-List-Main-Container {
       .ShoppingCart-Main-Container-Item {
         background-color: rgb(25, 52, 52);
+        justify-content: space-evenly;
         .ShoppingCart-Image-Content {
-          width: 60%;
+          width: 50%;
           height: 100%;
           background-color: darkblue;
           .Image-Cart {
-            width: 50%;
+            width: 100%;
             height: 100%;
             background-color: rgb(86, 86, 136);
           }

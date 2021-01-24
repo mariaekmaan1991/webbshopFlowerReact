@@ -45,10 +45,24 @@ export function Nav({ QuantityCounterTotal }) {
           <button className="buttonMenu" onClick={() => openHandleMenuClick()}>
             <FontAwesomeIcon className="faBars" icon={faBars} />
           </button>
+          <div className="Nav-Container-Content-Link-MinWidth400">
+            <Link className="Nav-link-Width400" to="/">
+              Home
+            </Link>
+            <Link className="Nav-link-Width400" to="/products">
+              Products
+            </Link>
+            <Link className="Nav-link-Width400" to="/checkout">
+              {" "}
+              checkout
+            </Link>
+          </div>
 
           {currentUser.user === null ? (
-            <div className="Loggin-Content">
-              <Link to="/login">Logga in</Link>{" "}
+            <div className="Loggin-Content-Container">
+              <div className="Loggin-Container">
+                <Link to="/login">Logga in</Link>{" "}
+              </div>
               <div className="faShoppingCart-Icon-Content-Container">
                 <FontAwesomeIcon
                   className="faShoppingCart"
@@ -58,9 +72,12 @@ export function Nav({ QuantityCounterTotal }) {
               </div>
             </div>
           ) : (
-            <div className="Loggin-Content">
+            <div className="Loggin-Content-Container">
               <FontAwesomeIcon className="faBars" icon={faUser} />
-              <button onClick={logOutUser}>loga ut</button>
+              <div className="Loggin-Container">
+                <button onClick={logOutUser}>loga ut</button>
+              </div>
+
               <div className="faShoppingCart-Icon-Content-Container">
                 <FontAwesomeIcon
                   className="faShoppingCart"

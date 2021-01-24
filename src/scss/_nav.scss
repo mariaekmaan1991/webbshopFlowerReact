@@ -15,7 +15,6 @@
     top: 0px;
     @include flexColumn;
     .Navbar {
-      display: flex;
       @include flexRow;
       .buttonMenu {
         display: flex;
@@ -36,6 +35,12 @@
           color: rgb(254, 255, 254);
         }
       }
+      .Nav-Container-Content-Link-MinWidth400 {
+        display: none;
+        .Nav-link-Width400 {
+          display: none;
+        }
+      }
       .faShoppingCart-Icon-Content {
         @include flexRow;
         width: 10%;
@@ -50,17 +55,28 @@
           }
         }
       }
-      .Loggin-Content {
-        width: 90%;
-        margin: 4px;
-        display: flex;
+      .Nav-Container-Content-Link {
+        display: none;
+      }
+      .Loggin-Content-Container {
+        @include flexRow;
+        justify-content: space-evenly;
+        width: 85%;
 
-        justify-content: flex-end;
+        .Loggin-Container {
+          display: flex;
+          margin-top: 15px;
+        }
         .faShoppingCart-Icon-Content-Container {
-          margin-left: 10px;
+          display: flex;
+          margin-top: 15px;
+
+          .faShoppingCart {
+          }
         }
       }
     }
+
     .Menu-Dropdown-Content {
       @include flexRow;
       position: absolute;
@@ -104,6 +120,108 @@
           visibility: visible;
           padding: 1px;
           background-color: rgb(245, 245, 245);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .Nav {
+    .Nav-Dropdown {
+      height: 100%;
+      .Navbar {
+        width: 100%;
+        background-color: #e7c5a5;
+        height: 100%;
+        @include flexRow;
+        .buttonMenu {
+          display: none;
+
+          .faBars {
+            display: none;
+          }
+        }
+        .Nav-Container-Content-Link-MinWidth400 {
+          @include flexRow;
+
+          width: 70%;
+          margin: 10px;
+
+          .Nav-link-Width400 {
+            width: 60%;
+            margin: 10px;
+            display: flex;
+          }
+        }
+        .faShoppingCart-Icon-Content {
+          .faShoppingCart-Icon-Content-Container {
+            .faShoppingCart {
+            }
+          }
+        }
+        .Loggin-Content-Container {
+          width: 35%;
+          margin: 10px;
+
+          @include flexRow;
+          justify-content: flex-end;
+
+          .Loggin-Container {
+            display: flex;
+            margin-top: 7px;
+
+            margin-right: 7px;
+          }
+          .faShoppingCart-Icon-Content-Container {
+            display: flex;
+            margin-top: 7px;
+          }
+        }
+      }
+      .Menu-Dropdown-Content {
+        display: none;
+        .Menu-Container-Content-Li {
+          display: none;
+          .Menu-Container-Content-Text {
+          }
+          .Menu-Container-Content-Text:hover {
+          }
+          .Menu-Container-Content-Text::before {
+          }
+          &:hover ::before {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .Nav {
+    .Nav-Dropdown {
+      .Navbar {
+        .faShoppingCart-Icon-Content {
+          .faShoppingCart-Icon-Content-Container {
+            .faShoppingCart {
+            }
+          }
+        }
+        .Loggin-Content {
+          .faShoppingCart-Icon-Content-Container {
+          }
+        }
+      }
+      .Menu-Dropdown-Content {
+        .Menu-Container-Content-Li {
+          .Menu-Container-Content-Text {
+          }
+          .Menu-Container-Content-Text:hover {
+          }
+          .Menu-Container-Content-Text::before {
+          }
+          &:hover ::before {
+          }
         }
       }
     }

@@ -82,7 +82,7 @@ export function FormCheckOutOrder({
         <label className="Form-Customer-Container-Label">
           Mail
           <input
-            className="Form-Mail-Input"
+            className="Form-Customer-Container-Input"
             type="text"
             placeholder="Mail"
             name="title"
