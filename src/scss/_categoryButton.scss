@@ -22,16 +22,17 @@
 
 @media only screen and (min-width: 500px) {
   .Form-Main-Container-Category-Button {
-    @include flexRow;
+    @include flexColumn;
 
     background-color: rgb(240, 188, 188);
     .Form-InnerContainer-Category-Button {
-      @include flexColumn;
+      @include flexRow;
       width: 100%;
 
       justify-content: center;
       background-color: rgb(221, 29, 29);
       .Form-Container-Category-Button {
+        @include flexRow;
         width: 100%;
         height: 100%;
         background-color: rgb(230, 142, 142);
@@ -46,9 +47,12 @@
 @media only screen and (min-width: 800px) {
   .Form-Main-Container-Category-Button {
     background-color: rgb(240, 188, 188);
+    @include flexRow;
     .Form-InnerContainer-Category-Button {
+      @include flexColumn;
       background-color: rgb(82, 38, 38);
       .Form-Container-Category-Button {
+        @include flexRow;
         background-color: rgb(187, 136, 136);
         .Form-Admin-Button {
           background-color: rgb(235, 17, 17);

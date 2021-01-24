@@ -41,40 +41,44 @@ export function LogInUser({ history }) {
 
   const formClassName = `ui form ${isLoading ? "loading" : ""}`;
   return (
-    <div className="login-container">
-      <div className="ui card login-card">
-        <div className="content">
-          <form className={formClassName} onSubmit={handleSubmit(Submit)}>
-            <div className="field">
-              <label>
-                Email
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  ref={register}
-                />
-              </label>
-            </div>
-            <div className="field">
-              <label>
-                Password
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  ref={register}
-                />
-              </label>
-            </div>
-            <div>
-              <button className="buttonlogin" type="submit">
-                log in
-              </button>
+    <div className="Login-Main-Container">
+      <div className="Login-InnerContainer">
+        <form className={formClassName} onSubmit={handleSubmit(Submit)}>
+          <div className="Login-InnerContainer-field">
+            <label className="Login-InnerContainer-Label">
+              Email
+              <input
+                className="Login-InnerContainer-Input"
+                type="email"
+                name="email"
+                placeholder="Email"
+                ref={register}
+              />
+            </label>
+          </div>
+          <div className="Login-InnerContainer-field">
+            <label className="Login-InnerContainer-Label">
+              Password
+              <input
+                className="Login-InnerContainer-Input"
+                type="password"
+                name="password"
+                placeholder="Password"
+                ref={register}
+              />
+            </label>
+          </div>
+
+          <div className="Login-Container-Button-Sumbit">
+            <div className="Login-InnerContainer-Button-Sumbit"></div>
+            <button className="button-login" type="submit">
+              log in
+            </button>
+            <div className="Login-InnerContainer-Button-Sumbit">
               <Link to="/signup">Sign Up</Link>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );

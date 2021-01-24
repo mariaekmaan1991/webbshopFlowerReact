@@ -1,0 +1,44 @@
+.Login-Main-Container {
+  @include flexColumn;
+  background-color: blue;
+  width: 100%;
+  height: 100%;
+  .Login-InnerContainer {
+    @include flexColumn;
+    height: 100%;
+
+    width: 100%;
+    background-color: brown;
+    form {
+      justify-content: center;
+      width: 90%;
+      height: 100%;
+      padding: 10px;
+      background-color: rgb(184, 184, 211);
+      margin: 30px;
+      @include flexColumn;
+      .Login-InnerContainer-field {
+        @include flexRow;
+
+        .Login-InnerContainer-Label {
+          @include flexRow;
+          margin: 15px;
+          .Login-InnerContainer-Input {
+            display: flex;
+          }
+        }
+      }
+      .Login-Container-Button-Sumbit {
+        @include flexRow;
+        margin: 15px;
+        .Login-InnerContainer-Button-Sumbit {
+          display: flex;
+          margin: 10px;
+          .Login-Button-Sumbibutton-login {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
