@@ -9,7 +9,7 @@ export function DetailProductPrint({
   productSize,
   addCart,
 }) {
-  parseInt(DetailProductList.quantity);
+  let quantitys = parseInt(DetailProductList.quantity);
   return (
     <div>
       <div> {DetailProductList.imageUrl}</div>
@@ -44,7 +44,11 @@ export function DetailProductPrint({
         {console.log(productSize, DetailProductList.quantity)}
         <button
           type="submit"
-          disabled={0 >= parseInt(DetailProductList.quantity)}
+          //value >= 1 && value <= 35
+          disabled={
+            0 >= parseInt(DetailProductList.quantity) ||
+            parseInt(DetailProductList.quantity) >= 5
+          }
           onClick={() => addCart(DetailProductList)}
         >
           Lägg till varukorgen
