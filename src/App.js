@@ -42,8 +42,11 @@ function App() {
   //   const [quantityCounter, setquantityCounter] = useState();
   function cart() {
     let shoppingQuantityCounter = 0;
-
-    for (let i = 0; i < shoppingCartList.length; i++) {
+    for (
+      let i = 0;
+      i < shoppingCartList.length && shoppingCartList.length;
+      i++
+    ) {
       shoppingQuantityCounter =
         shoppingQuantityCounter + parseInt(shoppingCartList[i].quantity);
     }

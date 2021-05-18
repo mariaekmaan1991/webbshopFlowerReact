@@ -6,9 +6,10 @@ export function DetailProductPrint({
   handleProductQuantityDecrease,
   handleProductQuantityIncrease,
   saveInfo,
-
+  productSize,
   addCart,
 }) {
+  parseInt(DetailProductList.quantity);
   return (
     <div>
       <div> {DetailProductList.imageUrl}</div>
@@ -18,7 +19,7 @@ export function DetailProductPrint({
       <div> antal:{DetailProductList.quantity}</div>
       <form onSubmit={saveInfo}>
         <label htmlFor="size">Choose a size:</label>
-        <select onChange={handleProductSize} name="size" id="size">
+        <select required onChange={handleProductSize} name="size" id="size">
           <option value="XS">XS</option>
           <option value="S">S</option>
           <option value="M">M</option>
@@ -40,9 +41,10 @@ export function DetailProductPrint({
         >
           -
         </button>
+        {console.log(productSize, DetailProductList.quantity)}
         <button
           type="submit"
-          value=""
+          disabled={0 >= parseInt(DetailProductList.quantity)}
           onClick={() => addCart(DetailProductList)}
         >
           Lägg till varukorgen

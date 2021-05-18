@@ -15,10 +15,8 @@ export function DetailParent({ cart, setCart, setCart3 }) {
   }
   const [DetailProductList, setDetailProductList] = useState([]);
 
-  const [ProductSize, setProductSize] = useState();
-  const [ProductQuantity, setProductQuantity] = useState();
-
-  useEffect(() => {}, []);
+  const [productSize, setProductSize] = useState({ size: "XS" });
+  const [productQuantity, setProductQuantity] = useState(1);
 
   useEffect(() => {
     const data = db.collection("Product").doc(id);
@@ -42,13 +40,11 @@ export function DetailParent({ cart, setCart, setCart3 }) {
   }
 
   function handleProductQuantityDecrease(e, DetailProductList) {
-    let h = DetailProductList.quantity--;
-    setProductQuantity(h);
+    setProductQuantity(DetailProductList.quantity--);
   }
 
   function handleProductQuantityIncrease(e, DetailProductList) {
-    let h = DetailProductList.quantity++;
-    setProductQuantity(h);
+    setProductQuantity(DetailProductList.quantity++);
   }
 
   //console.log(ProductQuantity, "finns ProductQuantity");
@@ -71,14 +67,14 @@ export function DetailParent({ cart, setCart, setCart3 }) {
     //   //   let h = currentCart[i].quantity;
     //   // }
     // }
-    console.log("läggt till cart:", ProductSize);
+    console.log("läggt till cart:", productSize);
 
     let newItem = {
       name: DetailProduct.name,
       id: DetailProduct.id,
       imageUrl: DetailProduct.imageUrl,
       price: DetailProduct.price,
-      size: ProductSize,
+      size: productSize,
       quantity: DetailProduct.quantity,
     };
     console.log("läggt till cart:", newItem);
@@ -91,13 +87,14 @@ export function DetailParent({ cart, setCart, setCart3 }) {
     <DetailProductPrint
       addCart={addCart}
       saveInfo={saveInfo}
+      productSize={productSize}
       //handleProductSize={() => handleProductSize()}
       handleProductSize={handleProductSize}
       DetailProductList={DetailProductList}
-      ProductSize={() => ProductSize()}
+      ProductSize={() => productSize()}
       handleProductQuantityIncrease={handleProductQuantityIncrease}
       handleProductQuantityDecrease={handleProductQuantityDecrease}
-      ProductQuantity={ProductQuantity}
+      ProductQuantity={productQuantity}
     />
   );
 }

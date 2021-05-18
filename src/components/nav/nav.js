@@ -68,7 +68,9 @@ export function Nav({ QuantityCounterTotal }) {
                   className="faShoppingCart"
                   icon={faShoppingCart}
                 />
-                {QuantityCounterTotal}
+                <div className="Quantity-Counter-Totalt">
+                  {QuantityCounterTotal}
+                </div>
               </div>
             </div>
           ) : (
@@ -83,7 +85,9 @@ export function Nav({ QuantityCounterTotal }) {
                   className="faShoppingCart"
                   icon={faShoppingCart}
                 />
-                {QuantityCounterTotal}
+                <div className="Quantity-Counter-Totalt">
+                  {QuantityCounterTotal}
+                </div>
               </div>
             </div>
           )}

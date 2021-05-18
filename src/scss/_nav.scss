@@ -66,12 +66,16 @@
         .Loggin-Container {
           display: flex;
           margin-top: 15px;
-        }
-        .faShoppingCart-Icon-Content-Container {
-          display: flex;
-          margin-top: 15px;
 
-          .faShoppingCart {
+          .faShoppingCart-Icon-Content-Container {
+            display: flex;
+            margin-top: 7px;
+
+            .faShoppingCart {
+              color: rgb(255, 255, 255);
+            }
+            .Quantity-Counter-Totalt {
+            }
           }
         }
       }
@@ -144,14 +148,14 @@
         }
         .Nav-Container-Content-Link-MinWidth400 {
           @include flexRow;
-
           width: 70%;
-          margin: 10px;
+          margin-top: 15px;
 
           .Nav-link-Width400 {
             width: 60%;
-            margin: 10px;
+
             display: flex;
+            justify-content: flex-end;
           }
         }
         .faShoppingCart-Icon-Content {
@@ -166,16 +170,22 @@
 
           @include flexRow;
           justify-content: flex-end;
-
           .Loggin-Container {
             display: flex;
-            margin-top: 7px;
-
+            margin-top: 3px;
             margin-right: 7px;
           }
           .faShoppingCart-Icon-Content-Container {
             display: flex;
-            margin-top: 7px;
+            margin: 7px;
+
+            .faShoppingCart {
+              color: rgb(241, 119, 119);
+              margin-left: 5px;
+            }
+            .Quantity-Counter-Totalt {
+              margin-left: 5px;
+            }
           }
         }
       }
